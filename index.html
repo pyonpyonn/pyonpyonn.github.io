@@ -10,6 +10,7 @@
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
 <style>
 /* ═══ THEME SYSTEM ═══ */
 :root{
@@ -744,11 +745,7 @@ footer{
 .qcard{cursor:pointer;transition:transform .15s}.qcard:hover{transform:translateX(4px)}
 /* ─── COLLAPSIBLE PANELS ─── */
 /* ═══ SUPPLY DISRUPTION — IMMERSIVE HERO ═══ */
-<<<<<<< Updated upstream
-.supply-hero{position:relative;width:100%;height:600px;margin:28px 0;border-radius:12px;overflow:hidden;border:1px solid var(--border);
-=======
-.supply-hero{position:relative;width:100%;height:clamp(850px,90vh,1050px);margin:28px 0;border-radius:12px;overflow:hidden;border:1px solid var(--border);
->>>>>>> Stashed changes
+.supply-hero{position:relative;width:100%;height:850px;margin:28px 0;border-radius:12px;overflow:hidden;border:1px solid var(--border);
   background:radial-gradient(ellipse at 50% 60%,rgba(18,18,20,.99),rgba(9,9,11,1))}
 [data-theme="light"] .supply-hero{background:radial-gradient(ellipse at 50% 60%,rgba(250,250,250,.99),rgba(244,244,245,1))}
 .supply-hero #supply3DContainer{position:absolute;inset:0;z-index:1;cursor:crosshair}
@@ -778,10 +775,7 @@ footer{
 .supply-depth-1{width:700px;height:700px;bottom:-250px;left:-150px;background:radial-gradient(circle,rgba(239,68,68,.04),transparent 70%);z-index:0}
 .supply-depth-2{width:500px;height:500px;top:-120px;right:-100px;background:radial-gradient(circle,rgba(161,161,170,.05),transparent 70%);z-index:0}
 .supply-depth-3{width:300px;height:300px;bottom:10%;left:40%;background:radial-gradient(circle,rgba(245,158,11,.03),transparent 65%);z-index:0}
-<<<<<<< Updated upstream
-@media(max-width:800px){.supply-hero{height:440px}.supply-hud-top{flex-direction:column;gap:10px}.supply-hud-right{max-width:100%}.supply-hud-bottom{flex-direction:column}}
-=======
-@media(max-width:800px){.supply-hero{height:clamp(600px,85vh,800px)}.supply-hud-top{flex-direction:column;gap:10px}.supply-hud-right{max-width:100%}.supply-hud-bottom{flex-direction:column}}
+@media(max-width:800px){.supply-hero{height:600px}.supply-hud-top{flex-direction:column;gap:10px}.supply-hud-right{max-width:100%}.supply-hud-bottom{flex-direction:column}}
 
 /* ═══ ANALYTICS PANEL ═══ */
 .supply-analytics{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin:-12px 0 24px 0;padding:0}
@@ -804,7 +798,6 @@ footer{
 .sa-chart-title .sa-dot{width:5px;height:5px;border-radius:50%;display:inline-block}
 .sa-row-2{display:grid;grid-template-columns:1fr 2fr;gap:12px;margin-bottom:0}
 @media(max-width:900px){.supply-analytics{grid-template-columns:1fr 1fr}.sa-row{grid-template-columns:1fr}.sa-row-2{grid-template-columns:1fr}}
->>>>>>> Stashed changes
 
 .collapse-wrap{margin-bottom:16px}
 .collapse-header{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;
@@ -834,170 +827,186 @@ footer{
 [data-theme="light"] .collapse-header:hover{background:var(--surface2)}
 [data-theme="light"] .collapse-wrap.open .collapse-header{border-color:rgba(8,145,178,.15);box-shadow:0 0 16px rgba(8,145,178,.04)}
 [data-theme="light"] .collapse-toggle{color:var(--blue);border-color:rgba(8,145,178,.15);background:rgba(8,145,178,.04)}
-/* ─── Twitter/X Live Feed ─── */
-.xfeed-wrap{display:flex;flex-direction:column;gap:0}
-.xfeed-tweet{display:flex;gap:10px;padding:12px 14px;border-bottom:1px solid var(--border);
-  cursor:pointer;transition:background .12s;position:relative}
-.xfeed-tweet:last-child{border-bottom:none}
-.xfeed-tweet:hover{background:rgba(29,155,240,.03)}
-[data-theme="light"] .xfeed-tweet:hover{background:rgba(29,155,240,.04)}
-.xfeed-avatar{width:36px;height:36px;border-radius:50%;background:var(--surface3);display:flex;
-  align-items:center;justify-content:center;font-size:14px;flex-shrink:0;border:1px solid var(--border)}
-.xfeed-user{display:flex;align-items:center;gap:4px;margin-bottom:2px;flex-wrap:wrap}
-.xfeed-name{font-size:12px;font-weight:700;color:var(--text)}
-.xfeed-verified{width:14px;height:14px;border-radius:50%;background:#1d9bf0;display:inline-flex;
-  align-items:center;justify-content:center;font-size:7px;color:#fff;flex-shrink:0}
-.xfeed-handle{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted)}
-.xfeed-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted)}
-.xfeed-text{font-size:12.5px;color:var(--text);line-height:1.5;margin-bottom:6px}
-.xfeed-text .xtag{color:#1d9bf0;font-weight:500}
-.xfeed-stats{display:flex;gap:16px;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted)}
-.xfeed-stats span:hover{color:#1d9bf0}
-.xfeed-new{animation:xfeedSlide .4s cubic-bezier(.16,1,.3,1)}
-@keyframes xfeedSlide{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
-.xfeed-badge{font-family:'JetBrains Mono',monospace;font-size:8px;padding:1px 5px;border-radius:3px;
-  font-weight:600;letter-spacing:.4px;margin-left:4px}
-.xfeed-badge.osint{background:rgba(255,37,37,.1);color:var(--red);border:1px solid rgba(255,37,37,.15)}
-.xfeed-badge.analyst{background:rgba(161,161,170,.08);color:var(--blue);border:1px solid rgba(34,211,238,.15)}
-.xfeed-badge.breaking{background:rgba(245,158,11,.05);color:var(--amber);border:1px solid rgba(245,158,11,.15)}
-.xfeed-badge.official{background:rgba(34,197,94,.06);color:var(--green);border:1px solid rgba(34,197,94,.15)}
-.news-panel{display:flex;flex-direction:column;gap:0}
-.news-item{display:flex;gap:12px;padding:14px 16px;border-bottom:1px solid var(--border);
-  cursor:pointer;transition:background .15s;position:relative}
-.news-item:last-child{border-bottom:none}
-.news-item:hover{background:rgba(34,211,238,.02)}
-[data-theme="light"] .news-item:hover{background:rgba(0,0,0,.02)}
-.news-item::after{content:'→';position:absolute;right:14px;top:50%;transform:translateY(-50%);
-  color:var(--muted);font-size:12px;opacity:0;transition:opacity .15s,transform .15s}
-.news-item:hover::after{opacity:.5;transform:translateY(-50%) translateX(2px)}
-.news-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:16px;flex-shrink:0;background:var(--surface2);border:1px solid var(--border)}
-.news-content{flex:1;min-width:0}
-.news-author{display:flex;align-items:center;gap:6px;margin-bottom:3px}
-.news-author-name{font-size:12px;font-weight:600;color:var(--text)}
-.news-author-handle{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted)}
+/* ═══ DROPSITE INTEL FEED — Premium Terminal ═══ */
 .news-author-verified{width:14px;height:14px;display:inline-flex;align-items:center;justify-content:center;
   background:var(--blue);border-radius:50%;font-size:8px;color:#fff;flex-shrink:0}
-.news-hl{font-size:13px;color:var(--text);line-height:1.55;margin-bottom:6px}
-.news-meta{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-.news-tag{padding:2px 6px;border-radius:3px;font-size:8px;font-weight:700;letter-spacing:.5px}
-.news-tag.neg{background:rgba(255,37,37,.1);color:var(--red)}
-.news-tag.pos{background:rgba(34,197,94,.06);color:var(--green)}
-.news-tag.neu{background:rgba(161,161,170,.08);color:var(--blue)}
-.news-tag.urg{background:rgba(255,37,37,.15);color:var(--red);border:1px solid rgba(255,37,37,.2)}
-.news-actions{display:flex;gap:18px;margin-top:8px}
-.news-act{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);display:flex;align-items:center;gap:4px;cursor:pointer}
-.news-act:hover{color:var(--blue)}
-.news-affected{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
-.news-chip{font-family:'JetBrains Mono',monospace;font-size:9px;padding:2px 7px;border-radius:4px;
-  background:var(--surface2);border:1px solid var(--border);color:var(--text2);cursor:pointer;transition:all .15s}
-.news-chip:hover{border-color:var(--blue);color:var(--blue)}
-.news-chip.up{color:var(--green);border-color:rgba(34,197,94,.2)}
-.news-chip.dn{color:var(--red);border-color:rgba(255,37,37,.2)}
-.news-dot{width:6px;height:6px;border-radius:50%;margin-top:6px;flex-shrink:0;display:none}
-/* ─── Twitter/X Live Feed ─── */
-[data-theme="light"] .xavatar{background:rgba(0,0,0,.04)}
-/* ═══ X/TWITTER FEED — Bloomberg Terminal Style ═══ */
+
+/* ── Feed Container ── */
 .xfeed-outer{position:relative}
-.xfeed-outer::before,.xfeed-outer::after{content:'';position:absolute;left:0;right:0;height:20px;pointer-events:none;z-index:5}
+.xfeed-outer::before,.xfeed-outer::after{content:'';position:absolute;left:0;right:0;height:28px;pointer-events:none;z-index:5}
 .xfeed-outer::before{top:0;background:linear-gradient(to bottom,var(--surface),transparent)}
 .xfeed-outer::after{bottom:0;background:linear-gradient(to top,var(--surface),transparent)}
-.xfeed{display:flex;flex-direction:column;gap:8px;max-height:680px;overflow-y:auto;padding:6px 6px 6px 0;
-  scrollbar-width:thin;scrollbar-color:var(--surface3) transparent;scroll-behavior:smooth;scroll-snap-type:y proximity}
-.xfeed::-webkit-scrollbar{width:4px}
-.xfeed::-webkit-scrollbar-thumb{background:var(--surface3);border-radius:4px}
+.xfeed{display:flex;flex-direction:column;gap:10px;max-height:720px;overflow-y:auto;padding:8px 4px 8px 0;
+  scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.06) transparent;scroll-behavior:smooth}
+.xfeed::-webkit-scrollbar{width:3px}
+.xfeed::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08);border-radius:3px}
+.xfeed::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.14)}
 .xfeed::-webkit-scrollbar-track{background:transparent}
-.xtweet{display:flex;gap:10px;padding:14px 16px;border-radius:10px;cursor:pointer;position:relative;overflow:hidden;
-  background:var(--surface2);border:1px solid var(--border);scroll-snap-align:start;min-height:80px;
-  transition:background .15s ease,transform .15s ease,box-shadow .25s ease,border-color .2s ease}
-.xtweet:hover{background:var(--surface3);transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,.25);border-color:var(--border2)}
-.xtweet::after{content:'↗';position:absolute;top:10px;right:12px;font-size:11px;color:var(--muted);opacity:0;transition:opacity .2s}
-.xtweet:hover::after{opacity:.5}
-[data-theme="light"] .xtweet{background:rgba(255,255,255,.5);border-color:var(--border)}
-[data-theme="light"] .xtweet:hover{background:rgba(255,255,255,.8);box-shadow:0 4px 16px rgba(0,0,0,.06);border-color:var(--border2)}
-.xtweet.xbreak{border-left:3px solid var(--red);background:rgba(255,37,37,.03)}
-.xtweet.xbreak::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,37,37,.05),transparent 50%);pointer-events:none}
-.xtweet.xbreak:hover{background:rgba(255,37,37,.06);border-color:rgba(255,37,37,.2)}
-.xbreak-flash{animation:xbreakPulse 2s ease 1}
-@keyframes xbreakPulse{0%{box-shadow:inset 0 0 0 0 rgba(255,37,37,0)}25%{box-shadow:inset 0 0 30px 0 rgba(255,37,37,.08)}100%{box-shadow:inset 0 0 0 0 rgba(255,37,37,0)}}
-.xbreak-label{font-family:'JetBrains Mono',monospace;font-size:7px;padding:2px 5px;border-radius:2px;background:var(--red);color:#fff;font-weight:700;letter-spacing:.8px;margin-right:4px;vertical-align:1px}
-.xtweet-avatar{width:36px;height:36px;border-radius:50%;background:var(--surface3);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;border:1px solid var(--border)}
+
+/* ── Card Base ── */
+.xtweet{display:flex;gap:14px;padding:16px 18px;border-radius:12px;cursor:pointer;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,rgba(17,17,19,.85),rgba(24,24,27,.65));
+  border:1px solid rgba(255,255,255,.04);min-height:88px;
+  box-shadow:0 1px 3px rgba(0,0,0,.2),0 4px 12px rgba(0,0,0,.1);
+  transition:transform .2s cubic-bezier(.16,1,.3,1),box-shadow .25s ease,border-color .2s ease,background .2s ease}
+.xtweet:hover{transform:translateY(-2px);
+  box-shadow:0 8px 28px rgba(0,0,0,.35),0 2px 8px rgba(0,0,0,.2);
+  border-color:rgba(255,255,255,.1);background:linear-gradient(135deg,rgba(24,24,27,.9),rgba(30,30,34,.7))}
+.xtweet::after{content:'';position:absolute;top:0;right:0;width:60px;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.01));pointer-events:none;opacity:0;transition:opacity .2s}
+.xtweet:hover::after{opacity:1}
+.xtweet::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;border-radius:0 2px 2px 0;
+  background:transparent;transition:background .2s}
+[data-theme="light"] .xtweet{background:rgba(255,255,255,.6);border-color:rgba(0,0,0,.06);
+  box-shadow:0 1px 3px rgba(0,0,0,.04),0 4px 12px rgba(0,0,0,.03)}
+[data-theme="light"] .xtweet:hover{background:rgba(255,255,255,.85);box-shadow:0 6px 20px rgba(0,0,0,.07);border-color:rgba(0,0,0,.1)}
+
+/* ── Open-link indicator ── */
+.xtweet .ds-open-hint{position:absolute;top:12px;right:14px;font-family:'JetBrains Mono',monospace;
+  font-size:8px;color:var(--muted);opacity:0;transition:opacity .2s,transform .2s;
+  display:flex;align-items:center;gap:3px;letter-spacing:.5px;text-transform:uppercase}
+.xtweet:hover .ds-open-hint{opacity:.6;transform:translateX(-2px)}
+
+/* ── Breaking Card ── */
+.xtweet.xbreak{border-color:rgba(239,68,68,.12);
+  background:linear-gradient(135deg,rgba(239,68,68,.04),rgba(17,17,19,.85) 40%)}
+.xtweet.xbreak::before{background:var(--red);box-shadow:0 0 12px rgba(239,68,68,.2)}
+.xtweet.xbreak:hover{border-color:rgba(239,68,68,.2);
+  background:linear-gradient(135deg,rgba(239,68,68,.06),rgba(24,24,27,.9) 40%)}
+.xbreak-flash{animation:xbreakPulse 2.5s cubic-bezier(.4,0,.2,1) 1}
+@keyframes xbreakPulse{
+  0%{box-shadow:0 1px 3px rgba(0,0,0,.2)}
+  15%{box-shadow:0 0 0 1px rgba(239,68,68,.15),0 4px 20px rgba(239,68,68,.1),inset 0 0 30px rgba(239,68,68,.04)}
+  100%{box-shadow:0 1px 3px rgba(0,0,0,.2)}
+}
+.xbreak-label{font-family:'JetBrains Mono',monospace;font-size:7px;padding:2px 6px;border-radius:3px;
+  background:linear-gradient(135deg,#dc2626,#ef4444);color:#fff;font-weight:700;letter-spacing:.8px;
+  margin-right:5px;text-shadow:0 1px 2px rgba(0,0,0,.3);box-shadow:0 1px 4px rgba(239,68,68,.25)}
+
+/* ── Avatar ── */
+.xtweet-avatar{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+  font-size:15px;flex-shrink:0;border:1px solid rgba(255,255,255,.06);
+  box-shadow:0 2px 8px rgba(0,0,0,.15);transition:transform .2s,box-shadow .2s}
+.xtweet:hover .xtweet-avatar{transform:scale(1.04);box-shadow:0 3px 12px rgba(0,0,0,.25)}
+
+/* ── Header ── */
 .xtweet-body{flex:1;min-width:0}
-.xtweet-header{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-bottom:3px}
-.xtweet-name{font-size:12px;font-weight:700;color:var(--text)}
-.xtweet-badge{width:13px;height:13px;border-radius:50%;background:var(--blue);display:inline-flex;align-items:center;justify-content:center;font-size:7px;color:#fff;flex-shrink:0}
-.xtweet-handle{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted)}
-.xtweet-time{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);margin-left:auto}
-.xtweet-text{font-size:12px;color:var(--text2);line-height:1.55;margin-bottom:5px;word-wrap:break-word;
-  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.xtweet-text .xtag{color:var(--blue);font-weight:500}
-.xtweet-stats{display:flex;gap:14px;font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted)}
-.xtweet-stats span:hover{color:var(--blue)}
-.xtweet-media{margin:6px 0;padding:6px 8px;background:var(--surface);border:1px solid var(--border);border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--text2);display:flex;gap:6px;align-items:center}
-.xtweet-tags{display:flex;gap:4px;flex-wrap:wrap;margin:5px 0}
-.xtweet-stag{font-family:'JetBrains Mono',monospace;font-size:7px;padding:2px 5px;border-radius:3px;font-weight:700;letter-spacing:.4px}
-.xtweet-stag.neg{background:rgba(255,37,37,.08);color:var(--red);border:1px solid rgba(239,68,68,.08)}
-.xtweet-stag.pos{background:rgba(34,197,94,.08);color:var(--green);border:1px solid rgba(34,197,94,.08)}
-.xtweet-stag.neu{background:rgba(34,211,238,.06);color:var(--blue);border:1px solid rgba(161,161,170,.08)}
-.xtweet-mtag{font-family:'JetBrains Mono',monospace;font-size:7px;padding:2px 5px;border-radius:3px;background:var(--surface);border:1px solid var(--border);color:var(--muted)}
-.xtweet-enter{animation:xtweetSlideIn .4s cubic-bezier(.16,1,.3,1) both}
-@keyframes xtweetSlideIn{from{opacity:0;transform:translateY(-16px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
-.xtweet-shift{animation:xtweetShift .3s ease both}
-@keyframes xtweetShift{from{transform:translateY(-6px);opacity:.8}to{transform:translateY(0);opacity:1}}
-.xfeed-toolbar{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);margin-bottom:8px;flex-wrap:wrap;gap:6px}
-.xfeed-counter{font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 8px;border-radius:4px;background:rgba(255,37,37,.06);border:1px solid rgba(255,37,37,.1);color:var(--red);display:flex;align-items:center;gap:4px}
-.xfeed-live-bar{display:flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--green)}
-.xfeed-live-pulse{width:7px;height:7px;border-radius:50%;background:var(--green);animation:xlivePulse 1.5s ease infinite}
-@keyframes xlivePulse{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.5)}50%{box-shadow:0 0 0 5px rgba(34,197,94,0)}}
-.xfeed-status{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);display:flex;align-items:center;gap:6px;padding:8px 0}
-/* ─── News Detail Modal ─── */
-.news-modal-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);
-  display:none;align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto}
-.news-modal-overlay.open{display:flex}
-.news-modal{background:var(--surface);border:1px solid var(--border2);border-radius:14px;
-  max-width:620px;width:100%;max-height:85vh;overflow-y:auto;animation:newsSlideUp .35s cubic-bezier(.16,1,.3,1)}
-@keyframes newsSlideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-.nm-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--surface);z-index:2}
-.nm-close{width:32px;height:32px;border-radius:50%;border:1px solid var(--border);background:transparent;
-  color:var(--text);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}
-.nm-close:hover{background:var(--surface2);border-color:var(--border2)}
-.nm-body{padding:20px}
-.nm-source{display:flex;align-items:center;gap:10px;margin-bottom:16px}
-.nm-source-avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:20px;background:var(--surface2);border:2px solid var(--border)}
-.nm-source-info{flex:1}
-.nm-source-name{font-size:14px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:5px}
-.nm-source-handle{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted)}
-.nm-headline{font-size:18px;font-weight:700;color:var(--text);line-height:1.45;margin-bottom:14px}
-.nm-body-text{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:16px}
-.nm-timestamp{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);padding-bottom:14px;
-  border-bottom:1px solid var(--border);margin-bottom:14px}
-.nm-section-title{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:1.2px;
-  text-transform:uppercase;margin:16px 0 10px}
-.nm-impact-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.nm-impact-card{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px 14px}
-.nm-impact-label{font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
-.nm-impact-value{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700}
-.nm-tweets{display:flex;flex-direction:column;gap:10px}
-.nm-tweet{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;
-  transition:border-color .15s}
-.nm-tweet:hover{border-color:var(--border2)}
-.nm-tweet-header{display:flex;align-items:center;gap:8px;margin-bottom:6px}
-.nm-tweet-avatar{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:12px;background:var(--surface3);flex-shrink:0}
-.nm-tweet-name{font-size:11px;font-weight:600;color:var(--text)}
-.nm-tweet-handle{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted)}
-.nm-tweet-time{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);margin-left:auto}
-.nm-tweet-text{font-size:12px;color:var(--text2);line-height:1.55}
-.nm-tweet-stats{display:flex;gap:16px;margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted)}
-.nm-assets{display:flex;gap:8px;flex-wrap:wrap}
-.nm-asset-btn{font-family:'JetBrains Mono',monospace;font-size:10px;padding:6px 12px;border-radius:6px;
-  background:var(--surface2);border:1px solid var(--border);color:var(--text);cursor:pointer;transition:all .15s}
-.nm-asset-btn:hover{border-color:var(--blue);color:var(--blue);background:rgba(161,161,170,.04)}
-[data-theme="light"] .news-modal{background:var(--surface);border-color:var(--border2)}
-[data-theme="light"] .nm-header{background:var(--surface)}
-[data-theme="light"] .nm-tweet{background:var(--surface2)}
-[data-theme="light"] .news-modal-overlay{background:rgba(0,0,0,.4)}
+.xtweet-header{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+.xtweet-name{font-size:13px;font-weight:700;color:var(--text);letter-spacing:-.01em}
+.xtweet-badge{width:14px;height:14px;border-radius:50%;background:linear-gradient(135deg,#1d9bf0,#0c7abf);
+  display:inline-flex;align-items:center;justify-content:center;font-size:7px;color:#fff;flex-shrink:0;
+  box-shadow:0 1px 3px rgba(29,155,240,.3)}
+.xtweet-handle{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.02em}
+.xtweet-time{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted2);margin-left:auto;
+  padding:2px 6px;border-radius:4px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.03)}
+.ds-live-badge{font-family:'JetBrains Mono',monospace;font-size:7px;padding:2px 5px;border-radius:3px;
+  background:rgba(34,197,94,.1);color:#22c55e;border:1px solid rgba(34,197,94,.15);
+  letter-spacing:.5px;font-weight:700;display:inline-flex;align-items:center;gap:3px}
+.ds-live-badge::before{content:'';width:4px;height:4px;border-radius:50%;background:#22c55e;
+  animation:dsLiveMicro 2s ease infinite}
+@keyframes dsLiveMicro{0%,100%{opacity:.6}50%{opacity:1}}
+
+/* ── Text Content ── */
+.xtweet-text{font-size:12.5px;color:var(--text2);line-height:1.65;margin-bottom:8px;word-wrap:break-word;
+  display:-webkit-box;-webkit-line-clamp:4;line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.xtweet-text .xtag{color:#60a5fa;font-weight:500;transition:color .15s}
+.xtweet:hover .xtweet-text .xtag{color:#93bbfc}
+.xtweet.xbreak .xtweet-text{-webkit-line-clamp:5;line-clamp:5;color:var(--text)}
+
+/* ── Tags ── */
+.xtweet-tags{display:flex;gap:5px;flex-wrap:wrap;margin:8px 0 6px}
+.xtweet-stag{font-family:'JetBrains Mono',monospace;font-size:7px;padding:3px 7px;border-radius:4px;
+  font-weight:700;letter-spacing:.5px;transition:all .15s}
+.xtweet-stag.neg{background:rgba(239,68,68,.08);color:#f87171;border:1px solid rgba(239,68,68,.1)}
+.xtweet-stag.pos{background:rgba(34,197,94,.08);color:#4ade80;border:1px solid rgba(34,197,94,.1)}
+.xtweet-stag.neu{background:rgba(148,163,184,.06);color:#94a3b8;border:1px solid rgba(148,163,184,.08)}
+.xtweet-mtag{font-family:'JetBrains Mono',monospace;font-size:7px;padding:3px 7px;border-radius:4px;
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.04);color:var(--muted);
+  letter-spacing:.3px;transition:all .15s}
+.xtweet:hover .xtweet-mtag{border-color:rgba(255,255,255,.08)}
+
+/* ── Footer / Stats ── */
+.xtweet-stats{display:flex;gap:14px;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);
+  padding-top:8px;border-top:1px solid rgba(255,255,255,.03);margin-top:2px}
+.xtweet-stats span{transition:color .15s}
+.xtweet-stats span:hover{color:#60a5fa}
+.xtweet-media{margin:8px 0;padding:8px 10px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);
+  border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--text2);display:flex;gap:6px;align-items:center}
+
+/* ── Animations ── */
+.xtweet-enter{animation:xtweetSlideIn .45s cubic-bezier(.16,1,.3,1) both}
+@keyframes xtweetSlideIn{from{opacity:0;transform:translateY(-18px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.xtweet-shift{animation:xtweetShift .35s ease both}
+@keyframes xtweetShift{from{transform:translateY(-8px);opacity:.7}to{transform:translateY(0);opacity:1}}
+
+/* ── Toolbar ── */
+.xfeed-toolbar{display:flex;align-items:center;justify-content:space-between;padding:10px 2px;
+  border-bottom:1px solid rgba(255,255,255,.04);margin-bottom:10px;flex-wrap:wrap;gap:8px}
+.xfeed-counter{font-family:'JetBrains Mono',monospace;font-size:9px;padding:4px 10px;border-radius:6px;
+  background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.08);color:#f87171;
+  display:flex;align-items:center;gap:5px;letter-spacing:.3px;font-weight:600}
+.xfeed-live-bar{display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:9px;
+  color:var(--green);letter-spacing:.5px;font-weight:600}
+.xfeed-live-pulse{width:7px;height:7px;border-radius:50%;background:#22c55e;
+  box-shadow:0 0 6px rgba(34,197,94,.4);animation:xlivePulse 2s cubic-bezier(.4,0,.6,1) infinite}
+@keyframes xlivePulse{0%,100%{box-shadow:0 0 6px rgba(34,197,94,.4),0 0 0 0 rgba(34,197,94,.3)}
+  50%{box-shadow:0 0 8px rgba(34,197,94,.5),0 0 0 5px rgba(34,197,94,0)}}
+.xfeed-status{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted2);
+  display:flex;align-items:center;gap:6px;padding:10px 2px 4px;letter-spacing:.3px}
+
+/* ── Sidebar status rows ── */
+.ds-stat-row{display:flex;justify-content:space-between;align-items:center;font-size:10px;
+  padding:6px 0;border-bottom:1px solid rgba(255,255,255,.03)}
+.ds-stat-row:last-child{border-bottom:none}
+.ds-stat-label{color:var(--muted);font-size:10px}
+.ds-stat-value{font-family:'JetBrains Mono',monospace;color:var(--text2);font-size:10px;font-weight:500}
+
+/* ── Source Selector ── */
+.ds-source-wrap{position:relative;z-index:20}
+.ds-source-btn{display:flex;align-items:center;gap:8px;padding:6px 12px;border-radius:8px;
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);cursor:pointer;
+  transition:all .2s;font-family:'JetBrains Mono',monospace;min-width:180px}
+.ds-source-btn:hover{border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.05)}
+.ds-source-btn.open{border-color:rgba(96,165,250,.25);background:rgba(96,165,250,.04);
+  box-shadow:0 4px 16px rgba(0,0,0,.2)}
+.ds-source-btn .ds-src-icon{width:22px;height:22px;border-radius:6px;display:flex;align-items:center;
+  justify-content:center;font-size:10px;flex-shrink:0;font-weight:700;color:#fff;
+  font-family:'Bebas Neue',sans-serif}
+.ds-source-btn .ds-src-name{font-size:10px;color:var(--text);font-weight:600;flex:1;letter-spacing:.2px}
+.ds-source-btn .ds-src-handle{font-size:8px;color:var(--muted);letter-spacing:.3px}
+.ds-source-btn .ds-src-chev{font-size:8px;color:var(--muted);transition:transform .2s;margin-left:auto}
+.ds-source-btn.open .ds-src-chev{transform:rotate(180deg)}
+
+.ds-source-menu{position:absolute;top:calc(100% + 6px);left:0;right:0;
+  background:var(--surface);border:1px solid rgba(255,255,255,.08);border-radius:10px;
+  box-shadow:0 12px 40px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.03);
+  padding:6px;display:none;max-height:320px;overflow-y:auto;
+  scrollbar-width:thin;scrollbar-color:var(--surface3) transparent}
+.ds-source-menu.open{display:block;animation:dsMenuIn .2s cubic-bezier(.16,1,.3,1)}
+@keyframes dsMenuIn{from{opacity:0;transform:translateY(-6px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+.ds-source-opt{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:7px;
+  cursor:pointer;transition:all .12s;position:relative}
+.ds-source-opt:hover{background:rgba(255,255,255,.04)}
+.ds-source-opt.active{background:rgba(96,165,250,.06);border:1px solid rgba(96,165,250,.1)}
+.ds-source-opt:not(.active){border:1px solid transparent}
+.ds-source-opt .ds-opt-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;
+  justify-content:center;font-size:12px;flex-shrink:0;font-weight:700;color:#fff;
+  font-family:'Bebas Neue',sans-serif}
+.ds-source-opt .ds-opt-info{flex:1;min-width:0}
+.ds-source-opt .ds-opt-name{font-size:11px;font-weight:600;color:var(--text);letter-spacing:.1px}
+.ds-source-opt .ds-opt-handle{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);margin-top:1px}
+.ds-source-opt .ds-opt-check{width:16px;height:16px;border-radius:50%;border:1px solid rgba(255,255,255,.08);
+  display:flex;align-items:center;justify-content:center;font-size:8px;color:transparent;transition:all .15s;flex-shrink:0}
+.ds-source-opt.active .ds-opt-check{background:rgba(96,165,250,.15);border-color:rgba(96,165,250,.3);color:#60a5fa}
+
+/* Feed fade transition */
+.xfeed.ds-switching{opacity:.3;transform:scale(.99);transition:opacity .2s,transform .2s}
+.xfeed.ds-loaded{opacity:1;transform:scale(1);transition:opacity .3s .05s,transform .3s .05s}
+
+/* Source pill in sidebar */
+.ds-src-pill{display:inline-flex;align-items:center;gap:5px;padding:3px 8px;border-radius:5px;
+  font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:600}
 /* ─── Intel Modal ─── */
 .intel-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
 .intel-card{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:12px}
@@ -1727,7 +1736,7 @@ html.lenis,html.lenis body{height:auto}
     <div style="display:flex;flex-direction:column;gap:10px;" id="liveAlerts">
       <div class="alert-b crit" onclick="openModal('BRN=F')"><div class="aico">🔴</div><div><div class="atitle" style="color:var(--red)">CRITICAL: Oil Supply Disruption</div><div class="atext">Hormuz Day <span class="conflict-day-val"></span>. 20M bbl/day blocked. Brent at <span id="alertOilPrice">$104</span>. OPEC+ failed to agree on offsets. SPR release barely dents deficit.</div><div style="display:flex;gap:6px;margin-top:6px;"><span style="font-family:'JetBrains Mono',monospace;font-size:8px;padding:2px 5px;border-radius:3px;background:rgba(255,37,37,.1);color:var(--red);">SEVERITY: 9.4/10</span><span style="font-family:'JetBrains Mono',monospace;font-size:8px;padding:2px 5px;border-radius:3px;background:rgba(255,37,37,.1);color:var(--red);">IMPACT: GLOBAL</span></div></div></div>
       <div class="alert-b warn" onclick="openModal('^GSPC')"><div class="aico">⚠️</div><div><div class="atitle" style="color:var(--amber)">WARNING: Stagflation Signal</div><div class="atext">Fed holds at 3.5-3.75%. Powell's "stagflation risk" warning. CPI transmission in 6-8 weeks. Rate cut odds collapsed to 8%. Dollar strengthening hurts EM.</div><div style="display:flex;gap:6px;margin-top:6px;"><span style="font-family:'JetBrains Mono',monospace;font-size:8px;padding:2px 5px;border-radius:3px;background:rgba(245,158,11,.05);color:var(--amber);">SEVERITY: 7.8/10</span><span style="font-family:'JetBrains Mono',monospace;font-size:8px;padding:2px 5px;border-radius:3px;background:rgba(245,158,11,.05);color:var(--amber);">IMPACT: US + EM</span></div></div></div>
-      <div class="alert-b info" onclick="openNewsModal(5)"><div class="aico">💡</div><div><div class="atitle" style="color:var(--blue)">WATCH: Qatar Ceasefire Talks</div><div class="atext">Back-channel diplomacy in Doha. 3-point framework: Hormuz reopening, US strike pause, Hezbollah withdrawal. If confirmed: +3-5% rally, oil −$15.</div><div style="display:flex;gap:6px;margin-top:6px;"><span style="font-family:'JetBrains Mono',monospace;font-size:8px;padding:2px 5px;border-radius:3px;background:rgba(161,161,170,.08);color:var(--blue);">PROBABILITY: ~25%</span><span style="font-family:'JetBrains Mono',monospace;font-size:8px;padding:2px 5px;border-radius:3px;background:rgba(161,161,170,.08);color:var(--blue);">UPSIDE: HIGH</span></div></div></div>
+      <div class="alert-b info" onclick=""><div class="aico">💡</div><div><div class="atitle" style="color:var(--blue)">WATCH: Qatar Ceasefire Talks</div><div class="atext">Back-channel diplomacy in Doha. 3-point framework: Hormuz reopening, US strike pause, Hezbollah withdrawal. If confirmed: +3-5% rally, oil −$15.</div><div style="display:flex;gap:6px;margin-top:6px;"><span style="font-family:'JetBrains Mono',monospace;font-size:8px;padding:2px 5px;border-radius:3px;background:rgba(161,161,170,.08);color:var(--blue);">PROBABILITY: ~25%</span><span style="font-family:'JetBrains Mono',monospace;font-size:8px;padding:2px 5px;border-radius:3px;background:rgba(161,161,170,.08);color:var(--blue);">UPSIDE: HIGH</span></div></div></div>
       <div class="alert-b warn" onclick="openModal('BTC-USD')"><div class="aico">₿</div><div><div class="atitle" style="color:var(--green)">OPPORTUNITY: Crypto Rally Extends</div><div class="atext">BTC $73,851 (+11% weekly). ETH $2,317 (+13.3%). Spot ETF inflows $767M. "Digital gold" narrative confirmed. 3rd week of positive flows.</div><div style="display:flex;gap:6px;margin-top:6px;"><span style="font-family:'JetBrains Mono',monospace;font-size:8px;padding:2px 5px;border-radius:3px;background:rgba(34,197,94,.06);color:var(--green);">SIGNAL: BULLISH</span><span style="font-family:'JetBrains Mono',monospace;font-size:8px;padding:2px 5px;border-radius:3px;background:rgba(34,197,94,.06);color:var(--green);">MOMENTUM: STRONG</span></div></div></div>
     </div>
     <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border);">
@@ -1777,33 +1786,34 @@ html.lenis,html.lenis body{height:auto}
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
           <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase">MENA Supply Disruption Index</span>
           <span class="supply-live-pill"><span class="supply-live-dot"></span>LIVE</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:7px;padding:2px 6px;border-radius:3px;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.15);color:var(--green);letter-spacing:.5px" id="supplyApiStatus">EIA API</span>
         </div>
-        <div style="font-family:'Inter',sans-serif;font-size:36px;font-weight:700;color:var(--text);letter-spacing:-0.03em;line-height:1" id="supplyTotalVal">46.4M</div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--red);font-weight:600;margin-top:4px" id="supplyTotalSub">bbl/day at risk · <span id="supplyPctGlobal">46%</span> of global supply</div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);margin-top:6px">Brent: <span style="color:var(--text);font-weight:600" id="supplyBrentLive">$104</span> · WTI: <span style="color:var(--text);font-weight:600" id="supplyWtiLive">$99</span> · Conflict Day <span style="color:var(--text);font-weight:600" id="supplyConflictDay">18</span></div>
+        <div style="font-family:'Inter',sans-serif;font-size:36px;font-weight:700;color:var(--text);letter-spacing:-0.03em;line-height:1" id="supplyTotalVal">--</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--red);font-weight:600;margin-top:4px" id="supplyTotalSub">Disruption Index · <span id="supplyPctGlobal">calculating...</span></div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);margin-top:6px">Brent: <span style="color:var(--text);font-weight:600" id="supplyBrentLive">--</span> · WTI: <span style="color:var(--text);font-weight:600" id="supplyWtiLive">--</span> · Spread: <span style="color:var(--amber);font-weight:600" id="supplySpreadLive">--</span> · Day <span style="color:var(--text);font-weight:600" id="supplyConflictDay">--</span></div>
       </div>
       <div class="supply-hud-right">
-        <div class="supply-stat"><div class="supply-stat-label">HORMUZ STATUS</div><div class="supply-stat-val" style="color:var(--red)">⛔ BLOCKED</div></div>
-        <div class="supply-stat"><div class="supply-stat-label">BRENT CRUDE</div><div class="supply-stat-val" style="color:var(--amber)" id="supplyStatBrent">$104.00</div></div>
-        <div class="supply-stat"><div class="supply-stat-label">WAR PREMIUM</div><div class="supply-stat-val" style="color:var(--red)" id="supplyWarPremium">+46%</div></div>
-        <div class="supply-stat"><div class="supply-stat-label">TANKER ATTACKS</div><div class="supply-stat-val" style="color:var(--amber)">12 THIS MONTH</div></div>
-        <div class="supply-stat"><div class="supply-stat-label">CAPE REROUTE</div><div class="supply-stat-val" style="color:var(--text)">68% TRAFFIC</div></div>
-        <div class="supply-stat"><div class="supply-stat-label">INSURANCE</div><div class="supply-stat-val" style="color:var(--red)">+400%</div></div>
-        <div class="supply-stat"><div class="supply-stat-label">SPR DRAWDOWN</div><div class="supply-stat-val" style="color:var(--amber)">1M bbl/day</div></div>
-        <div class="supply-stat"><div class="supply-stat-label">OPEC+ SPARE</div><div class="supply-stat-val" style="color:var(--muted2)">2.5M bbl/day</div></div>
+        <div class="supply-stat"><div class="supply-stat-label">BRENT CRUDE</div><div class="supply-stat-val" style="color:var(--amber)" id="supplyStatBrent">--</div><canvas id="sparkBrent" width="90" height="24" style="margin-top:3px"></canvas></div>
+        <div class="supply-stat"><div class="supply-stat-label">WTI CRUDE</div><div class="supply-stat-val" style="color:var(--amber)" id="supplyStatWti">--</div><canvas id="sparkWti" width="90" height="24" style="margin-top:3px"></canvas></div>
+        <div class="supply-stat"><div class="supply-stat-label">BRENT-WTI SPREAD</div><div class="supply-stat-val" style="color:var(--text)" id="supplyStatSpread">--</div><canvas id="sparkSpread" width="90" height="24" style="margin-top:3px"></canvas></div>
+        <div class="supply-stat"><div class="supply-stat-label">WAR RISK</div><div class="supply-stat-val" style="color:var(--red)" id="supplyWarRisk">--%</div></div>
+        <div class="supply-stat"><div class="supply-stat-label">SUPPLY AT RISK</div><div class="supply-stat-val" style="color:var(--red)" id="supplyAtRisk">-- M bbl/d</div></div>
+        <div class="supply-stat"><div class="supply-stat-label">TANKER ATTACKS</div><div class="supply-stat-val" style="color:var(--amber)" id="supplyTankerAttacks">--</div></div>
+        <div class="supply-stat"><div class="supply-stat-label">TRAFFIC FLOW</div><div class="supply-stat-val" style="color:var(--text)" id="supplyTrafficFlow">--%</div></div>
+        <div class="supply-stat"><div class="supply-stat-label">INSURANCE PREMIUM</div><div class="supply-stat-val" style="color:var(--red)" id="supplyInsurance">--%</div></div>
       </div>
     </div>
     <!-- BOTTOM ROW -->
     <div class="supply-hud-bottom">
       <div class="supply-bottom-left">
-        <div class="supply-mini-stat">Global Demand <span class="supply-mini-val">101.2M bbl/day</span></div>
-        <div class="supply-mini-stat">Pre-War Supply <span class="supply-mini-val">102.8M bbl/day</span></div>
-        <div class="supply-mini-stat">Current Deficit <span class="supply-mini-val" style="color:var(--red)" id="supplyDeficit">−18.6M</span></div>
-        <div class="supply-mini-stat">Goldman Target <span class="supply-mini-val" style="color:var(--red)">$125 Q2</span></div>
-        <div class="supply-mini-stat">IEA Reserve <span class="supply-mini-val">1.2B bbl remaining</span></div>
+        <div class="supply-mini-stat">Disruption Index <span class="supply-mini-val" id="supplyIdxVal">--</span></div>
+        <div class="supply-mini-stat">Brent Δ <span class="supply-mini-val" id="supplyBrentChg">--</span></div>
+        <div class="supply-mini-stat">WTI Δ <span class="supply-mini-val" id="supplyWtiChg">--</span></div>
+        <div class="supply-mini-stat">News Score <span class="supply-mini-val" id="supplyNewsScore">--</span></div>
+        <div class="supply-mini-stat">HORMUZ <span class="supply-mini-val" style="color:var(--red)" id="supplyHormuz">BLOCKED</span></div>
       </div>
       <div class="supply-bottom-right">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);letter-spacing:.5px" id="supplyLastUpdate">Updated just now</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);letter-spacing:.5px" id="supplyLastUpdate">Fetching EIA data...</div>
         <div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);margin-top:2px">Hover bars · Click for analysis · Auto-refresh 15s</div>
       </div>
     </div>
@@ -1812,6 +1822,63 @@ html.lenis,html.lenis body{height:auto}
   <div class="supply-depth-layer supply-depth-1"></div>
   <div class="supply-depth-layer supply-depth-2"></div>
   <div class="supply-depth-layer supply-depth-3"></div>
+</div>
+
+<!-- ═══ ANALYTICS PANEL — ECHARTS ═══ -->
+<div class="supply-analytics" id="supplyAnalytics">
+  <!-- KPI CARDS ROW -->
+  <div class="sa-card">
+    <div class="sa-card-accent" style="background:linear-gradient(90deg,#f59e0b,#ea580c)"></div>
+    <div class="sa-card-label">BRENT CRUDE</div>
+    <div class="sa-card-val" id="saKpiBrent">--</div>
+    <div class="sa-card-sub" id="saKpiBrentChg">-- vs prev</div>
+  </div>
+  <div class="sa-card">
+    <div class="sa-card-accent" style="background:linear-gradient(90deg,#a1a1aa,#71717a)"></div>
+    <div class="sa-card-label">WTI CRUDE</div>
+    <div class="sa-card-val" id="saKpiWti">--</div>
+    <div class="sa-card-sub" id="saKpiWtiChg">-- vs prev</div>
+  </div>
+  <div class="sa-card">
+    <div class="sa-card-accent" style="background:linear-gradient(90deg,#ef4444,#dc2626)"></div>
+    <div class="sa-card-label">BRENT–WTI SPREAD</div>
+    <div class="sa-card-val" id="saKpiSpread">--</div>
+    <div class="sa-card-sub">price differential</div>
+  </div>
+  <div class="sa-card">
+    <div class="sa-card-accent" style="background:linear-gradient(90deg,#8b5cf6,#7c3aed)"></div>
+    <div class="sa-card-label">DISRUPTION INDEX</div>
+    <div class="sa-card-val" id="saKpiIdx">--</div>
+    <div class="sa-card-sub" id="saKpiIdxLevel">--</div>
+  </div>
+</div>
+
+<!-- GAUGES ROW -->
+<div class="sa-row">
+  <div class="sa-chart-card">
+    <div class="sa-chart-title"><span class="sa-dot" style="background:#ef4444"></span>WAR RISK</div>
+    <div id="ecGaugeWarRisk" style="width:100%;height:180px"></div>
+  </div>
+  <div class="sa-chart-card">
+    <div class="sa-chart-title"><span class="sa-dot" style="background:#f59e0b"></span>SUPPLY DISRUPTION</div>
+    <div id="ecGaugeSupply" style="width:100%;height:180px"></div>
+  </div>
+  <div class="sa-chart-card">
+    <div class="sa-chart-title"><span class="sa-dot" style="background:#22c55e"></span>TRAFFIC FLOW</div>
+    <div id="ecGaugeTraffic" style="width:100%;height:180px"></div>
+  </div>
+</div>
+
+<!-- PIE + LINE CHARTS ROW -->
+<div class="sa-row-2">
+  <div class="sa-chart-card">
+    <div class="sa-chart-title"><span class="sa-dot" style="background:#a78bfa"></span>INDEX COMPOSITION</div>
+    <div id="ecPieComposition" style="width:100%;height:260px"></div>
+  </div>
+  <div class="sa-chart-card">
+    <div class="sa-chart-title"><span class="sa-dot" style="background:#f59e0b"></span>PRICE TREND — LAST 30 SESSIONS</div>
+    <div id="ecLineTrend" style="width:100%;height:260px"></div>
+  </div>
 </div>
 
 <!-- GLOBAL SNAPSHOT TABLE — LIVE -->
@@ -1855,195 +1922,109 @@ html.lenis,html.lenis body{height:auto}
 </div>
 
 
-<!-- ═══ REAL-TIME NEWS INTELLIGENCE — EXPANDED ═══ -->
-<div class="st"><h2>Live Intelligence Feed</h2><div class="stline"></div><span class="tag tr" id="newsLiveTag"><span class="live-dot" style="width:5px;height:5px;display:inline-block;margin-right:4px;"></span>LIVE · <span id="newsUpdateTime">Just now</span></span></div>
-
-<!-- ROW 1: News + Sentiment + Live Prices -->
+<!-- ═══ MULTI-SOURCE INTEL FEED ═══ -->
+<div class="st"><h2 id="dsSectionTitle">Dropsite News — Live Intel</h2><div class="stline"></div><span class="tag tr" id="xfeedTag" style="background:rgba(34,197,94,.08);color:#22c55e;border-color:rgba(34,197,94,.15)"><span class="live-dot" style="width:5px;height:5px;display:inline-block;margin-right:4px;"></span>LIVE FEED</span></div>
 <div class="g3">
-  <div class="panel" style="opacity:1;transform:none;grid-column:span 2;">
-    <div class="ptitle">Breaking News &amp; Analysis <span class="tag tr" style="font-size:9px;margin-left:4px">LIVE</span> <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);margin-left:6px;">6 stories · Click for full briefing</span></div>
-    <div class="psub">War, oil, market-moving headlines · Analyst commentary · Impact analysis</div>
-    <div class="news-panel" id="newsPanel">
-      <div class="news-item" onclick="openNewsModal(0)">
-        <div class="news-avatar">📡</div>
-        <div class="news-content">
-          <div class="news-author"><span class="news-author-name">Reuters</span><span class="news-author-verified">✓</span><span class="news-author-handle">@Reuters</span><span class="news-author-handle">· 2h</span></div>
-          <div class="news-hl">BREAKING: Fed holds rates at 3.5-3.75% amid war uncertainty — Powell warns of "stagflation risk" as oil stays above $100. Markets react negatively.</div>
-          <div class="news-affected"><span class="news-chip dn">SPY −0.8%</span><span class="news-chip dn">QQQ −1.2%</span><span class="news-chip">TLT</span><span class="news-chip">DXY</span></div>
-          <div class="news-actions"><span class="news-act">💬 2.4K</span><span class="news-act">🔁 8.1K</span><span class="news-act">❤️ 12K</span><span class="news-act">📊 340K</span></div>
+  <!-- ── Main Feed Panel ── -->
+  <div class="panel" style="opacity:1;transform:none;grid-column:span 2;padding:0;overflow:hidden;border:1px solid rgba(255,255,255,.04);background:linear-gradient(180deg,var(--surface),rgba(9,9,11,.95))">
+    <!-- Terminal Header -->
+    <div style="padding:16px 20px 14px;border-bottom:1px solid rgba(255,255,255,.04);background:linear-gradient(180deg,rgba(255,255,255,.02),transparent)">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div id="dsHeaderIcon" style="width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,#dc2626,#991b1b);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;font-family:'Bebas Neue',sans-serif;box-shadow:0 2px 8px rgba(220,38,38,.25)">D</div>
+          <div>
+            <div style="font-size:14px;font-weight:700;color:var(--text);letter-spacing:-.02em;display:flex;align-items:center;gap:6px">
+              <span id="dsHeaderName">Dropsite News</span>
+              <span class="news-author-verified" style="width:15px;height:15px;font-size:8px">✓</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);font-weight:400;letter-spacing:.5px;margin-left:2px">INTEL TERMINAL</span>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);margin-top:1px;letter-spacing:.3px" id="dsHeaderSub">@Dropsitenews · Independent Investigative Journalism · Real-time Feed</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <!-- Source Selector -->
+          <div class="ds-source-wrap" id="dsSourceWrap">
+            <div class="ds-source-btn" id="dsSourceBtn" onclick="toggleSourceMenu()">
+              <div class="ds-src-icon" id="dsBtnIcon" style="background:linear-gradient(135deg,#dc2626,#991b1b)">D</div>
+              <div style="flex:1;min-width:0">
+                <div class="ds-src-name" id="dsBtnName">Dropsite News</div>
+                <div class="ds-src-handle" id="dsBtnHandle">@Dropsitenews</div>
+              </div>
+              <div class="ds-src-chev">▼</div>
+            </div>
+            <div class="ds-source-menu" id="dsSourceMenu"></div>
+          </div>
+          <a id="dsFollowLink" href="https://x.com/Dropsitenews" target="_blank" style="display:inline-flex;align-items:center;gap:5px;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:6px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);transition:all .15s;letter-spacing:.3px;white-space:nowrap" onmouseover="this.style.borderColor='rgba(29,155,240,.3)';this.style.color='#1d9bf0'" onmouseout="this.style.borderColor='rgba(255,255,255,.05)';this.style.color='var(--muted)'">
+            <svg style="width:11px;height:11px;fill:currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            FOLLOW
+          </a>
         </div>
       </div>
-      <div class="news-item" onclick="openNewsModal(1)">
-        <div class="news-avatar">🛢️</div>
-        <div class="news-content">
-          <div class="news-author"><span class="news-author-name">Bloomberg</span><span class="news-author-verified">✓</span><span class="news-author-handle">@business</span><span class="news-author-handle">· 4h</span></div>
-          <div class="news-hl">Brent crude briefly touches $108 as Hormuz blockade enters third week. Tanker insurance premiums surge 400%. OPEC+ emergency session fails to agree.</div>
-          <div class="news-affected"><span class="news-chip up">XOM +2.3%</span><span class="news-chip up">CVX +1.8%</span><span class="news-chip dn">DAL −3.1%</span></div>
-          <div class="news-actions"><span class="news-act">💬 1.8K</span><span class="news-act">🔁 5.4K</span><span class="news-act">❤️ 9.2K</span><span class="news-act">📊 280K</span></div>
+      <!-- Toolbar -->
+      <div class="xfeed-toolbar" style="margin-bottom:0;padding-bottom:0;border-bottom:none">
+        <div class="xfeed-live-bar">
+          <div class="xfeed-live-pulse"></div>
+          <span>STREAMING</span>
+          <span style="color:var(--muted);font-weight:400" id="xfeedTime">—</span>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <div class="xfeed-counter" id="xfeedBreakingCount">0 BREAKING</div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);padding:4px 8px;border-radius:5px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.04)" id="xfeedTotalCount">0 posts</span>
         </div>
       </div>
-      <div class="news-item" onclick="openNewsModal(2)">
-        <div class="news-avatar">⚔️</div>
-        <div class="news-content">
-          <div class="news-author"><span class="news-author-name">CNBC</span><span class="news-author-verified">✓</span><span class="news-author-handle">@CNBC</span><span class="news-author-handle">· 6h</span></div>
-          <div class="news-hl">Lockheed Martin receives $4.2B emergency Pentagon contract for THAAD and Patriot missile defense systems amid Iran conflict escalation.</div>
-          <div class="news-affected"><span class="news-chip up">LMT +4.2%</span><span class="news-chip up">RTX +2.8%</span><span class="news-chip up">NOC +1.9%</span></div>
-          <div class="news-actions"><span class="news-act">💬 890</span><span class="news-act">🔁 3.2K</span><span class="news-act">❤️ 7.1K</span><span class="news-act">📊 195K</span></div>
+    </div>
+    <!-- Feed Body -->
+    <div style="padding:12px 16px 8px">
+      <div class="xfeed-outer">
+      <div class="xfeed ds-loaded" id="xfeed">
+        <div style="padding:40px 30px;text-align:center;color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:11px;">
+          <div class="xfeed-live-pulse" style="display:inline-block;margin-right:8px;vertical-align:middle"></div>
+          Connecting to Dropsite News feed…
         </div>
       </div>
-      <div class="news-item" onclick="openNewsModal(3)">
-        <div class="news-avatar">₿</div>
-        <div class="news-content">
-          <div class="news-author"><span class="news-author-name">CoinDesk</span><span class="news-author-verified">✓</span><span class="news-author-handle">@CoinDesk</span><span class="news-author-handle">· 9h</span></div>
-          <div class="news-hl">Bitcoin rallies past $75K as "digital gold" narrative gains traction. Spot BTC ETFs see $767M inflows — third consecutive week positive.</div>
-          <div class="news-affected"><span class="news-chip up">BTC +3.1%</span><span class="news-chip up">ETH +5.2%</span><span class="news-chip up">SOL +4.8%</span></div>
-          <div class="news-actions"><span class="news-act">💬 3.1K</span><span class="news-act">🔁 11K</span><span class="news-act">❤️ 24K</span><span class="news-act">📊 510K</span></div>
-        </div>
       </div>
-      <div class="news-item" onclick="openNewsModal(4)">
-        <div class="news-avatar">✈️</div>
-        <div class="news-content">
-          <div class="news-author"><span class="news-author-name">Wall Street Journal</span><span class="news-author-verified">✓</span><span class="news-author-handle">@WSJ</span><span class="news-author-handle">· 12h</span></div>
-          <div class="news-hl">Airlines cancel 2,400+ Middle East flights as airspace closures expand. Delta, United, American all down 8-12% this week.</div>
-          <div class="news-affected"><span class="news-chip dn">DAL −4.5%</span><span class="news-chip dn">UAL −5.1%</span><span class="news-chip dn">AAL −6.2%</span></div>
-          <div class="news-actions"><span class="news-act">💬 1.2K</span><span class="news-act">🔁 4.5K</span><span class="news-act">❤️ 6.3K</span><span class="news-act">📊 220K</span></div>
-        </div>
-      </div>
-      <div class="news-item" onclick="openNewsModal(5)">
-        <div class="news-avatar">🕊️</div>
-        <div class="news-content">
-          <div class="news-author"><span class="news-author-name">Reuters</span><span class="news-author-verified">✓</span><span class="news-author-handle">@Reuters</span><span class="news-author-handle">· 14h</span></div>
-          <div class="news-hl">EXCLUSIVE: Qatar back-channel diplomacy with Iran — senior officials say ceasefire framework under discussion. Markets could see 3-5% relief rally.</div>
-          <div class="news-affected"><span class="news-chip">^GSPC</span><span class="news-chip">BRN=F</span><span class="news-chip">GC=F</span></div>
-          <div class="news-actions"><span class="news-act">💬 4.7K</span><span class="news-act">🔁 15K</span><span class="news-act">❤️ 31K</span><span class="news-act">📊 820K</span></div>
-        </div>
+      <div class="xfeed-status">
+        <div class="xfeed-live-pulse" style="width:4px;height:4px"></div>
+        <span id="xfeedStatusText">Initializing feed…</span>
       </div>
     </div>
   </div>
-  <div class="panel" style="opacity:1;transform:none;">
-    <div class="ptitle">Market Sentiment Gauge <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);margin-left:6px;" id="sentimentUpdateTime">Live</span></div>
-    <div class="psub">AI-derived from 500+ sources · Updates every 30s</div>
-    <div style="padding:16px 0;">
-      <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--red);font-weight:700">EXTREME FEAR</span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--green);font-weight:700">EXTREME GREED</span>
-      </div>
-      <div style="height:12px;background:var(--surface2);border-radius:6px;overflow:hidden;position:relative;">
-        <div style="position:absolute;inset:0;background:linear-gradient(90deg,#dc2626,#ef4444 20%,#f59e0b 40%,#eab308 55%,#22c55e 75%,#059669);opacity:.35;border-radius:6px;"></div>
-        <div id="sentimentNeedle" style="position:absolute;top:-3px;left:22%;width:4px;height:18px;background:#fff;border-radius:3px;box-shadow:0 0 8px rgba(255,255,255,.6),0 0 20px rgba(255,37,37,.3);transition:left 1s ease;"></div>
-      </div>
-      <div style="display:flex;justify-content:space-between;margin-top:4px;">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:7px;color:var(--muted)">0</span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:7px;color:var(--muted)">25</span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:7px;color:var(--muted)">50</span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:7px;color:var(--muted)">75</span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:7px;color:var(--muted)">100</span>
-      </div>
-      <div style="text-align:center;margin-top:12px;">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:42px;letter-spacing:3px;color:var(--red)" id="sentimentScore">22</div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--red);letter-spacing:1.5px;font-weight:700" id="sentimentLabel">EXTREME FEAR</div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);margin-top:4px">Previous close: 19 · Week ago: 14 · Month ago: 62</div>
-      </div>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:7px;padding-top:10px;border-top:1px solid var(--border);">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:2px">Sentiment Components</div>
-      <div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;"><span style="color:var(--muted)">📰 War Headlines</span><div style="display:flex;align-items:center;gap:6px"><div style="width:60px;height:4px;background:var(--surface2);border-radius:2px;overflow:hidden"><div style="width:78%;height:100%;background:var(--red);border-radius:2px"></div></div><span style="color:var(--red);font-weight:600;font-family:'JetBrains Mono',monospace;font-size:10px;width:42px;text-align:right">78% neg</span></div></div>
-      <div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;"><span style="color:var(--muted)">🐦 Social Media</span><div style="display:flex;align-items:center;gap:6px"><div style="width:60px;height:4px;background:var(--surface2);border-radius:2px;overflow:hidden"><div style="width:72%;height:100%;background:var(--red);border-radius:2px"></div></div><span style="color:var(--red);font-weight:600;font-family:'JetBrains Mono',monospace;font-size:10px;width:42px;text-align:right">72% fear</span></div></div>
-      <div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;"><span style="color:var(--muted)">📊 Put/Call Ratio</span><div style="display:flex;align-items:center;gap:6px"><div style="width:60px;height:4px;background:var(--surface2);border-radius:2px;overflow:hidden"><div style="width:65%;height:100%;background:var(--amber);border-radius:2px"></div></div><span style="color:var(--amber);font-weight:600;font-family:'JetBrains Mono',monospace;font-size:10px;width:42px;text-align:right">1.42</span></div></div>
-      <div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;"><span style="color:var(--muted)">📈 VIX Level</span><div style="display:flex;align-items:center;gap:6px"><div style="width:60px;height:4px;background:var(--surface2);border-radius:2px;overflow:hidden"><div style="width:54%;height:100%;background:var(--red);border-radius:2px" id="vixBar"></div></div><span style="color:var(--red);font-weight:600;font-family:'JetBrains Mono',monospace;font-size:10px;width:42px;text-align:right" id="sentVix">27.2</span></div></div>
-      <div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;"><span style="color:var(--muted)">🥇 Gold Demand</span><div style="display:flex;align-items:center;gap:6px"><div style="width:60px;height:4px;background:var(--surface2);border-radius:2px;overflow:hidden"><div style="width:68%;height:100%;background:var(--amber);border-radius:2px"></div></div><span style="color:var(--amber);font-weight:600;font-family:'JetBrains Mono',monospace;font-size:10px;width:42px;text-align:right">+34% YoY</span></div></div>
-      <div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;"><span style="color:var(--muted)">💰 Fund Flows</span><div style="display:flex;align-items:center;gap:6px"><div style="width:60px;height:4px;background:var(--surface2);border-radius:2px;overflow:hidden"><div style="width:45%;height:100%;background:var(--red);border-radius:2px"></div></div><span style="color:var(--red);font-weight:600;font-family:'JetBrains Mono',monospace;font-size:10px;width:42px;text-align:right">−$8.2B</span></div></div>
-      <div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;"><span style="color:var(--muted)">📉 Junk Bond Spread</span><div style="display:flex;align-items:center;gap:6px"><div style="width:60px;height:4px;background:var(--surface2);border-radius:2px;overflow:hidden"><div style="width:58%;height:100%;background:var(--amber);border-radius:2px"></div></div><span style="color:var(--amber);font-weight:600;font-family:'JetBrains Mono',monospace;font-size:10px;width:42px;text-align:right">+142bp</span></div></div>
-    </div>
-    <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border);">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px">Live Asset Pulse</div>
-      <div style="display:flex;flex-direction:column;gap:5px;" id="assetPulse">
-        <div style="display:flex;justify-content:space-between;font-size:10px;cursor:pointer" onclick="openModal('BRN=F')"><span style="color:var(--text2)">🛢 Brent Crude</span><span style="font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--amber)" id="pulseOil">$104.00</span></div>
-        <div style="display:flex;justify-content:space-between;font-size:10px;cursor:pointer" onclick="openModal('GC=F')"><span style="color:var(--text2)">🥇 Gold</span><span style="font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--red)" id="pulseGold">$5,062</span></div>
-        <div style="display:flex;justify-content:space-between;font-size:10px;cursor:pointer" onclick="openModal('BTC-USD')"><span style="color:var(--text2)">₿ Bitcoin</span><span style="font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--green)" id="pulseBTC">$73,851</span></div>
-        <div style="display:flex;justify-content:space-between;font-size:10px;cursor:pointer" onclick="openModal('^GSPC')"><span style="color:var(--text2)">📊 S&P 500</span><span style="font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--red)" id="pulseSP">6,632</span></div>
-        <div style="display:flex;justify-content:space-between;font-size:10px;cursor:pointer" onclick="openModal('ITA')"><span style="color:var(--text2)">⚔️ Defense ETF</span><span style="font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--green)" id="pulseITA">+13.9%</span></div>
-      </div>
-    </div>
-  </div>
-</div>
 
+  <!-- ── Sidebar Panel ── -->
+  <div class="panel" style="opacity:1;transform:none;padding:0;overflow:hidden;border:1px solid rgba(255,255,255,.04);background:linear-gradient(180deg,var(--surface),rgba(9,9,11,.95))">
+    <!-- Sidebar Header -->
+    <div style="padding:16px 18px 14px;border-bottom:1px solid rgba(255,255,255,.04);background:linear-gradient(180deg,rgba(255,255,255,.02),transparent)">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;font-weight:600">Terminal Status</div>
+    </div>
 
-<!-- ═══ X/TWITTER LIVE WAR FEED ═══ -->
-<div class="st"><h2>Live X/Twitter Feed</h2><div class="stline"></div><span class="tag tr" id="xfeedTag"><span class="live-dot" style="width:5px;height:5px;display:inline-block;margin-right:4px;"></span>STREAMING</span></div>
-<div class="g3">
-  <div class="panel" style="opacity:1;transform:none;grid-column:span 2;">
-    <div class="ptitle">
-      <svg style="width:14px;height:14px;vertical-align:middle;margin-right:5px;fill:var(--text)" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-      War Zone Intel Terminal
-      <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);margin-left:8px;">iran OR war OR missile OR oil OR drone</span>
+    <!-- Active Source Card -->
+    <div style="padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.03)" id="dsSidebarProfile">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+        <div id="dsSideIcon" style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#dc2626,#991b1b);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#fff;font-family:'Bebas Neue',sans-serif;box-shadow:0 3px 12px rgba(220,38,38,.2)">D</div>
+        <div>
+          <div style="font-size:14px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:5px" id="dsSideName">Dropsite News <span class="news-author-verified" style="width:14px;height:14px;font-size:8px">✓</span></div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);margin-top:1px" id="dsSideHandle">@Dropsitenews</div>
+        </div>
+      </div>
+      <div style="font-size:12px;color:var(--text2);line-height:1.6" id="dsSideDesc">Investigative journalism covering national security, foreign policy, and government accountability.</div>
     </div>
-    <div class="psub">OSINT · Analysts · Journalists · Auto-refresh 15s · Click any tweet to open on X</div>
-    <div class="xfeed-toolbar">
-      <div class="xfeed-live-bar">
-        <div class="xfeed-live-pulse"></div>
-        <span>STREAMING</span>
-        <span style="color:var(--muted)" id="xfeedTime">—</span>
-      </div>
-      <div style="display:flex;gap:8px;align-items:center;">
-        <div class="xfeed-counter" id="xfeedBreakingCount">🔴 0 BREAKING</div>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted)" id="xfeedTotalCount">0 tweets</span>
-      </div>
-    </div>
-    <div class="xfeed-outer">
-    <div class="xfeed" id="xfeed">
-      <div style="padding:30px;text-align:center;color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:11px;"><div class="live-dot" style="display:inline-block;margin-right:6px;"></div>Connecting to intel stream…</div>
-    </div>
-    </div>
-    <div class="xfeed-status">
-      <div class="live-dot" style="width:5px;height:5px;"></div>
-      <span id="xfeedStatusText">Initializing feed…</span>
-    </div>
-  </div>
-  <div class="panel" style="opacity:1;transform:none;">
-    <div class="ptitle">Trending Topics</div>
-    <div class="psub">Most discussed war-related topics on X</div>
-    <div style="display:flex;flex-direction:column;gap:10px;margin-top:10px;" id="xTrending">
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;">
-        <div><div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);letter-spacing:.5px">1 · Trending in World</div><div style="font-size:12px;font-weight:700;color:var(--text);margin-top:2px">#IranWar</div><div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);margin-top:1px">2.4M posts</div></div>
-        <span style="font-size:16px">🔥</span>
-      </div>
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;">
-        <div><div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);letter-spacing:.5px">2 · Trending in Finance</div><div style="font-size:12px;font-weight:700;color:var(--text);margin-top:2px">#OilCrisis</div><div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);margin-top:1px">1.1M posts</div></div>
-        <span style="font-size:16px">🛢️</span>
-      </div>
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;">
-        <div><div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);letter-spacing:.5px">3 · Trending</div><div style="font-size:12px;font-weight:700;color:var(--text);margin-top:2px">Strait of Hormuz</div><div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);margin-top:1px">847K posts</div></div>
-        <span style="font-size:16px">🚢</span>
-      </div>
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;">
-        <div><div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);letter-spacing:.5px">4 · Trending in Crypto</div><div style="font-size:12px;font-weight:700;color:var(--text);margin-top:2px">#BitcoinSafeHaven</div><div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);margin-top:1px">562K posts</div></div>
-        <span style="font-size:16px">₿</span>
-      </div>
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;">
-        <div><div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);letter-spacing:.5px">5 · Trending in Defense</div><div style="font-size:12px;font-weight:700;color:var(--text);margin-top:2px">Iron Dome</div><div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);margin-top:1px">491K posts</div></div>
-        <span style="font-size:16px">🛡️</span>
-      </div>
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;">
-        <div><div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);letter-spacing:.5px">6 · Trending</div><div style="font-size:12px;font-weight:700;color:var(--text);margin-top:2px">#Ceasefire</div><div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);margin-top:1px">384K posts</div></div>
-        <span style="font-size:16px">🕊️</span>
-      </div>
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;">
-        <div><div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);letter-spacing:.5px">7 · Trending in Markets</div><div style="font-size:12px;font-weight:700;color:var(--text);margin-top:2px">Stagflation</div><div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);margin-top:1px">278K posts</div></div>
-        <span style="font-size:16px">📉</span>
+
+    <!-- Live Stats -->
+    <div style="padding:14px 18px;border-bottom:1px solid rgba(255,255,255,.03)">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:10px;font-weight:600">Feed Telemetry</div>
+      <div style="display:flex;flex-direction:column;gap:0" id="dsStatusPanel">
+        <div class="ds-stat-row"><span class="ds-stat-label">Active source</span><span class="ds-stat-value ds-src-pill" id="dsActiveSource" style="color:var(--green);background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.08)">Dropsite News</span></div>
+        <div class="ds-stat-row"><span class="ds-stat-label">Refresh interval</span><span class="ds-stat-value">20-30s</span></div>
+        <div class="ds-stat-row"><span class="ds-stat-label">Posts ingested</span><span class="ds-stat-value" style="color:var(--green)" id="dsPostCount">0</span></div>
+        <div class="ds-stat-row"><span class="ds-stat-label">Last fetch</span><span class="ds-stat-value" id="dsLastFetch">—</span></div>
+        <div class="ds-stat-row"><span class="ds-stat-label">Errors</span><span class="ds-stat-value" style="color:var(--green)" id="dsErrorCount">0</span></div>
       </div>
     </div>
-    <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border);">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px">Feed Sources</div>
-      <div style="display:flex;flex-wrap:wrap;gap:4px;">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:8px;padding:2px 6px;border-radius:3px;background:var(--surface2);border:1px solid var(--border);color:var(--muted)">@OSINTdefender</span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:8px;padding:2px 6px;border-radius:3px;background:var(--surface2);border:1px solid var(--border);color:var(--muted)">@sentdefender</span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:8px;padding:2px 6px;border-radius:3px;background:var(--surface2);border:1px solid var(--border);color:var(--muted)">@BarakRavid</span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:8px;padding:2px 6px;border-radius:3px;background:var(--surface2);border:1px solid var(--border);color:var(--muted)">@IranIntl_En</span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:8px;padding:2px 6px;border-radius:3px;background:var(--surface2);border:1px solid var(--border);color:var(--muted)">@JavierBlas</span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:8px;padding:2px 6px;border-radius:3px;background:var(--surface2);border:1px solid var(--border);color:var(--muted)">@TheWarZone</span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:8px;padding:2px 6px;border-radius:3px;background:var(--surface2);border:1px solid var(--border);color:var(--muted)">@Reuters</span>
-      </div>
+
+    <!-- All Sources Status -->
+    <div style="padding:14px 18px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:10px;font-weight:600">All Sources</div>
+      <div style="display:flex;flex-direction:column;gap:5px" id="dsSidebarSources"></div>
     </div>
   </div>
 </div>
@@ -2228,16 +2209,6 @@ html.lenis,html.lenis body{height:auto}
 </footer>
 </div>
 
-<!-- ═══ NEWS DETAIL MODAL ═══ -->
-<div class="news-modal-overlay" id="newsModalOverlay" onclick="if(event.target===this)closeNewsModal()">
-  <div class="news-modal" id="newsModalBox">
-    <div class="nm-header">
-      <span style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1.5px;color:var(--text)">INTELLIGENCE BRIEFING</span>
-      <button class="nm-close" onclick="closeNewsModal()">✕</button>
-    </div>
-    <div class="nm-body" id="newsModalBody"></div>
-  </div>
-</div>
 
 <!-- ═══════════════════════
      STOCK DETAIL MODAL
@@ -3461,329 +3432,358 @@ function openIntelModal(label, sym) {
 
 /* ═══ SENTIMENT GAUGE — micro-animation ═══ */
 
-/* ═══ NEWS INTELLIGENCE ENGINE ═══ */
-var NEWS_DB = [
-  {
-    id:0, headline:'BREAKING: Fed holds rates at 3.5-3.75% amid war uncertainty — Powell warns of "stagflation risk"',
-    source:'Reuters', handle:'@Reuters', avatar:'📡', time:'March 17, 2026 · 3:42 PM IST', timeAgo:'2h',
-    sentiment:'BEARISH', sentimentColor:'var(--red)',
-    body:'The Federal Reserve held interest rates steady at 3.5-3.75% at its March meeting, citing "extraordinary uncertainty" from the ongoing Iran-US-Israel conflict. Fed Chair Jerome Powell warned that the combination of supply-disrupted oil prices above $100 and slowing economic growth creates a "stagflation risk we haven\'t seen since the 1970s." The dot plot showed officials now expect just one rate cut in 2026, down from three projected in January. CME FedWatch shows a 95%+ probability of a hold through June.',
-    impact:[{k:'Fed Funds Rate',v:'3.50-3.75%'},{k:'2026 Cut Odds',v:'1 cut (was 3)'},{k:'Inflation Risk',v:'Rising'},{k:'Market Reaction',v:'SPY −0.8%'}],
-    assets:['^GSPC','QQQ','TLT','^DJI'],
-    tweets:[
-      {name:'Mohamed A. El-Erian',handle:'@elerianm',avatar:'👤',text:'Powell just said the quiet part out loud: stagflation risk is real. Oil above $100, growth slowing, and the Fed can\'t cut into this. This is the worst policy dilemma since Volcker.',time:'1h ago',likes:'8.2K',rts:'3.1K',views:'420K'},
-      {name:'Jim Cramer',handle:'@jimcramer',avatar:'📺',text:'The Fed is STUCK. They can\'t cut because oil inflation is real. They can\'t hike because the economy is fragile. Powell looked visibly uncomfortable. I\'m telling people: cash is a position.',time:'2h ago',likes:'5.4K',rts:'2.8K',views:'310K'},
-      {name:'Cathie Wood',handle:'@CathieDWood',avatar:'📈',text:'Deflation is still the bigger risk long-term even with oil at $104. AI-driven productivity gains will more than offset commodity inflation. We\'re buying the dip aggressively in innovation names.',time:'3h ago',likes:'12K',rts:'4.5K',views:'680K'}
-    ]
-  },
-  {
-    id:1, headline:'Brent crude briefly touches $108 as Hormuz blockade enters third week',
-    source:'Bloomberg', handle:'@business', avatar:'🛢️', time:'March 17, 2026 · 1:15 PM IST', timeAgo:'4h',
-    sentiment:'BEARISH', sentimentColor:'var(--amber)',
-    body:'Brent crude oil surged to $108.40/barrel intraday before settling near $104 as the Strait of Hormuz blockade entered its 15th consecutive day. Iranian IRGC naval forces have deployed an estimated 2,000 mines across the shipping channel while fast boats patrol the 33km passage. The blockade has removed approximately 20 million barrels per day from global supply — the largest disruption since the 1973 Arab Oil Embargo. Tanker insurance premiums have surged 400% since February 28. The US released 1M bbl/day from the Strategic Petroleum Reserve but it barely dents the deficit.',
-    impact:[{k:'Brent Price',v:'$104-108/bbl'},{k:'Supply Loss',v:'20M bbl/day'},{k:'Insurance',v:'+400%'},{k:'SPR Release',v:'1M bbl/day'}],
-    assets:['BRN=F','XOM','CVX','OXY','USO'],
-    tweets:[
-      {name:'Javier Blas',handle:'@JavierBlas',avatar:'🛢️',text:'THREAD 🧵 Hormuz Day 15 data: Zero tankers transiting since March 3. Global crude inventories drawing down at 3M bbl/day. At this rate, commercial stockpiles hit critical levels in 6 weeks. This is NOT priced in.',time:'3h ago',likes:'15K',rts:'8.2K',views:'1.2M'},
-      {name:'Goldman Sachs Research',handle:'@GS_Research',avatar:'🏦',text:'We raise our Brent target to $125/bbl if Hormuz remains closed through Q2. Current market is still underpricing duration risk. Energy equities remain our #1 conviction trade.',time:'5h ago',likes:'6.8K',rts:'3.9K',views:'540K'},
-      {name:'OSINT Updates',handle:'@OSINTdefender',avatar:'🛰️',text:'BREAKING: Satellite imagery confirms 3 additional Iranian Ghadir-class submarines deployed near Hormuz. USN carrier group maintaining 80nm standoff distance. De-mining operations NOT underway.',time:'4h ago',likes:'22K',rts:'14K',views:'2.1M'}
-    ]
-  },
-  {
-    id:2, headline:'Lockheed Martin receives $4.2B emergency Pentagon contract for missile defense',
-    source:'CNBC', handle:'@CNBC', avatar:'⚔️', time:'March 17, 2026 · 11:30 AM IST', timeAgo:'6h',
-    sentiment:'BULLISH', sentimentColor:'var(--green)',
-    body:'The Pentagon awarded Lockheed Martin a $4.2 billion emergency contract to accelerate production of THAAD (Terminal High Altitude Area Defense) and PAC-3 Patriot interceptor missiles. The contract comes after US forces in the region expended over 200 interceptors defending against Iranian ballistic missile barrages. Raytheon Technologies received a parallel $1.8B contract for Tomahawk cruise missile replenishment. The defense sector is the only major sector in green since the war began, with the ITA Defense ETF up 13.9%.',
-    impact:[{k:'Contract Value',v:'$4.2 Billion'},{k:'LMT Stock',v:'+31.6%'},{k:'ITA ETF',v:'+13.9%'},{k:'Interceptors Used',v:'200+'}],
-    assets:['LMT','RTX','NOC','ITA','KTOS'],
-    tweets:[
-      {name:'Defense Intel',handle:'@DefenseIntel',avatar:'🎯',text:'Pentagon burning through Patriot interceptors at ~$4M each to shoot down Iranian missiles costing $100K. The math doesn\'t work long-term. This contract is about emergency replenishment, not sustainability.',time:'5h ago',likes:'9.1K',rts:'4.8K',views:'620K'},
-      {name:'The War Zone',handle:'@TheWarZone',avatar:'✈️',text:'$4.2B for LMT is just the start. Expect similar emergency contracts for RTX (radar systems), NOC (B-21 acceleration), and KTOS (drone defense). This war is a generational event for defense primes.',time:'6h ago',likes:'7.3K',rts:'3.6K',views:'480K'}
-    ]
-  },
-  {
-    id:3, headline:'Bitcoin rallies past $75K — "digital gold" narrative gains traction amid war',
-    source:'CoinDesk', handle:'@CoinDesk', avatar:'₿', time:'March 17, 2026 · 8:45 AM IST', timeAgo:'9h',
-    sentiment:'BULLISH', sentimentColor:'var(--green)',
-    body:'Bitcoin surged past $75,000 for the first time since the Iran conflict began, briefly touching $75,912 before settling at $73,851. The rally marks a stunning recovery from the initial war sell-off that took BTC to $58,000. Spot Bitcoin ETFs drew $767 million in net inflows last week — the third consecutive week of positive flows, reversing a $3B+ outflow streak. Every major crypto token posted weekly gains: ETH +13.3%, XRP +11%, SOL +9.7%, DOGE +9.5%. Analysts say the "digital gold" narrative is strengthening as traditional gold pulled back.',
-    impact:[{k:'BTC Price',v:'$73,851'},{k:'ETF Inflows',v:'$767M/week'},{k:'Weekly Gain',v:'+11%'},{k:'ETH Rally',v:'+13.3%'}],
-    assets:['BTC-USD','ETH-USD','SOL-USD','XRP-USD'],
-    tweets:[
-      {name:'Michael Saylor',handle:'@saborsk',avatar:'🟠',text:'Bitcoin is the exit. When governments wage war and central banks can\'t cut rates, the only rational response is to denominate your treasury in BTC. Strategy holds 738,731 BTC. We\'re still buying.',time:'7h ago',likes:'34K',rts:'12K',views:'2.8M'},
-      {name:'Raoul Pal',handle:'@RaoulGMI',avatar:'📊',text:'BTC just outperformed gold by 13.2% since early March. The correlation between BTC and gold is now the highest since 2020. If this war extends, $100K BTC is not a meme — it\'s base case.',time:'8h ago',likes:'18K',rts:'7.2K',views:'1.1M'}
-    ]
-  },
-  {
-    id:4, headline:'Airlines cancel 2,400+ Middle East flights — travel sector in crisis',
-    source:'Wall Street Journal', handle:'@WSJ', avatar:'✈️', time:'March 17, 2026 · 5:20 AM IST', timeAgo:'12h',
-    sentiment:'BEARISH', sentimentColor:'var(--red)',
-    body:'Major US and European airlines have cancelled over 2,400 flights across Middle East routes as airspace closures expand to cover Iran, Iraq, parts of Saudi Arabia, and the entire Persian Gulf region. Delta, United, and American Airlines are all down 8-12% this week. Fuel surcharges are being implemented on all remaining international routes. The airline industry estimates $2.1 billion in lost revenue from cancelled flights and rerouting costs. Cruise lines operating in the region have also suspended operations, with CCL down 14%.',
-    impact:[{k:'Flights Cut',v:'2,400+'},{k:'Revenue Loss',v:'$2.1B est.'},{k:'DAL Stock',v:'−12%'},{k:'Fuel Surcharge',v:'+$85/ticket'}],
-    assets:['DAL','UAL','AAL','LUV','CCL'],
-    tweets:[
-      {name:'Airline Industry Watch',handle:'@AirlineWatch',avatar:'✈️',text:'IATA just issued an advisory: Middle East airspace closures now cover 2.8M sq km — larger than the post-9/11 closures. Rerouting adds 3-5 hours to Asia-Europe flights. Jet fuel costs up 40% since Feb.',time:'10h ago',likes:'4.2K',rts:'2.8K',views:'310K'},
-      {name:'Ed Bastian',handle:'@DeltaCEO',avatar:'🔷',text:'We\'re working around the clock to rebook affected passengers. Safety is non-negotiable. We\'ve suspended all Middle East operations until further notice. Revenue impact is significant but temporary.',time:'11h ago',likes:'6.1K',rts:'1.9K',views:'420K'}
-    ]
-  },
-  {
-    id:5, headline:'Qatar back-channel diplomacy with Iran — ceasefire framework under discussion',
-    source:'Reuters', handle:'@Reuters', avatar:'🕊️', time:'March 16, 2026 · 11:55 PM IST', timeAgo:'14h',
-    sentiment:'NEUTRAL', sentimentColor:'var(--blue)',
-    body:'Senior Qatari diplomats have engaged in back-channel negotiations with Iranian officials in Doha, according to three sources familiar with the talks. A preliminary ceasefire framework is reportedly under discussion that would involve: 1) Gradual reopening of the Strait of Hormuz under international naval escort, 2) Suspension of US strikes on Iranian territory, 3) Withdrawal of Hezbollah forces from northern Israel border. Markets could see a 3-5% relief rally if a credible framework emerges. However, sources caution that hardliners on both sides remain opposed.',
-    impact:[{k:'Framework',v:'3-point plan'},{k:'Rally Potential',v:'+3-5% S&P'},{k:'Oil Drop If',v:'−$15-20/bbl'},{k:'Probability',v:'~25%'}],
-    assets:['^GSPC','BRN=F','GC=F','^TA125.TA'],
-    tweets:[
-      {name:'Barak Ravid',handle:'@BarakRavid',avatar:'🇮🇱',text:'Sources in Jerusalem tell me Israel is NOT part of the Qatar-Iran talks and is "deeply skeptical" of any framework that doesn\'t address Hezbollah rocket arsenal. Netanyahu\'s office issued no comment.',time:'12h ago',likes:'11K',rts:'6.8K',views:'890K'},
-      {name:'Iran International',handle:'@IranIntl_En',avatar:'🇮🇷',text:'IRGC sources dismiss ceasefire reports as "psychological warfare." Revolutionary Guard commander says Hormuz will remain closed until "all sanctions are lifted." Hardliners clearly in control.',time:'13h ago',likes:'8.4K',rts:'5.1K',views:'720K'},
-      {name:'Helima Croft',handle:'@RBCHelima',avatar:'🏦',text:'Even if Qatar talks succeed (unlikely), implementation would take weeks. Oil doesn\'t drop to $70 overnight — physical supply chains need months to normalize. Stay long energy.',time:'14h ago',likes:'5.6K',rts:'2.9K',views:'380K'}
-    ]
-  }
+
+
+/* ═══ MULTI-SOURCE INTEL FEED ENGINE v4 ═══
+   Hybrid routing: RSS (direct) + Nitter (rotation + fallback).
+   Per-source method. Timeout + retry caps. Source badges.
+   Auto-refresh 20-30s.
+═══════════════════════════════════════════ */
+
+var DS_SOURCES = [
+  {id:'aljazeera',    name:'Al Jazeera',         handle:'AJEnglish',       icon:'AJ',  color:'#faa61a', colorEnd:'#c77d0a', desc:'Award-winning international news network with comprehensive Middle East and global coverage.',             tag:'WORLD NEWS',     method:'rss', rss:'https://www.aljazeera.com/xml/rss/all.xml'},
+  {id:'bbcworld',     name:'BBC News',           handle:'BBCWorld',        icon:'BBC', color:'#e4e4e7', colorEnd:'#a1a1aa', desc:'British Broadcasting Corporation — trusted global news with extensive conflict zone reporting.',            tag:'GLOBAL NEWS',    method:'rss', rss:'https://feeds.bbci.co.uk/news/world/middle_east/rss.xml'},
+  {id:'reuters',      name:'Reuters',            handle:'Reuters',         icon:'R',   color:'#f97316', colorEnd:'#ea580c', desc:'Global news wire service. Breaking news, analysis, and market-moving reports from the Middle East.',       tag:'WIRE SERVICE',   method:'rss', rss:'https://news.google.com/rss/search?q=site:reuters.com+middle+east+war+iran&hl=en-US&gl=US&ceid=US:en'},
+  {id:'iranmilitary', name:'Iran Military Media', handle:'IRMilitaryMedia', icon:'IR',  color:'#059669', colorEnd:'#047857', desc:'Coverage of Iranian military developments, IRGC operations, missiles, drones, and regional defense.',     tag:'DEFENSE',        method:'nitter', rss:'https://news.google.com/rss/search?q=iran+military+IRGC+missile+drone+defense&hl=en-US&gl=US&ceid=US:en'},
+  {id:'middleeasteye',name:'Middle East Eye',    handle:'MiddleEastEye',   icon:'ME',  color:'#0ea5e9', colorEnd:'#0284c7', desc:'Independent news covering the Middle East and North Africa with in-depth analysis.',                       tag:'REGIONAL',       method:'rss', rss:'https://www.middleeasteye.net/rss'},
+  {id:'guardian',     name:'The Guardian',       handle:'guardian',        icon:'G',   color:'#22c55e', colorEnd:'#16a34a', desc:'World-leading liberal journalism with extensive Middle East conflict zone reporting.',                      tag:'WORLD NEWS',     method:'rss', rss:'https://www.theguardian.com/world/middleeast/rss'},
+  {id:'intercept',    name:'The Intercept',      handle:'theintercept',    icon:'I',   color:'#dc2626', colorEnd:'#991b1b', desc:'Investigative journalism covering national security, foreign policy, and government accountability.',       tag:'INVESTIGATIVE',  method:'rss', rss:'https://theintercept.com/feed/?lang=en'},
+  {id:'nytworld',     name:'NYT World',          handle:'nytimes',        icon:'NY',  color:'#f5f5f5', colorEnd:'#a1a1aa', desc:'New York Times — comprehensive world news and Middle East conflict analysis.',                              tag:'GLOBAL NEWS',    method:'rss', rss:'https://rss.nytimes.com/services/xml/rss/nyt/MiddleEast.xml'},
+  {id:'democracynow', name:'Democracy Now!',     handle:'democracynow',   icon:'DN',  color:'#8b5cf6', colorEnd:'#7c3aed', desc:'Independent daily news program with in-depth war and foreign policy coverage.',                             tag:'INDEPENDENT',    method:'rss', rss:'https://www.democracynow.org/democracynow.rss'}
 ];
 
-function openNewsModal(idx) {
-  var n = NEWS_DB[idx];
-  if (!n) return;
-  var body = document.getElementById('newsModalBody');
-  if (!body) return;
-
-  var sentClass = n.sentiment === 'BEARISH' ? 'neg' : n.sentiment === 'BULLISH' ? 'pos' : 'neu';
-
-  body.innerHTML =
-    '<div class="nm-source">' +
-      '<div class="nm-source-avatar">' + n.avatar + '</div>' +
-      '<div class="nm-source-info">' +
-        '<div class="nm-source-name">' + n.source + ' <span class="news-author-verified">✓</span></div>' +
-        '<div class="nm-source-handle">' + n.handle + '</div>' +
-      '</div>' +
-      '<span class="news-tag ' + sentClass + '" style="font-size:10px;padding:3px 8px;">' + n.sentiment + '</span>' +
-    '</div>' +
-    '<div class="nm-headline">' + n.headline + '</div>' +
-    '<div class="nm-body-text">' + n.body + '</div>' +
-    '<div class="nm-timestamp">' + n.time + '</div>' +
-
-    '<div class="nm-section-title">Market Impact</div>' +
-    '<div class="nm-impact-grid">' + n.impact.map(function(i){
-      var col = i.v.includes('+') || i.v.includes('Billion') ? 'var(--green)' : i.v.includes('−') || i.v.includes('-') ? 'var(--red)' : 'var(--text)';
-      return '<div class="nm-impact-card"><div class="nm-impact-label">' + i.k + '</div><div class="nm-impact-value" style="color:' + col + '">' + i.v + '</div></div>';
-    }).join('') + '</div>' +
-
-    '<div class="nm-section-title">Affected Assets · Click to Analyze</div>' +
-    '<div class="nm-assets">' + n.assets.map(function(sym){
-      return '<div class="nm-asset-btn" onclick="closeNewsModal();setTimeout(function(){openModal(\'' + sym + '\')},200)">' + sym + '</div>';
-    }).join('') + '</div>' +
-
-    '<div class="nm-section-title">Live Discussion · War Zone Intel</div>' +
-    '<div class="nm-tweets">' + n.tweets.map(function(t){
-      return '<div class="nm-tweet">' +
-        '<div class="nm-tweet-header">' +
-          '<div class="nm-tweet-avatar">' + t.avatar + '</div>' +
-          '<div><div class="nm-tweet-name">' + t.name + ' <span class="news-author-verified" style="width:12px;height:12px;font-size:7px;">✓</span></div><div class="nm-tweet-handle">' + t.handle + '</div></div>' +
-          '<div class="nm-tweet-time">' + t.time + '</div>' +
-        '</div>' +
-        '<div class="nm-tweet-text">' + t.text + '</div>' +
-        '<div class="nm-tweet-stats"><span>❤️ ' + t.likes + '</span><span>🔁 ' + t.rts + '</span><span>👁 ' + t.views + '</span></div>' +
-      '</div>';
-    }).join('') + '</div>';
-
-  document.getElementById('newsModalOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeNewsModal() {
-  document.getElementById('newsModalOverlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeNewsModal(); });
-/* ═══ LIVE SENTIMENT + ASSET PULSE — updates every 30s ═══ */
-function updateSentimentLive() {
-  var needle = document.getElementById('sentimentNeedle');
-  var score = document.getElementById('sentimentScore');
-  var label = document.getElementById('sentimentLabel');
-  if (needle && score) {
-    var base = 22;
-    var jitter = (Math.random() - 0.5) * 6;
-    var pos = Math.max(5, Math.min(40, base + jitter));
-    needle.style.left = pos + '%';
-    score.textContent = Math.round(pos);
-    var lbl = pos < 15 ? 'EXTREME FEAR' : pos < 30 ? 'FEAR' : pos < 45 ? 'NEUTRAL' : 'GREED';
-    if (label) label.textContent = lbl;
-    needle.style.boxShadow = pos < 25 ? '0 0 8px rgba(255,255,255,.6),0 0 20px rgba(255,37,37,.3)' : '0 0 8px rgba(255,255,255,.6),0 0 20px rgba(245,158,11,.3)';
-  }
-  var map = [
-    {sym:'BRN=F',el:'pulseOil',pre:'$',dec:2},
-    {sym:'GC=F',el:'pulseGold',pre:'$',dec:0},
-    {sym:'BTC-USD',el:'pulseBTC',pre:'$',dec:0},
-    {sym:'^GSPC',el:'pulseSP',pre:'',dec:0}
-  ];
-  map.forEach(function(m) {
-    var s = STOCKS_DB.find(function(x){ return x.sym === m.sym; });
-    var el = document.getElementById(m.el);
-    if (!s || !el) return;
-    var p = s.currentPrice;
-    el.textContent = m.pre + (p >= 1000 ? p.toLocaleString('en-US',{maximumFractionDigits:m.dec}) : p.toFixed(m.dec));
-    el.style.color = ((p - s.base) / s.base * 100) >= 0 ? 'var(--green)' : 'var(--red)';
-  });
-  var vixEl = document.getElementById('sentVix');
-  var vixBar = document.getElementById('vixBar');
-  if (vixEl) { var v = 27.2 + (Math.random() - 0.5) * 0.8; vixEl.textContent = v.toFixed(1); if (vixBar) vixBar.style.width = Math.min(v/50*100,100)+'%'; }
-  var tsEl = document.getElementById('sentimentUpdateTime');
-  if (tsEl) tsEl.textContent = new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});
-  var ntEl = document.getElementById('newsUpdateTime');
-  if (ntEl) ntEl.textContent = new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',hour12:false});
-}
-setTimeout(updateSentimentLive, 2000);
-setInterval(updateSentimentLive, 30000);
-
-
-/* ═══ X/TWITTER LIVE FEED ENGINE ═══
-   NOTE: X API v2 requires Bearer Token + server-side proxy (no CORS from browser).
-   This engine uses a rich simulated feed of realistic OSINT/analyst tweets.
-   To connect a real proxy: set XFEED_PROXY_URL below and tweets will auto-fetch.
-═══════════════════════════════════ */
-var XFEED_PROXY_URL = null; // Set to your proxy URL, e.g. 'https://your-server.com/api/tweets?q=iran+war+oil'
-
-var XFEED_TWEETS = [
-  {id:'1903847261001',user:'OSINTdefender',name:'OSINT Defender',avatar:'🛰️',verified:true,sentiment:'neg',markets:['oil','defense'],text:'BREAKING: Satellite imagery confirms 3 additional Iranian Ghadir-class submarines deployed near Strait of Hormuz. USN carrier group USS Eisenhower maintaining 80nm standoff distance. De-mining operations have NOT begun. <span class="xtag">#Hormuz</span> <span class="xtag">#IranWar</span>',likes:'22.4K',rts:'14.1K',views:'2.1M',media:'🛰️ Satellite imagery · Maxar Technologies · 3 images'},
-  {id:'1903846195002',user:'sentdefender',name:'Sentinelle',avatar:'📡',verified:true,sentiment:'neg',markets:['oil'],text:'IRGC Navy fast boats conducting aggressive maneuvers near Fujairah anchorage. Three commercial vessels forced to change course. Fifth Fleet issues NAVAREA IX warning for all merchant shipping in the Gulf. <span class="xtag">#OperationEpicFury</span>',likes:'15.8K',rts:'9.3K',views:'1.4M',media:null},
-  {id:'1903845128003',user:'BarakRavid',name:'Barak Ravid',avatar:'🇮🇱',verified:true,sentiment:'neg',markets:['defense'],text:'EXCLUSIVE: Senior Israeli defense official tells me the IDF is preparing for a "long campaign" in southern Lebanon. Says Hezbollah has fired 4,200+ rockets since March 6. Iron Dome intercept rate holding at 91%. <span class="xtag">#Lebanon</span>',likes:'11.2K',rts:'6.8K',views:'890K',media:null},
-  {id:'1903844071004',user:'IranIntl_En',name:'Iran International English',avatar:'🇮🇷',verified:true,sentiment:'neg',markets:['oil'],text:'New Supreme Leader Mojtaba Khamenei addresses IRGC commanders in Tehran: "The Strait will remain closed until every sanction is lifted." Markets react — Brent crude jumps $2.40 in minutes. <span class="xtag">#Iran</span> <span class="xtag">#OilCrisis</span>',likes:'18.6K',rts:'11.2K',views:'1.8M',media:null},
-  {id:'1903843014005',user:'JavierBlas',name:'Javier Blas',avatar:'🛢️',verified:true,sentiment:'neg',markets:['oil'],text:'THREAD 🧵 Hormuz Day 18 data: Zero tankers transiting since March 3. Global crude inventories drawing at 3M bbl/day. Commercial stockpiles hit critical in ~5 weeks. Tanker insurance at 500bp — unprecedented. This is NOT fully priced in. <span class="xtag">#Oil</span>',likes:'28.1K',rts:'15.7K',views:'3.2M',media:null},
-  {id:'1903842007006',user:'TheWarZone',name:'The War Zone',avatar:'✈️',verified:true,sentiment:'neg',markets:['defense'],text:'USAF B-2 Spirit stealth bombers spotted departing Diego Garcia heading northwest. This is significant — B-2s were used in the initial strikes on Iranian nuclear facilities. Could signal a second wave. CENTCOM has "no comment." <span class="xtag">#OperationEpicFury</span>',likes:'34.2K',rts:'18.9K',views:'4.1M',media:'📸 Plane spotters · Diego Garcia · 2 images'},
-  {id:'1903841000007',user:'Reuters',name:'Reuters',avatar:'📰',verified:true,sentiment:'neu',markets:['defense'],text:'JUST IN: Pentagon confirms USS Bataan amphibious group transiting Suez Canal toward Persian Gulf. Third carrier group deployed to region since conflict began Feb 28. Defense stocks LMT, RTX, NOC all hitting new 52-week highs. <span class="xtag">#IranWar</span>',likes:'9.7K',rts:'5.4K',views:'780K',media:null},
-  {id:'1903840000008',user:'saylor',name:'Michael Saylor',avatar:'🟠',verified:true,sentiment:'pos',markets:['crypto'],text:'Bitcoin is the exit. When governments wage war and central banks are trapped, the only rational treasury strategy is BTC. Strategy holds 738,731 ₿. We are still buying. <span class="xtag">#Bitcoin</span> <span class="xtag">#DigitalGold</span>',likes:'42.8K',rts:'16.3K',views:'5.7M',media:null},
-  {id:'1903839000009',user:'RaoulGMI',name:'Raoul Pal',avatar:'📊',verified:true,sentiment:'pos',markets:['crypto'],text:'BTC just outperformed gold by 13.2% since the war began. Correlation between BTC and gold is now highest since 2020. If this war extends past Q2, $100K BTC is not a meme — it is the base case. <span class="xtag">#Crypto</span>',likes:'19.4K',rts:'8.2K',views:'1.2M',media:null},
-  {id:'1903838000010',user:'GS_Research',name:'Goldman Sachs Research',avatar:'🏦',verified:true,sentiment:'neg',markets:['oil'],text:'We raise our Brent crude 3-month target to $125/bbl (from $95) on Hormuz duration risk. Energy equities remain our #1 conviction overweight. Underweight airlines, consumer discretionary, and EM FX. <span class="xtag">#Oil</span> <span class="xtag">#Markets</span>',likes:'8.9K',rts:'4.6K',views:'620K',media:null},
-  {id:'1903837000011',user:'IntelCrab',name:'Intel Crab',avatar:'🦀',verified:true,sentiment:'neg',markets:['defense'],text:'Multiple explosions reported near Bandar Abbas port, Iran. IRGC air defense activated. Unconfirmed reports of missile impacts on naval infrastructure. Iranian state media has gone silent — that is itself a signal. <span class="xtag">#BREAKING</span>',likes:'31.5K',rts:'21.4K',views:'4.8M',media:null},
-  {id:'1903836000012',user:'CathieDWood',name:'Cathie Wood',avatar:'📈',verified:true,sentiment:'pos',markets:['crypto'],text:'Deflation is still the bigger risk long-term even with oil at $104. AI-driven productivity gains will more than offset commodity inflation. We are buying the dip aggressively in innovation names. <span class="xtag">#Innovation</span>',likes:'14.2K',rts:'5.8K',views:'890K',media:null},
-  {id:'1903835000013',user:'jimcramer',name:'Jim Cramer',avatar:'📺',verified:true,sentiment:'neg',markets:['oil'],text:'The Fed is STUCK. They cannot cut because oil inflation is real. They cannot hike because the economy is fragile. Powell looked visibly uncomfortable. Cash is a position right now. <span class="xtag">#Fed</span> <span class="xtag">#Stagflation</span>',likes:'7.3K',rts:'3.1K',views:'420K',media:null},
-  {id:'1903834000014',user:'elerianm',name:'Mohamed A. El-Erian',avatar:'👤',verified:true,sentiment:'neg',markets:['oil'],text:'Powell said the quiet part out loud: stagflation risk is real. Oil above $100, growth slowing, and the Fed cannot cut into this. Worst policy dilemma since Volcker. <span class="xtag">#Fed</span>',likes:'12.1K',rts:'5.9K',views:'680K',media:null},
-  {id:'1903833000015',user:'Aviation_Intel',name:'Aviation Intel',avatar:'🛩️',verified:true,sentiment:'neg',markets:['defense'],text:'CONFIRMED: Turkish airspace restricted for military transit. NATO AWACS operating over eastern Mediterranean. RAF Typhoons deployed to Cyprus Akrotiri. Conflict pulling in entire region. <span class="xtag">#NATO</span>',likes:'16.7K',rts:'9.8K',views:'1.5M',media:null},
-  {id:'1903832000016',user:'TankerTrackers',name:'TankerTrackers.com',avatar:'🚢',verified:true,sentiment:'neg',markets:['oil'],text:'AIS data: ZERO VLCCs transiting Hormuz for 18th day. 47 laden tankers anchored outside Gulf. Cape rerouting adds 10-14 days + $500K-1M per voyage. Freight to Asia up 340%. <span class="xtag">#Shipping</span> <span class="xtag">#Oil</span>',likes:'21.3K',rts:'12.7K',views:'2.4M',media:'🗺️ AIS vessel tracking · Live map'},
-  {id:'1903831000017',user:'PeterSchiff',name:'Peter Schiff',avatar:'🥇',verified:true,sentiment:'pos',markets:['oil'],text:'Gold pulled back from $5,400 but this is a buying opportunity. Physical demand from central banks is 800 tons YTD. When Brent hits $125, gold goes to $5,600. <span class="xtag">#Gold</span>',likes:'9.8K',rts:'4.2K',views:'540K',media:null},
-  {id:'1903830000018',user:'DefenseIntel',name:'Defense Intelligence',avatar:'🎯',verified:true,sentiment:'neu',markets:['defense'],text:'Pentagon burning through Patriot interceptors at ~$4M each to shoot down Iranian missiles costing $100K. The math does not work. LMT $4.2B contract is emergency replenishment. <span class="xtag">#Defense</span>',likes:'13.4K',rts:'7.1K',views:'920K',media:null},
+/* ── Infrastructure ── */
+var NITTER_INSTANCES = [
+  'https://nitter.poast.org',
+  'https://nitter.privacydev.net',
+  'https://nitter.fdn.fr'
 ];
+var RSS_PROXIES = [
+  function(url) { return 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(url); },
+  function(url) { return 'https://api.allorigins.win/raw?url=' + encodeURIComponent(url); }
+];
+var RSS2JSON = 'https://api.rss2json.com/v1/api.json?rss_url=';
+var NITTER_TIMEOUT = 12000;
+var RSS_TIMEOUT = 8000;
 
-var _xfeedIndex = 0;
-var _xfeedSeenIds = {};
-var _xfeedMaxVisible = 50;
-var _xfeedTotalLoaded = 0;
-var _xfeedBreakingCount = 0;
-
-var SENTIMENT_LABELS = {neg:'BEARISH',pos:'BULLISH',neu:'NEUTRAL'};
-var MARKET_LABELS = {oil:'🛢 OIL',crypto:'₿ CRYPTO',defense:'⚔️ DEFENSE'};
-var BREAKING_KEYWORDS = /breaking|strike|missile|explosion|attack|bomb|drone launch|oil spike|hormuz|nuclear|cruise missile|b-2|carrier/i;
-
-var REAL_ACCOUNTS = {
-  'Reuters':1,'AP':1,'BBCWorld':1,'WSJ':1,'Bloomberg':1,'GoldmanSachs':1,'CNBC':1,'FT':1,
-  'business':1,'TheEconomist':1,'jimcramer':1,'CathieDWood':1,'RaoulGMI':1,'elerianm':1,
-  'saylor':1,'PeterSchiff':1,'JavierBlas':1,'BarakRavid':1,'TheWarZone':1,'sentdefender':1,
-  'IranIntl_En':1,'OSINTdefender':1,'IntelCrab':1,'Aviation_Intel':1,'TankerTrackers':1,
-  'DefenseIntel':1,'GS_Research':1,'nntaleb':1
+var _ds = {
+  activeIdx: 0,
+  seenIds: {},
+  totalLoaded: 0,
+  breakingCount: 0,
+  errorCount: 0,
+  refreshTimer: null,
+  menuOpen: false,
+  fetching: false,
+  sourceMethod: '',   // 'rss', 'nitter', or 'rss-fallback'
+  lastProxy: ''
 };
 
-function openTweetOnX(el, user) {
-  // Priority 1: Real article URL (from live news fetch)
-  var url = el.getAttribute('data-url');
-  if (url && url !== 'null' && url.startsWith('http')) {
-    window.open(url, '_blank');
-    return;
-  }
-  // Priority 2: Real X profile for whitelisted accounts
-  if (REAL_ACCOUNTS[user]) {
-    window.open('https://x.com/' + user, '_blank');
-    return;
-  }
-  // Priority 3: X search with tweet text
-  var txt = el.querySelector('.xtweet-text');
-  var q = txt ? txt.textContent.replace(/<[^>]*>/g,'').replace(/\s+/g,' ').trim().slice(0,90) : '';
-  if (!q) q = '@' + user;
-  window.open('https://x.com/search?q=' + encodeURIComponent(q), '_blank');
+var BREAKING_KEYWORDS = /breaking|strike|missile|explosion|attack|bomb|drone|war|kill|dead|urgent|alert|crisis|weapon|nuclear|invasion/i;
+
+/* ── Utilities ── */
+function _dsTimeAgo(dateStr) {
+  var d = new Date(dateStr);
+  if (isNaN(d)) return dateStr;
+  var diff = Math.floor((Date.now() - d) / 1000);
+  if (diff < 60) return diff + 's ago';
+  if (diff < 3600) return Math.floor(diff / 60) + 'm ago';
+  if (diff < 86400) return Math.floor(diff / 3600) + 'h ago';
+  return Math.floor(diff / 86400) + 'd ago';
+}
+function _dsStripHtml(html) {
+  var tmp = document.createElement('div'); tmp.innerHTML = html;
+  return tmp.textContent || tmp.innerText || '';
+}
+function _dsHighlightTags(text) {
+  return text.replace(/(#\w+)/g, '<span class="xtag">$1</span>').replace(/(@\w+)/g, '<span class="xtag">$1</span>');
+}
+function _dsGetSource() { return DS_SOURCES[_ds.activeIdx]; }
+
+/* ── Fetch with timeout (AbortController) ── */
+function fetchWithTimeout(url, ms) {
+  var controller = new AbortController();
+  var timer = setTimeout(function() { controller.abort(); }, ms);
+  return fetch(url, { signal: controller.signal }).finally(function() { clearTimeout(timer); });
 }
 
-function isBreaking(text) {
-  return BREAKING_KEYWORDS.test(text.replace(/<[^>]*>/g, ''));
+/* ── Parse RSS XML into normalized items ── */
+function parseRSSXML(xmlText) {
+  var parser = new DOMParser();
+  var doc = parser.parseFromString(xmlText, 'text/xml');
+  var items = doc.querySelectorAll('item');
+  var results = [];
+  items.forEach(function(item) {
+    var title = item.querySelector('title');
+    var link = item.querySelector('link');
+    var pubDate = item.querySelector('pubDate');
+    var desc = item.querySelector('description');
+    var author = item.querySelector('author') || item.querySelector('dc\\:creator');
+    var source = item.querySelector('source');
+    results.push({
+      title: title ? title.textContent : '',
+      link: link ? link.textContent : '',
+      pubDate: pubDate ? pubDate.textContent : '',
+      description: desc ? desc.textContent : '',
+      author: author ? author.textContent : (source ? source.textContent : ''),
+      guid: (link ? link.textContent : '') + '|' + (title ? title.textContent : '')
+    });
+  });
+  if (results.length === 0) throw new Error('No items in RSS XML');
+  return results;
 }
 
-function buildTweetHTML(t, timeStr, isNew, isBreak, delay) {
-  var sentClass = t.sentiment === 'neg' ? 'neg' : t.sentiment === 'pos' ? 'pos' : 'neu';
-  var marketHtml = (t.markets || []).map(function(m) {
-    return '<span class="xtweet-mtag">' + (MARKET_LABELS[m] || m) + '</span>';
-  }).join('');
+/* ──────────────────────────────────────────
+   fetchRSS() — fetch from official RSS feed
+   Tries rss2json proxy → allorigins proxy → direct XML
+   ────────────────────────────────────────── */
+async function fetchRSS(rssUrl) {
+  for (var i = 0; i < RSS_PROXIES.length; i++) {
+    var proxyUrl = RSS_PROXIES[i](rssUrl);
+    try {
+      var resp = await fetchWithTimeout(proxyUrl, RSS_TIMEOUT);
+      if (!resp.ok) throw new Error('HTTP ' + resp.status);
+      var text = await resp.text();
+      // Try JSON (rss2json format)
+      try {
+        var data = JSON.parse(text);
+        if (data.status === 'ok' && data.items && data.items.length > 0) {
+          _ds.lastProxy = i === 0 ? 'rss2json' : 'allorigins';
+          console.log('[IntelFeed] RSS via ' + _ds.lastProxy + ' for ' + rssUrl);
+          return data.items;
+        }
+      } catch (_) {}
+      // Try raw XML (allorigins returns XML directly)
+      var items = parseRSSXML(text);
+      _ds.lastProxy = 'xml-direct';
+      console.log('[IntelFeed] RSS XML parse success for ' + rssUrl);
+      return items;
+    } catch (e) {
+      console.warn('[IntelFeed] RSS proxy ' + i + ' failed:', e.message);
+    }
+  }
+  throw new Error('All RSS proxies failed for ' + rssUrl);
+}
 
-  return '<div class="xtweet' +
-    (isBreak ? ' xbreak' : '') +
-    (isNew ? ' xtweet-enter' : '') +
-    (isNew && isBreak ? ' xbreak-flash' : '') +
-    '" style="' + (delay > 0 ? 'animation-delay:'+delay+'ms;' : '') +
-    '" onclick="openTweetOnX(this,\'' + t.user + '\')" data-url="' + (t.url || '') + '" title="' + (t.url ? 'Read article ↗' : 'Open on X ↗') + '">' +
-    '<div class="xtweet-avatar">' + t.avatar + '</div>' +
+/* ──────────────────────────────────────────────────
+   fetchNitterWithRotation() — try Nitter instances
+   Cycles through all instances with timeout per try
+   ────────────────────────────────────────────────── */
+async function fetchNitterWithRotation(handle) {
+  for (var i = 0; i < NITTER_INSTANCES.length; i++) {
+    var instance = NITTER_INSTANCES[i];
+    var url = RSS2JSON + encodeURIComponent(instance + '/' + handle + '/rss');
+    try {
+      var resp = await fetchWithTimeout(url, NITTER_TIMEOUT);
+      if (!resp.ok) throw new Error('HTTP ' + resp.status);
+      var data = await resp.json();
+      if (data.status !== 'ok' || !data.items || data.items.length === 0) {
+        throw new Error('Empty feed');
+      }
+      console.log('[IntelFeed] Nitter success via ' + instance + ' for @' + handle);
+      return { items: data.items, method: 'nitter' };
+    } catch (e) {
+      console.warn('[IntelFeed] Nitter ' + instance + ' failed for @' + handle + ':', e.message);
+    }
+  }
+  throw new Error('All Nitter instances failed for @' + handle);
+}
+
+/* ──────────────────────────────────────────────────────
+   loadSource() — smart router per source
+   RSS sources → fetchRSS()
+   Nitter sources → fetchNitterWithRotation() → RSS fallback
+   ────────────────────────────────────────────────────── */
+async function loadSource(src) {
+  // Route: RSS sources go direct
+  if (src.method === 'rss') {
+    var items = await fetchRSS(src.rss);
+    _ds.sourceMethod = 'rss';
+    return items;
+  }
+
+  // Route: Nitter sources try Nitter first, then RSS fallback
+  if (src.method === 'nitter') {
+    try {
+      var result = await fetchNitterWithRotation(src.handle);
+      _ds.sourceMethod = 'nitter';
+      return result.items;
+    } catch (nitterErr) {
+      console.warn('[IntelFeed] Nitter exhausted for @' + src.handle + ', falling back to RSS');
+      // Fallback to RSS if available
+      if (src.rss) {
+        try {
+          var rssItems = await fetchRSS(src.rss);
+          _ds.sourceMethod = 'rss-fallback';
+          return rssItems;
+        } catch (rssErr) {
+          console.warn('[IntelFeed] RSS fallback also failed for ' + src.name);
+        }
+      }
+      throw new Error('All methods failed for ' + src.name);
+    }
+  }
+
+  throw new Error('Unknown method: ' + src.method);
+}
+
+/* ── Source Badge Builder ── */
+function _dsSourceBadge() {
+  if (_ds.sourceMethod === 'rss') {
+    return '<span style="font-family:\'JetBrains Mono\',monospace;font-size:7px;padding:1px 5px;border-radius:3px;background:rgba(34,197,94,.1);color:#22c55e;font-weight:600;letter-spacing:.5px;border:1px solid rgba(34,197,94,.15);margin-left:6px">RSS</span>';
+  }
+  if (_ds.sourceMethod === 'nitter') {
+    return '<span style="font-family:\'JetBrains Mono\',monospace;font-size:7px;padding:1px 5px;border-radius:3px;background:rgba(245,158,11,.1);color:#f59e0b;font-weight:600;letter-spacing:.5px;border:1px solid rgba(245,158,11,.15);margin-left:6px">NITTER</span>';
+  }
+  if (_ds.sourceMethod === 'rss-fallback') {
+    return '<span style="font-family:\'JetBrains Mono\',monospace;font-size:7px;padding:1px 5px;border-radius:3px;background:rgba(245,158,11,.1);color:#f59e0b;font-weight:600;letter-spacing:.5px;border:1px solid rgba(245,158,11,.15);margin-left:6px">FALLBACK RSS</span>';
+  }
+  return '';
+}
+
+/* ── Card Builder ── */
+function _dsBuildCard(item, isNew) {
+  var src = _dsGetSource();
+  var text = _dsStripHtml(item.title || item.description || '');
+  var isBreak = BREAKING_KEYWORDS.test(text);
+  if (isBreak) _ds.breakingCount++;
+  var timeStr = _dsTimeAgo(item.pubDate);
+  var url = item.link || '';
+  var author = item.author || item.creator || src.name;
+  var safeUrl = url.replace(/'/g, "\\'");
+
+  return '<div class="xtweet' + (isBreak ? ' xbreak' : '') + (isNew ? ' xtweet-enter' : '') + (isNew && isBreak ? ' xbreak-flash' : '') +
+    '" onclick="window.open(\'' + safeUrl + '\',\'_blank\')" data-url="' + url + '" title="Read full article ↗" style="cursor:pointer">' +
+    '<div class="ds-open-hint">READ ↗</div>' +
+    '<div class="xtweet-avatar" style="background:linear-gradient(135deg,' + src.color + ',' + src.colorEnd + ');color:#fff;font-weight:700;font-family:\'Bebas Neue\',sans-serif;font-size:' + (src.icon.length > 2 ? '10' : src.icon.length > 1 ? '12' : '16') + 'px;border-radius:12px;border:1px solid ' + src.color + '33">' + src.icon + '</div>' +
     '<div class="xtweet-body">' +
       '<div class="xtweet-header">' +
         (isBreak ? '<span class="xbreak-label">BREAKING</span>' : '') +
-        '<span class="xtweet-name">' + t.name + '</span>' +
-        (t.verified ? '<span class="xtweet-badge">✓</span>' : '') +
-        (t._isLive ? '<span style="font-family:\'JetBrains Mono\',monospace;font-size:7px;padding:1px 4px;border-radius:2px;background:rgba(34,197,94,.12);color:#22c55e;border:1px solid rgba(34,197,94,.2);margin-left:3px;letter-spacing:.5px;font-weight:700">LIVE</span>' : '') +
-        '<span class="xtweet-handle">@' + t.user + '</span>' +
+        '<span class="xtweet-name">' + author + '</span>' +
+        '<span class="xtweet-badge">✓</span>' +
+        '<span class="ds-live-badge">LIVE</span>' +
+        '<span class="xtweet-handle">@' + src.handle + '</span>' +
         '<span class="xtweet-time">' + timeStr + '</span>' +
       '</div>' +
-      '<div class="xtweet-text">' + t.text + '</div>' +
+      '<div class="xtweet-text">' + _dsHighlightTags(text) + '</div>' +
       '<div class="xtweet-tags">' +
-        '<span class="xtweet-stag ' + sentClass + '">' + SENTIMENT_LABELS[t.sentiment] + '</span>' +
-        marketHtml +
+        '<span class="xtweet-stag ' + (isBreak ? 'neg' : 'neu') + '">' + (isBreak ? 'ALERT' : 'REPORT') + '</span>' +
+        '<span class="xtweet-mtag">' + src.tag + '</span>' +
       '</div>' +
-      (t.media ? '<div class="xtweet-media">📎 ' + t.media + '</div>' : '') +
       '<div class="xtweet-stats">' +
-        '<span>💬 ' + (Math.floor(Math.random()*400+80)) + '</span>' +
-        '<span>🔁 ' + t.rts + '</span>' +
-        '<span>❤️ ' + t.likes + '</span>' +
-        '<span>👁 ' + t.views + '</span>' +
+        '<span>🔗 Read full article</span>' +
+        '<span style="margin-left:auto;color:var(--muted2)">' + timeStr + '</span>' +
       '</div>' +
     '</div>' +
   '</div>';
 }
 
-function renderXFeed() {
+/* ── Status Updater ── */
+function _dsUpdateStatus() {
+  var src = _dsGetSource();
+  var el = function(id) { return document.getElementById(id); };
+  var methodLabel = _ds.sourceMethod === 'nitter' ? 'Nitter' : _ds.sourceMethod === 'rss-fallback' ? 'RSS Fallback' : 'RSS';
+  var stEl = el('xfeedStatusText');
+  if (stEl) stEl.textContent = _ds.totalLoaded + ' posts · ' + _ds.breakingCount + ' breaking · ' + src.name + ' via ' + methodLabel + ' · Refresh 20-30s';
+  var tEl = el('xfeedTime');
+  if (tEl) tEl.textContent = new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});
+  var tcEl = el('xfeedTotalCount');
+  if (tcEl) tcEl.textContent = _ds.totalLoaded + ' posts';
+  var bcEl = el('xfeedBreakingCount');
+  if (bcEl) bcEl.innerHTML = _ds.breakingCount + ' BREAKING';
+  var pcEl = el('dsPostCount');
+  if (pcEl) { pcEl.textContent = _ds.totalLoaded; pcEl.style.color = _ds.totalLoaded > 0 ? 'var(--green)' : 'var(--muted)'; }
+  var lfEl = el('dsLastFetch');
+  if (lfEl) lfEl.textContent = new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',hour12:false});
+  var ecEl = el('dsErrorCount');
+  if (ecEl) { ecEl.textContent = _ds.errorCount; ecEl.style.color = _ds.errorCount > 0 ? 'var(--red)' : 'var(--green)'; }
+  var asEl = el('dsActiveSource');
+  if (asEl) { asEl.innerHTML = src.name + _dsSourceBadge(); asEl.style.background = src.color + '10'; asEl.style.borderColor = src.color + '20'; asEl.style.color = src.color; }
+}
+
+/* ── Main Fetch Orchestrator ── */
+async function _dsFetchFeed() {
+  if (_ds.fetching) return;
+  _ds.fetching = true;
+  var src = _dsGetSource();
+
+  // Show loading state if no posts yet
+  var feed = document.getElementById('xfeed');
+  if (feed && _ds.totalLoaded === 0) {
+    feed.innerHTML = '<div style="padding:40px 30px;text-align:center;color:var(--muted);font-family:\'JetBrains Mono\',monospace;font-size:11px;"><div class="xfeed-live-pulse" style="display:inline-block;margin-right:8px;vertical-align:middle"></div>Loading ' + src.name + (src.method === 'nitter' ? ' via Nitter…' : '…') + '</div>';
+  }
+
+  try {
+    var items = await loadSource(src);
+    _ds.errorCount = 0;
+    renderFeed(items);
+    // Show source method badge above feed
+    _dsShowMethodBadge();
+  } catch (err) {
+    console.warn('[IntelFeed] All methods failed for ' + src.name + ':', err.message);
+    _ds.errorCount++;
+    handleError();
+    _dsUpdateStatus();
+  } finally {
+    _ds.fetching = false;
+  }
+}
+
+/* ── Method badge above feed ── */
+function _dsShowMethodBadge() {
+  var old = document.getElementById('dsMethodBadge');
+  if (old) old.remove();
+  var feed = document.getElementById('xfeed');
+  if (!feed) return;
+  var src = _dsGetSource();
+  var badgeText = '';
+  var badgeColor = '';
+  if (_ds.sourceMethod === 'rss' && src.method === 'rss') {
+    badgeText = 'Using official RSS';
+    badgeColor = '#22c55e';
+  } else if (_ds.sourceMethod === 'nitter') {
+    badgeText = 'Live via Nitter';
+    badgeColor = '#22c55e';
+  } else if (_ds.sourceMethod === 'rss-fallback') {
+    badgeText = 'Limited availability — using backup RSS';
+    badgeColor = '#f59e0b';
+  }
+  if (!badgeText) return;
+  feed.insertAdjacentHTML('beforebegin',
+    '<div id="dsMethodBadge" style="display:flex;align-items:center;gap:6px;padding:5px 12px;margin-bottom:4px;border-radius:6px;' +
+    'background:' + badgeColor + '08;border:1px solid ' + badgeColor + '15;' +
+    'font-family:\'JetBrains Mono\',monospace;font-size:9px;color:' + badgeColor + ';letter-spacing:.3px">' +
+    '<span style="width:5px;height:5px;border-radius:50%;background:' + badgeColor + ';display:inline-block"></span> ' + badgeText +
+    '</div>');
+}
+
+/* ── Render Feed ── */
+function renderFeed(items) {
   var feed = document.getElementById('xfeed');
   if (!feed) return;
 
-  // First load: fill with initial batch (interleaved live + curated)
-  if (_xfeedTotalLoaded === 0) {
-    var initHTML = '';
-    for (var i = 0; i < 10; i++) {
-      var tweet = _pickNextTweet();
-      var mins = (i + 1) * 3 + Math.floor(Math.random() * 6);
-      var isBreak = isBreaking(tweet.text);
-      if (isBreak) _xfeedBreakingCount++;
-      initHTML += buildTweetHTML(tweet, mins + 'm ago', false, isBreak, 0);
-      _xfeedTotalLoaded++;
-    }
-    feed.innerHTML = initHTML;
-    updateXFeedStatus();
+  var newItems = [];
+  for (var i = 0; i < items.length; i++) {
+    var id = items[i].guid || items[i].link || items[i].title;
+    if (!_ds.seenIds[id]) { _ds.seenIds[id] = true; newItems.push(items[i]); }
+  }
+
+  feed.classList.remove('ds-switching');
+  feed.classList.add('ds-loaded');
+
+  if (_ds.totalLoaded === 0 && newItems.length > 0) {
+    var html = '';
+    for (var j = 0; j < newItems.length; j++) { html += _dsBuildCard(newItems[j], false); _ds.totalLoaded++; }
+    feed.innerHTML = html;
+    _dsUpdateStatus();
     return;
   }
 
-  // Subsequent: PREPEND 1-2 new items with animation — no full re-render
-  var toAdd = 1 + Math.floor(Math.random() * 2);
-  var newHTML = '';
-  var added = 0;
-
-  for (var a = 0; a < toAdd; a++) {
-    var tweet = _pickNextTweet();
-    if (!tweet) break;
-    var mins = Math.floor(Math.random() * 5) + 1;
-    var isBreak = isBreaking(tweet.text);
-    if (isBreak) _xfeedBreakingCount++;
-    newHTML += buildTweetHTML(tweet, mins + 'm ago', true, isBreak, a * 120);
-    added++;
-    _xfeedTotalLoaded++;
-  }
-
-  if (newHTML) {
-    // Shift animation on existing tweets
+  if (newItems.length > 0) {
+    var newHTML = '';
+    for (var k = 0; k < newItems.length; k++) { newHTML += _dsBuildCard(newItems[k], true); _ds.totalLoaded++; }
     var existing = feed.children;
-    for (var j = 0; j < Math.min(existing.length, 5); j++) {
-      existing[j].classList.add('xtweet-shift');
-    }
+    for (var m = 0; m < Math.min(existing.length, 5); m++) existing[m].classList.add('xtweet-shift');
     feed.insertAdjacentHTML('afterbegin', newHTML);
     setTimeout(function() {
       feed.querySelectorAll('.xtweet-shift').forEach(function(el){ el.classList.remove('xtweet-shift'); });
@@ -3791,165 +3791,156 @@ function renderXFeed() {
     }, 600);
   }
 
-  // Trim if over 50
   while (feed.children.length > 50) feed.removeChild(feed.lastChild);
-
-  // Auto-scroll only if near top
   if (feed.scrollTop < 60) feed.scrollTop = 0;
-
-  updateXFeedStatus();
+  _dsUpdateStatus();
 }
 
-// ── Hybrid picker: interleaves live (1 in 3) with curated ──
-var _liveQueue = [];
-var _pickCount = 0;
-var _pickedFPs = {};
-
-function _pickNextTweet() {
-  _pickCount++;
-  // Every 3rd pick → try live article
-  if (_pickCount % 3 === 0 && _liveQueue.length > 0) {
-    var live = _liveQueue.shift();
-    if (live && !_pickedFPs[live._fp]) {
-      _pickedFPs[live._fp] = true;
-      return live;
-    }
-  }
-  // Otherwise → curated tweet (cycled)
-  var tweet = XFEED_TWEETS[_xfeedIndex % XFEED_TWEETS.length];
-  _xfeedIndex++;
-  return tweet;
+/* ── Error Handler ── */
+function handleError() {
+  var src = _dsGetSource();
+  var feed = document.getElementById('xfeed');
+  if (!feed || _ds.totalLoaded > 0) return;
+  feed.classList.remove('ds-switching');
+  feed.classList.add('ds-loaded');
+  var old = document.getElementById('dsMethodBadge');
+  if (old) old.remove();
+  var isNitterSrc = src.method === 'nitter';
+  feed.innerHTML = '<div style="padding:40px 24px;text-align:center">' +
+    '<div style="width:48px;height:48px;border-radius:14px;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.1);display:inline-flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:14px">⚠</div>' +
+    '<div style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:var(--text2);margin-bottom:6px;font-weight:600">Live feed unavailable</div>' +
+    '<div style="font-family:\'JetBrains Mono\',monospace;font-size:10px;color:var(--muted);line-height:1.6;max-width:340px;margin:0 auto">' +
+      (isNitterSrc
+        ? 'All Nitter instances + RSS fallback failed for <b style="color:var(--text2)">@' + src.handle + '</b>.'
+        : 'All RSS sources failed for <b style="color:var(--text2)">' + src.name + '</b>.') +
+      '<br>Auto-retry in 20-30s.</div>' +
+    (isNitterSrc
+      ? '<a href="https://x.com/' + src.handle + '" target="_blank" onclick="event.stopPropagation()" style="display:inline-flex;align-items:center;gap:5px;font-family:\'JetBrains Mono\',monospace;font-size:10px;color:#60a5fa;text-decoration:none;padding:8px 16px;border-radius:8px;background:rgba(96,165,250,.06);border:1px solid rgba(96,165,250,.1);margin-top:14px;transition:all .15s;cursor:pointer">Open @' + src.handle + ' on X ↗</a>'
+      : '') +
+    '</div>';
 }
 
-function updateXFeedStatus() {
-  var liveCount = Object.keys(_pickedFPs).length;
-  var stEl = document.getElementById('xfeedStatusText');
-  if (stEl) stEl.textContent = _xfeedTotalLoaded + ' tweets ingested · ' + liveCount + ' live · ' + _xfeedBreakingCount + ' breaking · Next refresh 15s';
-  var tEl = document.getElementById('xfeedTime');
-  if (tEl) tEl.textContent = new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});
-  var tcEl = document.getElementById('xfeedTotalCount');
-  if (tcEl) tcEl.textContent = _xfeedTotalLoaded + ' tweets';
-  var bcEl = document.getElementById('xfeedBreakingCount');
-  if (bcEl) bcEl.innerHTML = '🔴 ' + _xfeedBreakingCount + ' BREAKING';
+/* ── Source Switching ── */
+function switchSource(idx) {
+  if (idx === _ds.activeIdx) { closeSourceMenu(); return; }
+  _ds.activeIdx = idx;
+  _ds.seenIds = {};
+  _ds.totalLoaded = 0;
+  _ds.breakingCount = 0;
+  _ds.errorCount = 0;
+  _ds.fetching = false;
+  _ds.sourceMethod = '';
+  var oldBadge = document.getElementById('dsMethodBadge');
+  if (oldBadge) oldBadge.remove();
+
+  var src = _dsGetSource();
+  var feed = document.getElementById('xfeed');
+
+  if (feed) { feed.classList.remove('ds-loaded'); feed.classList.add('ds-switching'); }
+
+  // Update all header/sidebar elements
+  var el = function(id) { return document.getElementById(id); };
+  var hi = el('dsHeaderIcon');
+  if (hi) { hi.style.background = 'linear-gradient(135deg,' + src.color + ',' + src.colorEnd + ')'; hi.textContent = src.icon; hi.style.fontSize = src.icon.length > 2 ? '10px' : src.icon.length > 1 ? '12px' : '14px'; }
+  var hn = el('dsHeaderName'); if (hn) hn.textContent = src.name;
+  var hs = el('dsHeaderSub'); if (hs) hs.textContent = '@' + src.handle + ' · ' + src.desc.split('.')[0] + ' · Real-time Feed';
+  var fl = el('dsFollowLink'); if (fl) fl.href = 'https://x.com/' + src.handle;
+  var st = el('dsSectionTitle'); if (st) st.textContent = src.name + ' — Live Intel';
+  var si = el('dsSideIcon');
+  if (si) { si.style.background = 'linear-gradient(135deg,' + src.color + ',' + src.colorEnd + ')'; si.textContent = src.icon; si.style.fontSize = src.icon.length > 2 ? '14px' : src.icon.length > 1 ? '16px' : '20px'; }
+  var sn = el('dsSideName'); if (sn) sn.innerHTML = src.name + ' <span class="news-author-verified" style="width:14px;height:14px;font-size:8px">✓</span>';
+  var sh = el('dsSideHandle'); if (sh) sh.textContent = '@' + src.handle;
+  var sd = el('dsSideDesc'); if (sd) sd.textContent = src.desc;
+  var bi = el('dsBtnIcon');
+  if (bi) { bi.style.background = 'linear-gradient(135deg,' + src.color + ',' + src.colorEnd + ')'; bi.textContent = src.icon; bi.style.fontSize = src.icon.length > 2 ? '8px' : src.icon.length > 1 ? '9px' : '10px'; }
+  var bn = el('dsBtnName'); if (bn) bn.textContent = src.name;
+  var bh = el('dsBtnHandle'); if (bh) bh.textContent = '@' + src.handle;
+
+  _dsRenderSourceMenu();
+  _dsRenderSidebarSources();
+  closeSourceMenu();
+
+  // Loading state then fetch
+  setTimeout(function() {
+    if (feed) feed.innerHTML = '<div style="padding:40px 30px;text-align:center;color:var(--muted);font-family:\'JetBrains Mono\',monospace;font-size:11px;"><div class="xfeed-live-pulse" style="display:inline-block;margin-right:8px;vertical-align:middle"></div>Switching to ' + src.name + '…</div>';
+    _dsFetchFeed();
+  }, 250);
+
+  _dsStartRefresh();
+  _dsUpdateStatus();
 }
 
-setTimeout(renderXFeed, 600);
-setInterval(renderXFeed, 15000);
+/* ── Source Menu ── */
+function toggleSourceMenu() {
+  _ds.menuOpen = !_ds.menuOpen;
+  var btn = document.getElementById('dsSourceBtn');
+  var menu = document.getElementById('dsSourceMenu');
+  if (btn) btn.classList.toggle('open', _ds.menuOpen);
+  if (menu) menu.classList.toggle('open', _ds.menuOpen);
+}
+function closeSourceMenu() {
+  _ds.menuOpen = false;
+  var btn = document.getElementById('dsSourceBtn');
+  var menu = document.getElementById('dsSourceMenu');
+  if (btn) btn.classList.remove('open');
+  if (menu) menu.classList.remove('open');
+}
+document.addEventListener('click', function(e) {
+  var wrap = document.getElementById('dsSourceWrap');
+  if (wrap && !wrap.contains(e.target)) closeSourceMenu();
+});
 
-/* ══════════════════════════════════════════════════════
-   LIVE NEWS ENGINE v3 — Hybrid Intelligence Feed
-   ─ 7 RSS sources fetched in parallel
-   ─ Articles queued, interleaved 1:3 with curated tweets
-   ─ NO full re-render — new items animate in naturally
-   ─ Click opens REAL article URL
-   ─ Fallback: curated feed continues if all sources fail
-══════════════════════════════════════════════════════ */
-(function liveNewsEngine(){
-  var RSS_FEEDS = [
-    { url:'https://news.google.com/rss/search?q=iran+war+oil+missile+middle+east&hl=en-US&gl=US&ceid=US:en', name:'Google News', avatar:'🔍', handle:'GoogleNews' },
-    { url:'https://feeds.bbci.co.uk/news/world/middle_east/rss.xml', name:'BBC World', avatar:'📺', handle:'BBCWorld' },
-    { url:'https://www.aljazeera.com/xml/rss/all.xml', name:'Al Jazeera', avatar:'🌐', handle:'AJEnglish' },
-    { url:'https://rss.nytimes.com/services/xml/rss/nyt/MiddleEast.xml', name:'NY Times', avatar:'📰', handle:'nytimes' },
-    { url:'https://news.google.com/rss/search?q=oil+price+crude+energy+market&hl=en-US&gl=US&ceid=US:en', name:'Energy News', avatar:'🛢️', handle:'EnergyNews' },
-    { url:'https://news.google.com/rss/search?q=bitcoin+crypto+market&hl=en-US&gl=US&ceid=US:en', name:'Crypto Intel', avatar:'₿', handle:'CryptoIntel' },
-    { url:'https://news.google.com/rss/search?q=defense+military+pentagon+NATO&hl=en-US&gl=US&ceid=US:en', name:'Defense Intel', avatar:'🎯', handle:'DefenseIntel' },
-  ];
-  var R2J = 'https://api.rss2json.com/v1/api.json?count=6&rss_url=';
-  var _seen = {};
-
-  var KW = {
-    oil:['oil','crude','brent','opec','hormuz','tanker','energy','gasoline','petroleum','gas','fuel','barrel','refinery'],
-    crypto:['bitcoin','btc','crypto','ethereum','eth','blockchain','digital currency','token','defi','stablecoin'],
-    defense:['military','missile','defense','pentagon','nato','airstrike','drone','weapon','iran','israel','houthi','hezbollah','idf','irgc','navy','army','war','combat','strike']
-  };
-
-  function detectM(text) {
-    var t = text.toLowerCase(), m = [];
-    Object.keys(KW).forEach(function(c){ if (KW[c].some(function(k){ return t.includes(k); })) m.push(c); });
-    return m.length ? m : ['oil'];
+function _dsRenderSourceMenu() {
+  var menu = document.getElementById('dsSourceMenu');
+  if (!menu) return;
+  var html = '';
+  for (var i = 0; i < DS_SOURCES.length; i++) {
+    var s = DS_SOURCES[i];
+    var active = i === _ds.activeIdx;
+    html += '<div class="ds-source-opt' + (active ? ' active' : '') + '" onclick="switchSource(' + i + ')">' +
+      '<div class="ds-opt-icon" style="background:linear-gradient(135deg,' + s.color + ',' + s.colorEnd + ');font-size:' + (s.icon.length > 2 ? '8px' : s.icon.length > 1 ? '9px' : '12px') + '">' + s.icon + '</div>' +
+      '<div class="ds-opt-info"><div class="ds-opt-name">' + s.name + '</div><div class="ds-opt-handle">@' + s.handle + '</div></div>' +
+      '<div class="ds-opt-check">' + (active ? '✓' : '') + '</div>' +
+    '</div>';
   }
+  menu.innerHTML = html;
+}
 
-  function detectS(text) {
-    var t = text.toLowerCase();
-    var p = (t.match(/surge|rally|gain|rise|soar|record|bull|peace|ceasefire|deal/gi)||[]).length;
-    var n = (t.match(/crash|fall|drop|plunge|loss|crisis|war|attack|strike|kill|bomb|missile|destroy|collapse/gi)||[]).length;
-    return p > n ? 'pos' : n > 0 ? 'neg' : 'neu';
+function _dsRenderSidebarSources() {
+  var container = document.getElementById('dsSidebarSources');
+  if (!container) return;
+  var html = '';
+  for (var i = 0; i < DS_SOURCES.length; i++) {
+    var s = DS_SOURCES[i];
+    var active = i === _ds.activeIdx;
+    html += '<div style="display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;' +
+      (active ? 'background:' + s.color + '08;border:1px solid ' + s.color + '15' : 'background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04)') +
+      ';cursor:pointer;transition:all .15s" onclick="switchSource(' + i + ')">' +
+      '<div style="width:6px;height:6px;border-radius:50%;background:' + (active ? '#22c55e' : 'var(--muted)') +
+      (active ? ';box-shadow:0 0 6px rgba(34,197,94,.4)' : '') + '"></div>' +
+      '<span style="font-family:\'JetBrains Mono\',monospace;font-size:9px;color:' + (active ? 'var(--text2)' : 'var(--muted)') + ';font-weight:' + (active ? '600' : '400') + '">' + s.name + '</span>' +
+      '<span style="font-family:\'JetBrains Mono\',monospace;font-size:8px;color:var(--muted);margin-left:auto">' + (active ? 'ACTIVE' : s.tag) + '</span>' +
+    '</div>';
   }
+  container.innerHTML = html;
+}
 
-  function htmlDecode(s) {
-    return (s||'').replace(/<[^>]*>/g,'').replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&#39;/g,"'").replace(/&quot;/g,'"').trim();
+/* ── Auto Refresh (20-30s) ── */
+function _dsStartRefresh() {
+  if (_ds.refreshTimer) clearTimeout(_ds.refreshTimer);
+  function tick() {
+    var delay = 20000 + Math.floor(Math.random() * 10000);
+    _ds.refreshTimer = setTimeout(function() { _dsFetchFeed(); tick(); }, delay);
   }
+  tick();
+}
 
-  function mapArticle(item, feed) {
-    var title = htmlDecode(item.title);
-    if (!title || title.length < 20) return null;
-    var fp = title.toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,40);
-    if (_seen[fp]) return null;
-    _seen[fp] = true;
+/* ── Initialize ── */
+_dsRenderSourceMenu();
+_dsRenderSidebarSources();
+setTimeout(_dsFetchFeed, 600);
+_dsStartRefresh();
 
-    var source = item.author || feed.name;
-    var fullText = title + ' ' + (item.description || '');
-    var markets = detectM(fullText);
-    var sentiment = detectS(fullText);
-    var desc = htmlDecode(item.description).slice(0,120);
-    var tags = markets.map(function(m){ return '<span class="xtag">#'+m.charAt(0).toUpperCase()+m.slice(1)+'</span>'; }).join(' ');
-
-    return {
-      id: 'live_'+Date.now()+'_'+Math.random().toString(36).slice(2,6),
-      user: feed.handle,
-      name: source.slice(0,28),
-      avatar: feed.avatar,
-      verified: true,
-      sentiment: sentiment,
-      markets: markets,
-      text: title+(desc&&desc!==title?'<br><span style="color:var(--muted);font-size:11px">'+desc+'</span>':'')+' '+tags,
-      likes: (Math.floor(Math.random()*20)+2)+'.'+Math.floor(Math.random()*9)+'K',
-      rts: (Math.floor(Math.random()*10)+1)+'.'+Math.floor(Math.random()*9)+'K',
-      views: (Math.floor(Math.random()*800)+200)+'K',
-      media: item.thumbnail ? '📸 Image' : null,
-      url: item.link||item.guid||null,
-      _time: item.pubDate||new Date().toISOString(),
-      _isLive: true,
-      _fp: fp
-    };
-  }
-
-  async function fetchFeed(feed) {
-    try {
-      var r = await fetchTimeout(R2J+encodeURIComponent(feed.url), 6000);
-      if (!r.ok) return [];
-      var d = await r.json();
-      if (d.status!=='ok'||!d.items) return [];
-      var out = [];
-      d.items.forEach(function(i){ var a=mapArticle(i,feed); if(a) out.push(a); });
-      return out;
-    } catch(e) { return []; }
-  }
-
-  async function fetchAllNews() {
-    var all = [];
-    var results = await Promise.allSettled(RSS_FEEDS.map(function(f){ return fetchFeed(f); }));
-    results.forEach(function(r){ if(r.status==='fulfilled') all=all.concat(r.value); });
-
-    if (all.length === 0) { console.log('[Feed] RSS unavailable — curated active'); return; }
-
-    // Sort newest first, push to live queue
-    all.sort(function(a,b){ return new Date(b._time)-new Date(a._time); });
-    var added = 0;
-    all.forEach(function(article){
-      if (!_pickedFPs[article._fp]) {
-        _liveQueue.push(article);
-        added++;
-      }
-    });
-
-    if (added > 0) console.log('[Feed] +'+added+' live articles queued ('+_liveQueue.length+' pending)');
-  }
-
-  // Fetch immediately + every 45s
-  fetchAllNews();
-  setInterval(fetchAllNews, 45000);
-})();
 function toggleCollapse(id) {
   var wrap = document.getElementById(id);
   if (!wrap) return;
@@ -6665,13 +6656,8 @@ async function buildOneMiniChart(cfg) {
   if (s0 && s0.history && s0.history.length > 1) {
     initPrices = s0.history.slice(-60);
   } else {
-    // Anchor to realPrices if available (same source as every other price display)
-    var _rpInit = realPrices[cfg.sym];
-    var base = (_rpInit ? _rpInit.price : null) || (s0 ? s0.currentPrice : cfg.base);
-    // Backwards random walk so the last (most recent) point = base exactly
-    var _volMap = {'BRN=F':0.0012,'^GSPC':0.0004,'GC=F':0.0008,'BTC-USD':0.0025,'ETH-USD':0.003,'BNB-USD':0.0022};
-    var _v = _volMap[cfg.sym] || 0.001;
-    (function(){ var pts=[]; var px=base; for(var i=0;i<60;i++){ pts.unshift(px); px=px/(1+(Math.random()-0.5)*_v*2); } initPrices=pts; })();
+    var base = s0 ? s0.currentPrice : cfg.base;
+    initPrices = Array.from({length:60}, function(_, i){ return base * (1 + (Math.random()-0.48) * 0.002 * (i+1)); });
   }
   initLabels = initPrices.map(function(_, i){
     var d = new Date(); d.setMinutes(d.getMinutes() - (initPrices.length - i) * 5);
@@ -6749,13 +6735,10 @@ var _miniTickInterval = setInterval(function(){
     if (!d || !chart) return;
     var s = STOCKS_DB.find(function(x){ return x.sym === cfg.sym; });
     if (!s) return;
-    // Push new tick — always read from the central realPrices source so chart
-    // stays in sync with every other price element on the page.
+    // Push new tick
     var now = new Date();
     d.labels.push(now.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'}));
-    var _rp = realPrices[cfg.sym];
-    var _px = (_rp ? _rp.price : null) || s.currentPrice;
-    d.prices.push(_px);
+    d.prices.push(s.currentPrice);
     // Keep max 80 points
     if (d.prices.length > 80) { d.prices.shift(); d.labels.shift(); }
     // Update chart data
@@ -6780,12 +6763,9 @@ var _miniTickInterval = setInterval(function(){
     var pEl = document.getElementById(cfg.canvasId.replace('liveChart','chart') + 'Price');
     var cEl = document.getElementById(cfg.canvasId.replace('liveChart','chart') + 'Chg');
     var subEl = document.getElementById(cfg.canvasId.replace('liveChart','chart') + 'Sub');
-    // Use realPrices as single source of truth for displayed price
-    var _dispRp = realPrices[cfg.sym];
-    var _dispPx = (_dispRp ? _dispRp.price : null) || s.currentPrice;
-    if (pEl) { pEl.textContent = fmtPriceRaw(_dispPx, cfg.sym); pEl.style.color = goesUp ? 'var(--green)' : 'var(--red)'; }
+    if (pEl) { pEl.textContent = fmtPriceRaw(s.currentPrice, cfg.sym); pEl.style.color = goesUp ? 'var(--green)' : 'var(--red)'; }
     if (cEl) {
-      var chgPct = s.base ? ((_dispPx - s.base) / s.base * 100) : (_dispRp ? _dispRp.changePct : 0);
+      var chgPct = ((s.currentPrice - s.base) / s.base * 100);
       cEl.textContent = (chgPct >= 0 ? '▲ +' : '▼ ') + chgPct.toFixed(2) + '% since war';
       cEl.style.color = goesUp ? 'var(--green)' : 'var(--red)';
     }
@@ -7722,7 +7702,7 @@ Chart.defaults.animation = {duration:1800,easing:'easeOutQuart'};
   new Chart(ctx,{type:'bar',data:{labels:['S&P 500','Nasdaq','Gold','Oil','Defense','Tel Aviv'],datasets:[{label:'Pre-War (Jan–Feb)',data:[3.8,5.2,1.5,-1.2,6.2,2.8],backgroundColor:'rgba(161,161,170,.3)',borderColor:'#a1a1aa',borderWidth:1,borderRadius:4},{label:'Post-War (Mar 1–15)',data:[-4.6,-4.7,-4.1,46.0,13.9,-15.8],backgroundColor:'rgba(239,68,68,.4)',borderColor:'#ef4444',borderWidth:1,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:true,position:'bottom',labels:{font:{size:9},usePointStyle:true,padding:10}},tooltip:{backgroundColor:'var(--tooltip-bg)',borderColor:'rgba(255,255,255,.1)',borderWidth:1,padding:10,callbacks:{label:c=>` ${c.dataset.label}: ${c.parsed.y>0?'+':''}${c.parsed.y}%`}}},scales:{x:{grid:{display:false},ticks:{font:{size:9}}},y:{grid:{color:'rgba(255,255,255,.03)'},ticks:{callback:v=>v+'%',font:{size:9}}}}}});
 })();
 
-// ══ SUPPLY DISRUPTION — IMMERSIVE 3D CHART v2 ══
+// ══ SUPPLY DISRUPTION — IMMERSIVE 3D + REAL-TIME INTEL ENGINE v3 ══
 (function initSupply3D(){
   if (typeof THREE === 'undefined') { setTimeout(initSupply3D, 300); return; }
   var hero = document.getElementById('supplyHero');
@@ -7730,8 +7710,6 @@ Chart.defaults.animation = {duration:1800,easing:'easeOutQuart'};
   var tooltip = document.getElementById('supply3DTooltip');
   if (!container || !hero) return;
 
-<<<<<<< Updated upstream
-=======
   /* ════════════════════════════════════════════════
      DATA LAYER — Real EIA API + cache
   ════════════════════════════════════════════════ */
@@ -7873,47 +7851,43 @@ Chart.defaults.animation = {duration:1800,easing:'easeOutQuart'};
   var _fetching = false;
   async function updateIntelDashboard() {
     if (_fetching) return;
-    _fetching = true;
-
-    // Always recalc from realPrices (same source as chart) regardless of EIA status
-    recalcFromCache();
-
-    // EIA fetch is secondary — only used for daily sparkline history, not live price
     var now = Date.now();
-    if (!_cache.ts || now - _cache.ts >= CACHE_TTL) {
-      try {
-        var brentData = await fetchBrent();
-        var wtiData = await fetchWTI();
-        _cache.brent = brentData;
-        _cache.wti = wtiData;
-        _cache.ts = Date.now();
-
-        var el = document.getElementById('supplyApiStatus');
-        if (el) { el.textContent = 'LIVE'; el.style.color = 'var(--green)'; el.style.borderColor = 'rgba(34,197,94,.15)'; }
-      } catch (err) {
-        console.warn('[Supply Intel] EIA fallback error (non-critical):', err.message);
-        var el2 = document.getElementById('supplyApiStatus');
-        if (el2) { el2.textContent = 'LIVE'; el2.style.color = 'var(--green)'; el2.style.borderColor = 'rgba(34,197,94,.15)'; }
-      }
+    if (_cache.ts && now - _cache.ts < CACHE_TTL) {
+      // Use cached data, just recalc news
+      recalcFromCache();
+      return;
     }
-    _fetching = false;
+    _fetching = true;
+    try {
+      var brentData = await fetchBrent();
+      var wtiData = await fetchWTI();
+      _cache.brent = brentData;
+      _cache.wti = wtiData;
+      _cache.ts = Date.now();
+
+      var el = document.getElementById('supplyApiStatus');
+      if (el) { el.textContent = 'EIA LIVE'; el.style.color = 'var(--green)'; el.style.borderColor = 'rgba(34,197,94,.15)'; }
+
+      recalcFromCache();
+    } catch (err) {
+      console.warn('[Supply Intel] API error:', err.message);
+      var el2 = document.getElementById('supplyApiStatus');
+      if (el2) { el2.textContent = 'API ERROR'; el2.style.color = 'var(--red)'; el2.style.borderColor = 'rgba(239,68,68,.15)'; }
+    } finally {
+      _fetching = false;
+    }
   }
 
   function recalcFromCache() {
-    // ── SINGLE SOURCE: read Brent & WTI from realPrices (same source as chart) ──
-    var rpBrent = realPrices['BRN=F'];
-    var rpWti   = realPrices['CL=F'];
-    var dbBrent = STOCKS_DB.find(function(x){ return x.sym === 'BRN=F'; });
-    var dbWti   = STOCKS_DB.find(function(x){ return x.sym === 'CL=F'; });
+    if (!_cache.brent || !_cache.wti) return;
 
-    var brent     = rpBrent ? rpBrent.price     : (dbBrent ? dbBrent.currentPrice : 103);
-    var brentPrev = rpBrent ? rpBrent.prevClose  : (dbBrent ? dbBrent.base : 71);
-    var wti       = rpWti   ? rpWti.price        : (dbWti   ? dbWti.currentPrice : 98);
-    var wtiPrev   = rpWti   ? rpWti.prevClose    : (dbWti   ? dbWti.base : 67);
-
+    var brent = parseFloat(_cache.brent[0].value);
+    var brentPrev = parseFloat(_cache.brent[1].value);
+    var wti = parseFloat(_cache.wti[0].value);
+    var wtiPrev = parseFloat(_cache.wti[1].value);
     var spread = brent - wti;
-    var brentChg = brentPrev ? ((brent - brentPrev) / brentPrev) * 100 : 0;
-    var wtiChg   = wtiPrev   ? ((wti - wtiPrev) / wtiPrev) * 100 : 0;
+    var brentChg = ((brent - brentPrev) / brentPrev) * 100;
+    var wtiChg = ((wti - wtiPrev) / wtiPrev) * 100;
     var newsScore = getNewsScore();
     var idx = calculateDisruptionIndex(brent, wti, spread, newsScore);
     var metrics = deriveMetrics(idx, newsScore);
@@ -7926,16 +7900,9 @@ Chart.defaults.animation = {duration:1800,easing:'easeOutQuart'};
     _target.tankerAttacks = metrics.tankerAttacks; _target.trafficFlow = metrics.trafficFlow;
     _target.insurance = metrics.insurance;
 
-    // Build sparkline history: prefer chart data, fall back to EIA daily
-    var chartData = _miniData['liveChart1'];
-    if (chartData && chartData.prices && chartData.prices.length > 5) {
-      _brentHistory = chartData.prices.slice(-30);
-    } else if (_cache.brent) {
-      _brentHistory = _cache.brent.slice(0, 30).map(function(e){ return parseFloat(e.value); }).reverse();
-    }
-    if (_cache.wti) {
-      _wtiHistory = _cache.wti.slice(0, 30).map(function(e){ return parseFloat(e.value); }).reverse();
-    }
+    // Build sparkline history (last 30 points)
+    _brentHistory = _cache.brent.slice(0, 30).map(function(e){ return parseFloat(e.value); }).reverse();
+    _wtiHistory = _cache.wti.slice(0, 30).map(function(e){ return parseFloat(e.value); }).reverse();
     _spreadHistory = [];
     var minLen = Math.min(_brentHistory.length, _wtiHistory.length);
     for (var i = 0; i < minLen; i++) _spreadHistory.push(_brentHistory[i] - _wtiHistory[i]);
@@ -7980,7 +7947,7 @@ Chart.defaults.animation = {duration:1800,easing:'easeOutQuart'};
     if (cdEl && window.marketState) cdEl.textContent = window.marketState.conflictDay;
 
     var upEl = document.getElementById('supplyLastUpdate');
-    if (upEl) upEl.textContent = 'Live · Updated ' + new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'Asia/Kolkata' }) + ' IST';
+    if (upEl) upEl.textContent = 'EIA ' + _cache.brent[0].period + ' · Updated ' + new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'Asia/Kolkata' }) + ' IST';
 
     // Sparklines
     drawSparkline('sparkBrent', _brentHistory, 'rgb(245,158,11)');
@@ -8019,12 +7986,11 @@ Chart.defaults.animation = {duration:1800,easing:'easeOutQuart'};
   /* ════════════════════════════════════════════════
      3D VISUALIZATION — driven by real data
   ════════════════════════════════════════════════ */
->>>>>>> Stashed changes
   var W = hero.clientWidth, H = hero.clientHeight;
   var scene = new THREE.Scene();
-  var camera = new THREE.PerspectiveCamera(38, W/H, 0.1, 200);
-  camera.position.set(10, 11, 22);
-  camera.lookAt(0, 2, 0);
+  var camera = new THREE.PerspectiveCamera(30, W/H, 0.1, 200);
+  camera.position.set(14, 9, 16);
+  camera.lookAt(0, 1.5, 0);
 
   var renderer = new THREE.WebGLRenderer({ alpha:true, antialias:true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -8034,7 +8000,6 @@ Chart.defaults.animation = {duration:1800,easing:'easeOutQuart'};
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   container.insertBefore(renderer.domElement, tooltip);
 
-  // Cinematic lights
   scene.add(new THREE.AmbientLight(0xffffff, 0.3));
   var key = new THREE.DirectionalLight(0xffffff, 0.85);
   key.position.set(10, 14, 8); key.castShadow = true;
@@ -8043,54 +8008,45 @@ Chart.defaults.animation = {duration:1800,easing:'easeOutQuart'};
   key.shadow.camera.left=-18; key.shadow.camera.right=18;
   key.shadow.camera.top=18; key.shadow.camera.bottom=-18;
   scene.add(key);
-  scene.add(new THREE.DirectionalLight(0x666688, 0.3).position.set(-8, 4, -10) && new THREE.DirectionalLight(0x666688, 0.3));
-  var fillLight = new THREE.DirectionalLight(0x888888, 0.25);
-  fillLight.position.set(-6, 3, -8); scene.add(fillLight);
+  var fill1 = new THREE.DirectionalLight(0x666688, 0.3); fill1.position.set(-8, 4, -10); scene.add(fill1);
+  var fill2 = new THREE.DirectionalLight(0x888888, 0.25); fill2.position.set(-6, 3, -8); scene.add(fill2);
 
-  // Data — 10 regions
+  // Region data — heights will be modulated by disruption index
   var data = [
-    { label:'Hormuz', sub:'Iran Strait · Chokepoint', value:20, pct:'43%', status:'BLOCKED', risk:9.8, detail:'Strait of Hormuz — 20M bbl/day. World\'s most critical chokepoint. 100% blocked since Day 1. 35% of seaborne oil.', color:0xef4444 },
-    { label:'Saudi', sub:'Aramco · Ghawar + Safaniyah', value:12, pct:'26%', status:'AT RISK', risk:8.2, detail:'Saudi Arabia — 12M bbl/day. Houthi drone range covers eastern oil fields. Abqaiq processing plant on high alert.', color:0xd4d4d8 },
-    { label:'Iraq', sub:'Basra + Kirkuk Pipeline', value:4.5, pct:'10%', status:'MILITIA OPS', risk:7.1, detail:'Iraq — 4.5M bbl/day. Basra terminal targeted by Iran-backed PMF. Kirkuk-Ceyhan pipeline sabotage attempts.', color:0xa1a1aa },
-    { label:'UAE', sub:'Abu Dhabi · Fujairah', value:3.5, pct:'8%', status:'EXPOSED', risk:6.5, detail:'UAE — 3.5M bbl/day. Fujairah storage hit Day 5. Ruwais refinery on DEFCON 2. ADNOC reduced output 8%.', color:0x71717a },
-    { label:'Kuwait', sub:'KOC · Burgan Field', value:2.8, pct:'6%', status:'IMPACTED', risk:5.8, detail:'Kuwait — 2.8M bbl/day. Burgan field operations reduced 15%. Mina al-Ahmadi exports delayed.', color:0x52525b },
-    { label:'Qatar', sub:'North Field LNG', value:1.8, pct:'4%', status:'REROUTING', risk:4.2, detail:'Qatar — 1.8M bbl/day equiv LNG. North Field unaffected but LNG carriers rerouting. Spot prices +60%.', color:0x3f3f46 },
-    { label:'Oman', sub:'Emergency Pipeline', value:1.0, pct:'2%', status:'BYPASS', risk:3.0, detail:'Oman — 1M bbl/day. Emergency pipeline to Arabian Sea active. Bypassing Hormuz chokepoint.', color:0x27272a },
-    { label:'Bahrain', sub:'BAPCO Refinery', value:0.5, pct:'1%', status:'DAMAGED', risk:7.5, detail:'Bahrain — 0.5M bbl/day. BAPCO refinery hit by Iranian missiles Day 1. US 5th Fleet HQ nearby.', color:0x3f3f46 },
-    { label:'Yemen', sub:'Houthi Zone', value:0.15, pct:'<1%', status:'WAR ZONE', risk:9.0, detail:'Yemen — 150K bbl/day. Houthi-controlled areas launching anti-ship missiles into Red Sea. Bab el-Mandeb disrupted.', color:0xef4444 },
-    { label:'Libya', sub:'NOC Production', value:1.2, pct:'3%', status:'STABLE', risk:2.1, detail:'Libya — 1.2M bbl/day. Not directly involved but OPEC+ coordination stalled. Eastern fields stable.', color:0x18181b }
+    { label:'Hormuz', sub:'Iran Strait · Chokepoint', value:20, pct:'43%', status:'BLOCKED', risk:9.8, detail:'Strait of Hormuz — 20M bbl/day. World\'s most critical chokepoint. 35% of seaborne oil.', color:0xef4444 },
+    { label:'Saudi', sub:'Aramco · Ghawar + Safaniyah', value:12, pct:'26%', status:'AT RISK', risk:8.2, detail:'Saudi Arabia — 12M bbl/day. Houthi drone range covers eastern oil fields.', color:0xd4d4d8 },
+    { label:'Iraq', sub:'Basra + Kirkuk Pipeline', value:4.5, pct:'10%', status:'MILITIA OPS', risk:7.1, detail:'Iraq — 4.5M bbl/day. Basra terminal targeted by Iran-backed PMF.', color:0xa1a1aa },
+    { label:'UAE', sub:'Abu Dhabi · Fujairah', value:3.5, pct:'8%', status:'EXPOSED', risk:6.5, detail:'UAE — 3.5M bbl/day. Fujairah storage hit. ADNOC reduced output 8%.', color:0x71717a },
+    { label:'Kuwait', sub:'KOC · Burgan Field', value:2.8, pct:'6%', status:'IMPACTED', risk:5.8, detail:'Kuwait — 2.8M bbl/day. Burgan field operations reduced 15%.', color:0x52525b },
+    { label:'Qatar', sub:'North Field LNG', value:1.8, pct:'4%', status:'REROUTING', risk:4.2, detail:'Qatar — 1.8M bbl/day equiv LNG. Carriers rerouting. Spot prices +60%.', color:0x3f3f46 },
+    { label:'Oman', sub:'Emergency Pipeline', value:1.0, pct:'2%', status:'BYPASS', risk:3.0, detail:'Oman — 1M bbl/day. Emergency pipeline to Arabian Sea bypassing Hormuz.', color:0x27272a },
+    { label:'Bahrain', sub:'BAPCO Refinery', value:0.5, pct:'1%', status:'DAMAGED', risk:7.5, detail:'Bahrain — 0.5M bbl/day. BAPCO refinery hit by missiles Day 1.', color:0x3f3f46 },
+    { label:'Yemen', sub:'Houthi Zone', value:0.15, pct:'<1%', status:'WAR ZONE', risk:9.0, detail:'Yemen — 150K bbl/day. Anti-ship missiles into Red Sea. Bab el-Mandeb disrupted.', color:0xef4444 },
+    { label:'Libya', sub:'NOC Production', value:1.2, pct:'3%', status:'STABLE', risk:2.1, detail:'Libya — 1.2M bbl/day. Not directly involved. Eastern fields stable.', color:0x18181b }
   ];
 
   var maxVal = 20;
   var bars=[], barGroup = new THREE.Group();
-  var spacing = 2.7, startX = -(data.length-1)*spacing/2;
+  var spacing = 2.1, startX = -(data.length-1)*spacing/2;
 
-<<<<<<< Updated upstream
-  // Ground + grid
   var groundGeo = new THREE.PlaneGeometry(28, 18);
-=======
-  var groundGeo = new THREE.PlaneGeometry(36, 22);
->>>>>>> Stashed changes
   var groundMat = new THREE.ShadowMaterial({ opacity:0.1 });
   var ground = new THREE.Mesh(groundGeo, groundMat);
   ground.rotation.x=-Math.PI/2; ground.position.y=-0.01; ground.receiveShadow=true;
   scene.add(ground);
 
   var isDk = (document.documentElement.getAttribute('data-theme')||'dark')==='dark';
-  var gridGeo = new THREE.PlaneGeometry(34, 20, 34, 20);
+  var gridGeo = new THREE.PlaneGeometry(26, 16, 26, 16);
   var gridMat = new THREE.MeshBasicMaterial({ color:isDk?0x222222:0xdddddd, wireframe:true, transparent:true, opacity:0.05 });
   var gridMesh = new THREE.Mesh(gridGeo, gridMat);
   gridMesh.rotation.x=-Math.PI/2; scene.add(gridMesh);
 
-  // Y-axis reference lines
   [5,10,15,20].forEach(function(v){
     var h=(v/maxVal)*6;
     var pts=[new THREE.Vector3(startX-1.2,h,0.8), new THREE.Vector3(startX+(data.length-1)*spacing+1.2,h,0.8)];
-    var lg=new THREE.BufferGeometry().setFromPoints(pts);
-    scene.add(new THREE.Line(lg, new THREE.LineBasicMaterial({color:isDk?0x282828:0xdddddd,transparent:true,opacity:0.12})));
+    scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), new THREE.LineBasicMaterial({color:isDk?0x282828:0xdddddd,transparent:true,opacity:0.12})));
   });
 
-  // Create bars with rings + particles + arcs
   data.forEach(function(d, i){
     var targetH = (d.value/maxVal)*6;
     var geo = new THREE.BoxGeometry(1.3, 0.01, 1.1);
@@ -8098,19 +8054,16 @@ Chart.defaults.animation = {duration:1800,easing:'easeOutQuart'};
     var bar = new THREE.Mesh(geo, mat);
     bar.position.set(startX+i*spacing, 0, 0);
     bar.castShadow=true; bar.receiveShadow=true;
-    bar.userData = { idx:i, targetH:targetH, data:d, mat:mat, hovered:false };
+    bar.userData = { idx:i, targetH:targetH, baseH:targetH, data:d, mat:mat, hovered:false, glowing:false };
     barGroup.add(bar); bars.push(bar);
 
-    // Base ring (pulsing)
     var ringGeo = new THREE.RingGeometry(0.75, 0.82, 32);
     var ringMat = new THREE.MeshBasicMaterial({ color:d.color, transparent:true, opacity:0, side:THREE.DoubleSide });
     var ring = new THREE.Mesh(ringGeo, ringMat);
-    ring.rotation.x=-Math.PI/2;
-    ring.position.set(startX+i*spacing, 0.02, 0);
+    ring.rotation.x=-Math.PI/2; ring.position.set(startX+i*spacing, 0.02, 0);
     ring.userData = { isRing:true, mat:ringMat, barIdx:i };
     barGroup.add(ring);
 
-    // Glow disc
     var glowGeo = new THREE.PlaneGeometry(2.0, 1.8);
     var glowMat = new THREE.MeshBasicMaterial({ color:d.color, transparent:true, opacity:0, side:THREE.DoubleSide });
     var glow = new THREE.Mesh(glowGeo, glowMat);
@@ -8118,42 +8071,58 @@ Chart.defaults.animation = {duration:1800,easing:'easeOutQuart'};
     glow.userData = { isGlow:true, mat:glowMat, barIdx:i };
     barGroup.add(glow);
 
-    // Vertical particle stream
     for(var p=0; p<5; p++){
-      var pGeo = new THREE.SphereGeometry(0.03, 6, 6);
       var pMat = new THREE.MeshBasicMaterial({ color:d.color, transparent:true, opacity:0 });
-      var particle = new THREE.Mesh(pGeo, pMat);
+      var particle = new THREE.Mesh(new THREE.SphereGeometry(0.03, 6, 6), pMat);
       particle.position.set(startX+i*spacing+(Math.random()-0.5)*0.4, targetH*Math.random(), (Math.random()-0.5)*0.4);
       particle.userData = { isParticle:true, speed:0.15+Math.random()*0.4, phase:Math.random()*Math.PI*2, maxY:targetH+1, mat:pMat, barIdx:i };
       barGroup.add(particle);
     }
   });
 
-  // Connecting arcs between adjacent bars
   for(var ai=0; ai<data.length-1; ai++){
     var ax=startX+ai*spacing, bx=startX+(ai+1)*spacing;
     var ah=(data[ai].value/maxVal)*6, bh=(data[ai+1].value/maxVal)*6;
     var arcPts=[];
-    for(var t=0;t<=20;t++){
-      var f=t/20, x=ax+(bx-ax)*f;
+    for(var t2=0;t2<=20;t2++){
+      var f=t2/20, x=ax+(bx-ax)*f;
       var y=Math.max(ah,bh)*0.5 + Math.sin(f*Math.PI)*Math.max(ah,bh)*0.3;
       arcPts.push(new THREE.Vector3(x, y, 0));
     }
-    var arcGeo = new THREE.BufferGeometry().setFromPoints(arcPts);
-    var arcMat = new THREE.LineBasicMaterial({ color:isDk?0x333333:0xcccccc, transparent:true, opacity:0.06 });
-    var arcLine = new THREE.Line(arcGeo, arcMat);
-    arcLine.userData = { isArc:true, mat:arcMat };
+    var arcLine = new THREE.Line(new THREE.BufferGeometry().setFromPoints(arcPts), new THREE.LineBasicMaterial({ color:isDk?0x333333:0xcccccc, transparent:true, opacity:0.06 }));
+    arcLine.userData = { isArc:true, mat:arcLine.material };
     barGroup.add(arcLine);
   }
 
   scene.add(barGroup);
 
-  // State
   var growStart=-1, growDuration=2400;
   var raycaster=new THREE.Raycaster(), mouse=new THREE.Vector2(), hoveredBar=null;
   var mouseP={x:0,y:0,tx:0,ty:0};
 
-  // Mouse parallax + hover
+  // Update 3D bar heights from disruption data via GSAP
+  function updateBarHeights() {
+    var idx = _target.idx || 0;
+    var riskMult = 0.7 + Math.min(idx, 50) / 50 * 0.6; // 0.7 to 1.3 based on disruption
+    bars.forEach(function(bar) {
+      var d = bar.userData.data;
+      var newH = bar.userData.baseH * (d.risk / 10) * riskMult;
+      bar.userData.targetH = newH;
+      // Mark critical bars for glow
+      bar.userData.glowing = (_target.warRisk > 70 && d.risk > 7);
+      // Animate with GSAP if available
+      if (typeof gsap !== 'undefined') {
+        gsap.to(bar.userData, { targetH: newH, duration: 0.8, ease: 'power3.out' });
+      }
+    });
+  }
+
+  // Refresh bar heights whenever data updates
+  var _lastIdx = 0;
+  setInterval(function() {
+    if (_target.idx !== _lastIdx) { _lastIdx = _target.idx; updateBarHeights(); }
+  }, 2000);
+
   hero.addEventListener('mousemove', function(e){
     var rect=hero.getBoundingClientRect();
     mouseP.tx=((e.clientX-rect.left)/rect.width-0.5)*2;
@@ -8167,6 +8136,7 @@ Chart.defaults.animation = {duration:1800,easing:'easeOutQuart'};
       if(hoveredBar!==bar){ bars.forEach(function(b){b.userData.hovered=false;}); bar.userData.hovered=true; hoveredBar=bar; }
       tooltip.style.display='block';
       var riskColor = d.risk>=8?'var(--red)':d.risk>=5?'var(--amber)':'var(--green)';
+      var brentStr = _target.brent ? '$' + _target.brent.toFixed(2) : '--';
       tooltip.innerHTML=
         '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;padding-bottom:6px;border-bottom:1px solid var(--border)"><span style="font-weight:700;font-size:14px;color:var(--text)">'+d.label+'</span><span style="font-size:8px;padding:2px 6px;border-radius:3px;background:rgba(239,68,68,.08);color:var(--red);font-weight:600;letter-spacing:.5px">'+d.status+'</span></div>'+
         '<div style="font-size:9px;color:var(--muted);margin-bottom:8px">'+d.sub+'</div>'+
@@ -8175,7 +8145,8 @@ Chart.defaults.animation = {duration:1800,easing:'easeOutQuart'};
           '<div><div style="font-size:7px;color:var(--muted);letter-spacing:.8px">SHARE</div><div style="font-size:15px;font-weight:700;color:var(--red)">'+d.pct+'</div><div style="font-size:7px;color:var(--muted)">of total</div></div>'+
           '<div><div style="font-size:7px;color:var(--muted);letter-spacing:.8px">RISK</div><div style="font-size:15px;font-weight:700;color:'+riskColor+'">'+d.risk+'</div><div style="font-size:7px;color:var(--muted)">/10</div></div>'+
         '</div>'+
-        '<div style="font-size:9px;color:var(--text2);line-height:1.5">'+d.detail+'</div>';
+        '<div style="font-size:9px;color:var(--text2);line-height:1.5;margin-bottom:6px">'+d.detail+'</div>'+
+        '<div style="font-size:8px;color:var(--muted);border-top:1px solid var(--border);padding-top:4px">Brent: '+brentStr+' · Disruption: '+(_target.idx||0).toFixed(1)+'</div>';
       tooltip.style.left=Math.min(e.clientX-rect.left+16,W-280)+'px';
       tooltip.style.top=Math.max(e.clientY-rect.top-160,10)+'px';
     } else {
@@ -8186,39 +8157,19 @@ Chart.defaults.animation = {duration:1800,easing:'easeOutQuart'};
   hero.addEventListener('mouseleave',function(){mouseP.tx=0;mouseP.ty=0;bars.forEach(function(b){b.userData.hovered=false;});hoveredBar=null;tooltip.style.display='none';});
   hero.addEventListener('click',function(){if(hoveredBar)openModal('BRN=F');});
 
-  // Scroll parallax
-  var scrollP=0;
   var depth1=hero.querySelector('.supply-depth-1'), depth2=hero.querySelector('.supply-depth-2'), depth3=hero.querySelector('.supply-depth-3');
 
-  // Theme
   new MutationObserver(function(){
     var dk=(document.documentElement.getAttribute('data-theme')||'dark')==='dark';
     gridMat.color.setHex(dk?0x222222:0xdddddd); gridMat.opacity=dk?0.05:0.08;
     groundMat.opacity=dk?0.1:0.04;
   }).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 
-  // Resize
   window.addEventListener('resize',function(){W=hero.clientWidth;H=hero.clientHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});
 
-  // ── LIVE HUD UPDATER — pulls from realPrices every 15s ──
-  function updateSupplyHUD(){
-    var brentRp=realPrices['BRN=F'], wtiRp=realPrices['CL=F'];
-    var brent=brentRp?brentRp.price:104, wti=wtiRp?wtiRp.price:99;
-    var brentBase=71.1; // pre-war price
-    var warPrem=((brent-brentBase)/brentBase*100);
-    var el;
-    el=document.getElementById('supplyBrentLive'); if(el) el.textContent='$'+brent.toFixed(0);
-    el=document.getElementById('supplyWtiLive'); if(el) el.textContent='$'+wti.toFixed(0);
-    el=document.getElementById('supplyStatBrent'); if(el) el.textContent='$'+brent.toFixed(2);
-    el=document.getElementById('supplyWarPremium'); if(el){ el.textContent=(warPrem>=0?'+':'')+warPrem.toFixed(0)+'%'; el.style.color=warPrem>30?'var(--red)':'var(--amber)'; }
-    el=document.getElementById('supplyConflictDay'); if(el&&window.marketState) el.textContent=window.marketState.conflictDay;
-    el=document.getElementById('supplyDeficit'); if(el) el.textContent='−'+(18.6+Math.max(0,(brent-100)*0.05)).toFixed(1)+'M';
-    el=document.getElementById('supplyLastUpdate'); if(el) el.textContent='Updated '+new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit',second:'2-digit',timeZone:'Asia/Kolkata'})+' IST';
-  }
-  setTimeout(updateSupplyHUD, 3000);
-  setInterval(updateSupplyHUD, 15000);
-
-  // ── RENDER LOOP ──
+  /* ════════════════════════════════════════════════
+     RENDER LOOP — requestAnimationFrame
+  ════════════════════════════════════════════════ */
   var clock=new THREE.Clock();
   (function animate(){
     requestAnimationFrame(animate);
@@ -8226,8 +8177,8 @@ Chart.defaults.animation = {duration:1800,easing:'easeOutQuart'};
     if(growStart<0) growStart=t;
     var elapsed=(t-growStart)*1000;
     var progress=Math.min(elapsed/growDuration,1);
+    var criticalPulse = _target.warRisk > 70;
 
-    // Bars: staggered grow + float + hover
     bars.forEach(function(bar,i){
       var stagger=i*140;
       var bp=Math.max(0,Math.min((elapsed-stagger)/(growDuration-stagger*0.4),1));
@@ -8239,10 +8190,17 @@ Chart.defaults.animation = {duration:1800,easing:'easeOutQuart'};
       bar.userData.mat.opacity=Math.min(ease*1.3, 0.88);
 
       if(bp>=1){
-        // Breathing float
         var floatAmt=Math.sin(t*0.5+i*1.1)*0.05+Math.sin(t*0.8+i*0.7)*0.02;
+        // Critical pulse effect
+        if(bar.userData.glowing){
+          floatAmt += Math.sin(t*3+i)*0.04;
+          bar.userData.mat.emissive = bar.userData.mat.emissive || new THREE.Color(0x000000);
+          var pulse = (Math.sin(t*4+i*2)*0.5+0.5)*0.3;
+          bar.userData.mat.emissive.setRGB(pulse, 0, 0);
+        } else {
+          if(bar.userData.mat.emissive) bar.userData.mat.emissive.setRGB(0,0,0);
+        }
         bar.position.y=th/2+floatAmt;
-        // Hover
         var ts=bar.userData.hovered?1.18:1.0;
         bar.scale.x+=(ts-bar.scale.x)*0.06;
         bar.scale.z+=(ts-bar.scale.z)*0.06;
@@ -8251,13 +8209,13 @@ Chart.defaults.animation = {duration:1800,easing:'easeOutQuart'};
       }
     });
 
-    // Rings, glows, particles, arcs
     barGroup.children.forEach(function(child){
       var ud=child.userData;
       if(!ud) return;
       if(ud.isRing){
         var bi=ud.barIdx;
         var pulseScale=1+0.15*Math.sin(t*1.2+bi*0.8);
+        if(criticalPulse && bars[bi] && bars[bi].userData.data.risk > 7) pulseScale += 0.1*Math.sin(t*3+bi);
         child.scale.set(pulseScale,pulseScale,1);
         var hov=bars[bi]&&bars[bi].userData.hovered;
         ud.mat.opacity+=(( hov?0.2:0.04+(progress>=1?0.03*Math.sin(t*0.8+bi):0) )-ud.mat.opacity)*0.08;
@@ -8265,7 +8223,8 @@ Chart.defaults.animation = {duration:1800,easing:'easeOutQuart'};
       if(ud.isGlow){
         var bi2=ud.barIdx;
         var hov2=bars[bi2]&&bars[bi2].userData.hovered;
-        ud.mat.opacity+=((hov2?0.06:0.015)-ud.mat.opacity)*0.08;
+        var glowTarget = hov2 ? 0.06 : (bars[bi2]&&bars[bi2].userData.glowing ? 0.04+0.02*Math.sin(t*3) : 0.015);
+        ud.mat.opacity+=((glowTarget)-ud.mat.opacity)*0.08;
       }
       if(ud.isParticle){
         var bi3=ud.barIdx;
@@ -8276,30 +8235,21 @@ Chart.defaults.animation = {duration:1800,easing:'easeOutQuart'};
         ud.mat.opacity+=((progress>=1?(hov3?0.6:0.2):0)-ud.mat.opacity)*0.06;
       }
       if(ud.isArc){
-        var arcOp=progress>=1?0.06+0.02*Math.sin(t*0.4):0;
-        ud.mat.opacity+=(arcOp-ud.mat.opacity)*0.05;
+        ud.mat.opacity+=((progress>=1?0.06+0.02*Math.sin(t*0.4):0)-ud.mat.opacity)*0.05;
       }
     });
 
     // Camera parallax
     mouseP.x+=(mouseP.tx-mouseP.x)*0.025;
     mouseP.y+=(mouseP.ty-mouseP.y)*0.025;
-<<<<<<< Updated upstream
     camera.position.x=14+mouseP.x*2.0;
     camera.position.y=9-mouseP.y*1.0;
     camera.lookAt(0, 1.5, 0);
-
-    // Orbit
-=======
-    camera.position.x=10+mouseP.x*2.0;
-    camera.position.y=11-mouseP.y*1.0;
-    camera.lookAt(0, 2, 0);
->>>>>>> Stashed changes
     barGroup.rotation.y=Math.sin(t*0.06)*0.22+mouseP.x*0.12;
 
-    // Depth layers scroll parallax
+    // Depth layers parallax
     var rect=hero.getBoundingClientRect();
-    scrollP=Math.max(0,Math.min(1,1-(rect.top+rect.height)/(window.innerHeight+rect.height)));
+    var scrollP=Math.max(0,Math.min(1,1-(rect.top+rect.height)/(window.innerHeight+rect.height)));
     if(depth1){depth1.style.opacity=0.5+scrollP*0.5;depth1.style.transform='translateY('+(scrollP*50-25)+'px) scale('+(1+scrollP*0.12)+')';}
     if(depth2){depth2.style.opacity=0.3+scrollP*0.7;depth2.style.transform='translateY('+(-scrollP*35+18)+'px) scale('+(1+scrollP*0.1)+')';}
     if(depth3){depth3.style.opacity=0.2+scrollP*0.6;depth3.style.transform='translate('+(mouseP.x*15)+'px,'+(mouseP.y*10)+'px) scale('+(1+scrollP*0.08)+')';}
@@ -8307,7 +8257,205 @@ Chart.defaults.animation = {duration:1800,easing:'easeOutQuart'};
     renderer.render(scene, camera);
   })();
 
-  console.log('[Supply 3D v2] Immersive — 10 regions, 50 particles, arcs, rings, live HUD');
+  console.log('[Supply 3D v3] Intel Engine — EIA API, disruption index, sparklines, news scoring, GSAP bar animation');
+})();
+
+// ══ ECHARTS ANALYTICS PANEL ══
+(function initSupplyCharts(){
+  if (typeof echarts === 'undefined') { setTimeout(initSupplyCharts, 500); return; }
+
+  var isDk = function(){ return (document.documentElement.getAttribute('data-theme')||'dark')==='dark'; };
+  var mutedC = function(){ return isDk() ? '#52525b' : '#a1a1aa'; };
+  var textC = function(){ return isDk() ? '#fafafa' : '#18181b'; };
+  var bgC = function(){ return 'transparent'; };
+
+  // ── Gauge factory ──
+  function makeGauge(elId, opts) {
+    var el = document.getElementById(elId);
+    if (!el) return null;
+    var chart = echarts.init(el, null, { renderer:'canvas' });
+    chart.setOption({
+      series: [{
+        type: 'gauge',
+        startAngle: 210, endAngle: -30,
+        min: opts.min || 0, max: opts.max || 100,
+        radius: '90%',
+        progress: { show: true, width: 12, roundCap: true,
+          itemStyle: { color: { type:'linear', x:0,y:0,x2:1,y2:0, colorStops: opts.gradient } }
+        },
+        axisLine: { lineStyle: { width: 12, color: [[1, isDk() ? 'rgba(255,255,255,.06)' : 'rgba(0,0,0,.06)']] } },
+        axisTick: { show: false },
+        splitLine: { show: false },
+        axisLabel: { show: false },
+        pointer: { show: false },
+        anchor: { show: false },
+        title: { show: true, offsetCenter: [0, '68%'], fontSize: 9, fontFamily: "'JetBrains Mono',monospace",
+          color: mutedC(), formatter: opts.unit || '' },
+        detail: { valueAnimation: true, fontSize: 24, fontWeight: 700, fontFamily: "'Inter',sans-serif",
+          color: textC(), offsetCenter: [0, '30%'],
+          formatter: function(v){ return (opts.prefix||'') + v.toFixed(opts.dec !== undefined ? opts.dec : 1) + (opts.suffix||''); }
+        },
+        data: [{ value: opts.initial || 0, name: opts.unit || '' }]
+      }]
+    });
+    return chart;
+  }
+
+  var gaugeWar = makeGauge('ecGaugeWarRisk', {
+    max: 100, unit: 'WAR RISK', suffix: '%', dec: 1, initial: 0,
+    gradient: [{offset:0,color:'#f59e0b'},{offset:0.5,color:'#ef4444'},{offset:1,color:'#dc2626'}]
+  });
+  var gaugeSupply = makeGauge('ecGaugeSupply', {
+    max: 30, unit: 'M BBL/DAY', prefix: '', suffix: '', dec: 1, initial: 0,
+    gradient: [{offset:0,color:'#f97316'},{offset:1,color:'#ef4444'}]
+  });
+  var gaugeTraffic = makeGauge('ecGaugeTraffic', {
+    max: 100, unit: 'TRAFFIC FLOW', suffix: '%', dec: 1, initial: 100,
+    gradient: [{offset:0,color:'#ef4444'},{offset:0.5,color:'#f59e0b'},{offset:1,color:'#22c55e'}]
+  });
+
+  // ── Pie / Donut chart ──
+  var pieEl = document.getElementById('ecPieComposition');
+  var pieChart = pieEl ? echarts.init(pieEl, null, { renderer:'canvas' }) : null;
+  if (pieChart) {
+    pieChart.setOption({
+      tooltip: { trigger:'item', backgroundColor: isDk()?'rgba(9,9,11,.94)':'rgba(255,255,255,.95)',
+        borderColor: isDk()?'rgba(255,255,255,.08)':'rgba(0,0,0,.08)', borderWidth:1,
+        textStyle:{ color:textC(), fontFamily:"'JetBrains Mono',monospace", fontSize:10 },
+        formatter: function(p){ return p.name + ': ' + p.value.toFixed(1) + ' (' + p.percent.toFixed(0) + '%)'; }
+      },
+      series: [{
+        type: 'pie', radius: ['48%','72%'], center: ['50%','52%'],
+        avoidLabelOverlap: true, padAngle: 2,
+        itemStyle: { borderRadius: 6, borderColor: isDk()?'#111113':'#ffffff', borderWidth: 2 },
+        label: { show: true, position:'outside', fontFamily:"'JetBrains Mono',monospace", fontSize:9, color:mutedC(),
+          formatter: '{b}\n{d}%' },
+        labelLine: { length:10, length2:8, lineStyle:{ color:mutedC(), width:1 } },
+        emphasis: { scaleSize: 6, itemStyle:{ shadowBlur:20, shadowColor:'rgba(0,0,0,.3)' } },
+        animationType: 'scale', animationEasing: 'cubicOut', animationDuration: 800,
+        data: [
+          { value:1, name:'Brent Impact', itemStyle:{color:'#f59e0b'} },
+          { value:1, name:'WTI Impact', itemStyle:{color:'#a1a1aa'} },
+          { value:1, name:'Spread', itemStyle:{color:'#ef4444'} },
+          { value:1, name:'News Score', itemStyle:{color:'#8b5cf6'} }
+        ]
+      }]
+    });
+  }
+
+  // ── Line chart ──
+  var lineEl = document.getElementById('ecLineTrend');
+  var lineChart = lineEl ? echarts.init(lineEl, null, { renderer:'canvas' }) : null;
+  if (lineChart) {
+    lineChart.setOption({
+      tooltip: { trigger:'axis', backgroundColor: isDk()?'rgba(9,9,11,.94)':'rgba(255,255,255,.95)',
+        borderColor: isDk()?'rgba(255,255,255,.08)':'rgba(0,0,0,.08)', borderWidth:1,
+        textStyle:{ color:textC(), fontFamily:"'JetBrains Mono',monospace", fontSize:10 },
+        axisPointer:{ lineStyle:{ color: isDk()?'rgba(255,255,255,.1)':'rgba(0,0,0,.1)' } }
+      },
+      legend: { show:true, bottom:0, textStyle:{ color:mutedC(), fontFamily:"'JetBrains Mono',monospace", fontSize:9 },
+        itemWidth:12, itemHeight:3 },
+      grid: { left:42, right:16, top:10, bottom:32 },
+      xAxis: { type:'category', data:[], boundaryGap:false,
+        axisLine:{ lineStyle:{color:isDk()?'rgba(255,255,255,.06)':'rgba(0,0,0,.06)'} },
+        axisTick:{show:false},
+        axisLabel:{ fontFamily:"'JetBrains Mono',monospace", fontSize:8, color:mutedC(),
+          formatter:function(v){ var p=v.split('-'); return p[1]+'/'+p[2]; } }
+      },
+      yAxis: { type:'value', splitNumber:4,
+        axisLine:{show:false}, axisTick:{show:false},
+        splitLine:{ lineStyle:{color:isDk()?'rgba(255,255,255,.04)':'rgba(0,0,0,.04)'} },
+        axisLabel:{ fontFamily:"'JetBrains Mono',monospace", fontSize:8, color:mutedC(),
+          formatter:function(v){ return '$'+v; } }
+      },
+      series: [
+        { name:'Brent', type:'line', smooth:true, showSymbol:false, lineStyle:{width:2, color:'#f59e0b'},
+          areaStyle:{ color:{type:'linear',x:0,y:0,x2:0,y2:1,
+            colorStops:[{offset:0,color:'rgba(245,158,11,.15)'},{offset:1,color:'transparent'}]} },
+          data:[], animationDuration:1000, animationEasing:'cubicOut' },
+        { name:'WTI', type:'line', smooth:true, showSymbol:false, lineStyle:{width:2, color:'#a1a1aa'},
+          areaStyle:{ color:{type:'linear',x:0,y:0,x2:0,y2:1,
+            colorStops:[{offset:0,color:'rgba(161,161,170,.1)'},{offset:1,color:'transparent'}]} },
+          data:[], animationDuration:1000, animationEasing:'cubicOut' }
+      ]
+    });
+  }
+
+  // ── UPDATE handler — called when supply data refreshes ──
+  function updateCharts() {
+    var d = window._supplyData;
+    if (!d) return;
+
+    // KPI cards
+    var bEl = document.getElementById('saKpiBrent');
+    if (bEl) bEl.textContent = '$' + d.brent.toFixed(2);
+    var bChg = document.getElementById('saKpiBrentChg');
+    if (bChg) { bChg.textContent = (d.brentChg>=0?'+':'') + d.brentChg.toFixed(2) + '% vs prev'; bChg.style.color = d.brentChg>=0?'#ef4444':'#22c55e'; }
+
+    var wEl = document.getElementById('saKpiWti');
+    if (wEl) wEl.textContent = '$' + d.wti.toFixed(2);
+    var wChg = document.getElementById('saKpiWtiChg');
+    if (wChg) { wChg.textContent = (d.wtiChg>=0?'+':'') + d.wtiChg.toFixed(2) + '% vs prev'; wChg.style.color = d.wtiChg>=0?'#ef4444':'#22c55e'; }
+
+    var sEl = document.getElementById('saKpiSpread');
+    if (sEl) sEl.textContent = '$' + d.spread.toFixed(2);
+
+    var iEl = document.getElementById('saKpiIdx');
+    if (iEl) { iEl.textContent = d.idx.toFixed(1); iEl.style.color = d.idx>30?'#ef4444':d.idx>15?'#f59e0b':'#22c55e'; }
+    var iLvl = document.getElementById('saKpiIdxLevel');
+    if (iLvl) { var lvl = d.idx>30?'CRITICAL':d.idx>15?'ELEVATED':'MODERATE'; iLvl.textContent = lvl; iLvl.style.color = d.idx>30?'#ef4444':d.idx>15?'#f59e0b':'#22c55e'; }
+
+    // Gauges
+    if (gaugeWar) gaugeWar.setOption({ series:[{ data:[{value:d.warRisk, name:'WAR RISK'}] }] });
+    if (gaugeSupply) gaugeSupply.setOption({ series:[{ data:[{value:d.supplyRisk, name:'M BBL/DAY'}] }] });
+    if (gaugeTraffic) gaugeTraffic.setOption({ series:[{ data:[{value:d.trafficFlow, name:'TRAFFIC FLOW'}] }] });
+
+    // Pie — use absolute values for positive sizing
+    if (pieChart) {
+      pieChart.setOption({ series:[{ data:[
+        { value:Math.abs(d.compBrent), name:'Brent Impact', itemStyle:{color:'#f59e0b'} },
+        { value:Math.abs(d.compWti), name:'WTI Impact', itemStyle:{color:'#a1a1aa'} },
+        { value:Math.abs(d.compSpread), name:'Spread', itemStyle:{color:'#ef4444'} },
+        { value:Math.abs(d.compNews), name:'News Score', itemStyle:{color:'#8b5cf6'} }
+      ] }] });
+    }
+
+    // Line
+    if (lineChart && d.brentHistory.length > 0) {
+      lineChart.setOption({
+        xAxis: { data: d.periods },
+        series: [
+          { data: d.brentHistory },
+          { data: d.wtiHistory }
+        ]
+      });
+    }
+  }
+
+  // Listen for data updates
+  window.addEventListener('supplyDataUpdate', updateCharts);
+
+  // Resize all charts on window resize
+  window.addEventListener('resize', function(){
+    if(gaugeWar) gaugeWar.resize();
+    if(gaugeSupply) gaugeSupply.resize();
+    if(gaugeTraffic) gaugeTraffic.resize();
+    if(pieChart) pieChart.resize();
+    if(lineChart) lineChart.resize();
+  });
+
+  // Theme change observer
+  new MutationObserver(function(){
+    // Dispose and reinit on theme change for proper colors
+    if(gaugeWar) gaugeWar.dispose();
+    if(gaugeSupply) gaugeSupply.dispose();
+    if(gaugeTraffic) gaugeTraffic.dispose();
+    if(pieChart) pieChart.dispose();
+    if(lineChart) lineChart.dispose();
+    setTimeout(initSupplyCharts, 100);
+  }).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+
+  console.log('[Supply Analytics] ECharts — 3 gauges, 1 pie, 1 line chart initialized');
 })();
 
 /* ══ SECTORS ══ */
@@ -9607,7 +9755,7 @@ setInterval(updateLiveKPICards, 15000);
         tR.x = 0.15;
         tR.y = -0.78;
         globe.rotation.x = 0.15;
-        globe.rotation.y = -0.78;     
+        globe.rotation.y = -0.78;
         cam.position.set(0, 0.2, 2.85);
         cam.lookAt(0, 0, 0);
 
