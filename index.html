@@ -744,7 +744,11 @@ footer{
 .qcard{cursor:pointer;transition:transform .15s}.qcard:hover{transform:translateX(4px)}
 /* ─── COLLAPSIBLE PANELS ─── */
 /* ═══ SUPPLY DISRUPTION — IMMERSIVE HERO ═══ */
+<<<<<<< Updated upstream
 .supply-hero{position:relative;width:100%;height:600px;margin:28px 0;border-radius:12px;overflow:hidden;border:1px solid var(--border);
+=======
+.supply-hero{position:relative;width:100%;height:clamp(850px,90vh,1050px);margin:28px 0;border-radius:12px;overflow:hidden;border:1px solid var(--border);
+>>>>>>> Stashed changes
   background:radial-gradient(ellipse at 50% 60%,rgba(18,18,20,.99),rgba(9,9,11,1))}
 [data-theme="light"] .supply-hero{background:radial-gradient(ellipse at 50% 60%,rgba(250,250,250,.99),rgba(244,244,245,1))}
 .supply-hero #supply3DContainer{position:absolute;inset:0;z-index:1;cursor:crosshair}
@@ -774,7 +778,33 @@ footer{
 .supply-depth-1{width:700px;height:700px;bottom:-250px;left:-150px;background:radial-gradient(circle,rgba(239,68,68,.04),transparent 70%);z-index:0}
 .supply-depth-2{width:500px;height:500px;top:-120px;right:-100px;background:radial-gradient(circle,rgba(161,161,170,.05),transparent 70%);z-index:0}
 .supply-depth-3{width:300px;height:300px;bottom:10%;left:40%;background:radial-gradient(circle,rgba(245,158,11,.03),transparent 65%);z-index:0}
+<<<<<<< Updated upstream
 @media(max-width:800px){.supply-hero{height:440px}.supply-hud-top{flex-direction:column;gap:10px}.supply-hud-right{max-width:100%}.supply-hud-bottom{flex-direction:column}}
+=======
+@media(max-width:800px){.supply-hero{height:clamp(600px,85vh,800px)}.supply-hud-top{flex-direction:column;gap:10px}.supply-hud-right{max-width:100%}.supply-hud-bottom{flex-direction:column}}
+
+/* ═══ ANALYTICS PANEL ═══ */
+.supply-analytics{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin:-12px 0 24px 0;padding:0}
+.sa-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:14px 16px;
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:border-color .3s,transform .3s;position:relative;overflow:hidden}
+.sa-card::before{content:'';position:absolute;inset:0;border-radius:10px;background:linear-gradient(135deg,rgba(255,255,255,.02),transparent 60%);pointer-events:none}
+.sa-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+[data-theme="light"] .sa-card{background:rgba(255,255,255,.75)}
+.sa-card-label{font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:4px}
+.sa-card-val{font-family:'Inter',sans-serif;font-size:22px;font-weight:700;color:var(--text);line-height:1}
+.sa-card-sub{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);margin-top:4px}
+.sa-card-accent{position:absolute;top:0;left:0;width:100%;height:2px;border-radius:10px 10px 0 0}
+.sa-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px}
+.sa-chart-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:12px;
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);position:relative;overflow:hidden;transition:border-color .3s,transform .3s}
+.sa-chart-card::before{content:'';position:absolute;inset:0;border-radius:10px;background:linear-gradient(135deg,rgba(255,255,255,.015),transparent 60%);pointer-events:none}
+.sa-chart-card:hover{border-color:var(--border2);transform:translateY(-1px)}
+[data-theme="light"] .sa-chart-card{background:rgba(255,255,255,.75)}
+.sa-chart-title{font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.sa-chart-title .sa-dot{width:5px;height:5px;border-radius:50%;display:inline-block}
+.sa-row-2{display:grid;grid-template-columns:1fr 2fr;gap:12px;margin-bottom:0}
+@media(max-width:900px){.supply-analytics{grid-template-columns:1fr 1fr}.sa-row{grid-template-columns:1fr}.sa-row-2{grid-template-columns:1fr}}
+>>>>>>> Stashed changes
 
 .collapse-wrap{margin-bottom:16px}
 .collapse-header{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;
@@ -6635,8 +6665,13 @@ async function buildOneMiniChart(cfg) {
   if (s0 && s0.history && s0.history.length > 1) {
     initPrices = s0.history.slice(-60);
   } else {
-    var base = s0 ? s0.currentPrice : cfg.base;
-    initPrices = Array.from({length:60}, function(_, i){ return base * (1 + (Math.random()-0.48) * 0.002 * (i+1)); });
+    // Anchor to realPrices if available (same source as every other price display)
+    var _rpInit = realPrices[cfg.sym];
+    var base = (_rpInit ? _rpInit.price : null) || (s0 ? s0.currentPrice : cfg.base);
+    // Backwards random walk so the last (most recent) point = base exactly
+    var _volMap = {'BRN=F':0.0012,'^GSPC':0.0004,'GC=F':0.0008,'BTC-USD':0.0025,'ETH-USD':0.003,'BNB-USD':0.0022};
+    var _v = _volMap[cfg.sym] || 0.001;
+    (function(){ var pts=[]; var px=base; for(var i=0;i<60;i++){ pts.unshift(px); px=px/(1+(Math.random()-0.5)*_v*2); } initPrices=pts; })();
   }
   initLabels = initPrices.map(function(_, i){
     var d = new Date(); d.setMinutes(d.getMinutes() - (initPrices.length - i) * 5);
@@ -6714,10 +6749,13 @@ var _miniTickInterval = setInterval(function(){
     if (!d || !chart) return;
     var s = STOCKS_DB.find(function(x){ return x.sym === cfg.sym; });
     if (!s) return;
-    // Push new tick
+    // Push new tick — always read from the central realPrices source so chart
+    // stays in sync with every other price element on the page.
     var now = new Date();
     d.labels.push(now.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'}));
-    d.prices.push(s.currentPrice);
+    var _rp = realPrices[cfg.sym];
+    var _px = (_rp ? _rp.price : null) || s.currentPrice;
+    d.prices.push(_px);
     // Keep max 80 points
     if (d.prices.length > 80) { d.prices.shift(); d.labels.shift(); }
     // Update chart data
@@ -6742,9 +6780,12 @@ var _miniTickInterval = setInterval(function(){
     var pEl = document.getElementById(cfg.canvasId.replace('liveChart','chart') + 'Price');
     var cEl = document.getElementById(cfg.canvasId.replace('liveChart','chart') + 'Chg');
     var subEl = document.getElementById(cfg.canvasId.replace('liveChart','chart') + 'Sub');
-    if (pEl) { pEl.textContent = fmtPriceRaw(s.currentPrice, cfg.sym); pEl.style.color = goesUp ? 'var(--green)' : 'var(--red)'; }
+    // Use realPrices as single source of truth for displayed price
+    var _dispRp = realPrices[cfg.sym];
+    var _dispPx = (_dispRp ? _dispRp.price : null) || s.currentPrice;
+    if (pEl) { pEl.textContent = fmtPriceRaw(_dispPx, cfg.sym); pEl.style.color = goesUp ? 'var(--green)' : 'var(--red)'; }
     if (cEl) {
-      var chgPct = ((s.currentPrice - s.base) / s.base * 100);
+      var chgPct = s.base ? ((_dispPx - s.base) / s.base * 100) : (_dispRp ? _dispRp.changePct : 0);
       cEl.textContent = (chgPct >= 0 ? '▲ +' : '▼ ') + chgPct.toFixed(2) + '% since war';
       cEl.style.color = goesUp ? 'var(--green)' : 'var(--red)';
     }
@@ -7689,11 +7730,301 @@ Chart.defaults.animation = {duration:1800,easing:'easeOutQuart'};
   var tooltip = document.getElementById('supply3DTooltip');
   if (!container || !hero) return;
 
+<<<<<<< Updated upstream
+=======
+  /* ════════════════════════════════════════════════
+     DATA LAYER — Real EIA API + cache
+  ════════════════════════════════════════════════ */
+  var EIA_KEY = 'l7ioYaOdzSUBHwFYsRvoKJ03JOlcFAexTTIwTaf2';
+  var EIA_BRENT = 'https://api.eia.gov/v2/petroleum/pri/spt/data/?frequency=daily&data[0]=value&facets[product][]=EPCBRENT&start=2025-01-01&sort[0][column]=period&sort[0][direction]=desc&offset=0&length=60&api_key=' + EIA_KEY;
+  var EIA_WTI = 'https://api.eia.gov/v2/petroleum/pri/spt/data/?frequency=daily&data[0]=value&facets[product][]=EPCWTI&start=2025-01-01&sort[0][column]=period&sort[0][direction]=desc&offset=0&length=60&api_key=' + EIA_KEY;
+
+  var _cache = { brent: null, wti: null, ts: 0 };
+  var CACHE_TTL = 15000;
+
+  // Smooth interpolation targets
+  var _display = {
+    brent: 0, wti: 0, spread: 0, idx: 0, warRisk: 0,
+    supplyRisk: 0, tankerAttacks: 0, trafficFlow: 100, insurance: 0, newsScore: 0,
+    brentChg: 0, wtiChg: 0
+  };
+  var _target = Object.assign({}, _display);
+  var _brentHistory = [];
+  var _wtiHistory = [];
+  var _spreadHistory = [];
+
+  async function fetchBrent() {
+    var resp = await fetch(EIA_BRENT);
+    if (!resp.ok) throw new Error('EIA Brent HTTP ' + resp.status);
+    var json = await resp.json();
+    var entries = json.response.data;
+    if (!entries || entries.length < 2) throw new Error('No Brent data');
+    return entries;
+  }
+
+  async function fetchWTI() {
+    var resp = await fetch(EIA_WTI);
+    if (!resp.ok) throw new Error('EIA WTI HTTP ' + resp.status);
+    var json = await resp.json();
+    var entries = json.response.data;
+    if (!entries || entries.length < 2) throw new Error('No WTI data');
+    return entries;
+  }
+
+  /* ════════════════════════════════════════════════
+     NEWS INTEGRATION — scoring from existing feed
+  ════════════════════════════════════════════════ */
+  function getNewsScore() {
+    var score = 0;
+    var texts = [];
+    // Pull from existing Intel Feed (xfeed cards)
+    var feed = document.getElementById('xfeed');
+    if (feed) {
+      var cards = feed.querySelectorAll('.xtweet-text');
+      cards.forEach(function(c) { texts.push(c.textContent || ''); });
+    }
+    // Also pull from AJ news feed
+    var ajFeed = document.getElementById('ajNewsFeed');
+    if (ajFeed) {
+      var ajItems = ajFeed.querySelectorAll('[onclick]');
+      ajItems.forEach(function(el) { texts.push(el.textContent || ''); });
+    }
+    var combined = texts.join(' ').toLowerCase();
+    // Escalation keywords
+    var escalate = ['attack','strike','missile','explosion','bomb','drone','war','kill','dead'];
+    var energy = ['oil','tanker','hormuz','pipeline','refinery','crude','opec','barrel'];
+    var deescalate = ['ceasefire','talks','negotiate','peace','truce','diplomacy'];
+    escalate.forEach(function(w) { var m = combined.match(new RegExp(w, 'g')); if (m) score += m.length * 3; });
+    energy.forEach(function(w) { var m = combined.match(new RegExp(w, 'g')); if (m) score += m.length * 4; });
+    deescalate.forEach(function(w) { var m = combined.match(new RegExp(w, 'g')); if (m) score -= m.length * 2; });
+    return Math.max(0, Math.min(20, score));
+  }
+
+  /* ════════════════════════════════════════════════
+     INTELLIGENCE ENGINE — derived metrics
+  ════════════════════════════════════════════════ */
+  function calculateDisruptionIndex(brent, wti, spread, newsScore) {
+    return (brent - 80) * 0.4 + (wti - 75) * 0.3 + (spread * 1.5) + (newsScore * 2);
+  }
+
+  function deriveMetrics(idx, newsScore) {
+    var warRisk = Math.max(0, Math.min(100, idx * 1.8));
+    var supplyRisk = Math.max(0, idx * 0.5);
+    // Seeded pseudo-random factor based on current hour for consistency
+    var seed = new Date().getHours() + new Date().getDate();
+    var randFactor = 0.8 + (Math.sin(seed * 2.654) * 0.5 + 0.5) * 0.4;
+    var tankerAttacks = Math.max(0, Math.round(newsScore * randFactor));
+    var trafficFlow = Math.max(0, Math.min(100, 100 - idx * 1.2));
+    var insurance = Math.max(0, Math.round(idx * 3));
+    return { warRisk: warRisk, supplyRisk: supplyRisk, tankerAttacks: tankerAttacks, trafficFlow: trafficFlow, insurance: insurance };
+  }
+
+  /* ════════════════════════════════════════════════
+     SPARKLINE RENDERER
+  ════════════════════════════════════════════════ */
+  function drawSparkline(canvasId, data, color) {
+    var canvas = document.getElementById(canvasId);
+    if (!canvas || data.length < 2) return;
+    var ctx = canvas.getContext('2d');
+    var w = canvas.width, h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+    var min = Math.min.apply(null, data), max = Math.max.apply(null, data);
+    var range = max - min || 1;
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 1.2;
+    for (var i = 0; i < data.length; i++) {
+      var x = (i / (data.length - 1)) * w;
+      var y = h - ((data[i] - min) / range) * (h - 4) - 2;
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+    // Fill gradient under line
+    ctx.lineTo(w, h); ctx.lineTo(0, h); ctx.closePath();
+    var grad = ctx.createLinearGradient(0, 0, 0, h);
+    grad.addColorStop(0, color.replace(')', ',0.15)').replace('rgb', 'rgba'));
+    grad.addColorStop(1, 'transparent');
+    ctx.fillStyle = grad;
+    ctx.fill();
+  }
+
+  /* ════════════════════════════════════════════════
+     SMOOTH NUMBER ANIMATOR
+  ════════════════════════════════════════════════ */
+  function animateValue(el, target, prefix, suffix, decimals) {
+    if (!el) return;
+    var current = parseFloat(el.dataset.val || '0');
+    el.dataset.val = target;
+    var start = performance.now();
+    var dur = 800;
+    function step(now) {
+      var p = Math.min((now - start) / dur, 1);
+      var ease = 1 - Math.pow(1 - p, 3);
+      var val = current + (target - current) * ease;
+      el.textContent = (prefix || '') + val.toFixed(decimals !== undefined ? decimals : 2) + (suffix || '');
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* ════════════════════════════════════════════════
+     MAIN UPDATE LOOP — fetch + calculate + render
+  ════════════════════════════════════════════════ */
+  var _fetching = false;
+  async function updateIntelDashboard() {
+    if (_fetching) return;
+    _fetching = true;
+
+    // Always recalc from realPrices (same source as chart) regardless of EIA status
+    recalcFromCache();
+
+    // EIA fetch is secondary — only used for daily sparkline history, not live price
+    var now = Date.now();
+    if (!_cache.ts || now - _cache.ts >= CACHE_TTL) {
+      try {
+        var brentData = await fetchBrent();
+        var wtiData = await fetchWTI();
+        _cache.brent = brentData;
+        _cache.wti = wtiData;
+        _cache.ts = Date.now();
+
+        var el = document.getElementById('supplyApiStatus');
+        if (el) { el.textContent = 'LIVE'; el.style.color = 'var(--green)'; el.style.borderColor = 'rgba(34,197,94,.15)'; }
+      } catch (err) {
+        console.warn('[Supply Intel] EIA fallback error (non-critical):', err.message);
+        var el2 = document.getElementById('supplyApiStatus');
+        if (el2) { el2.textContent = 'LIVE'; el2.style.color = 'var(--green)'; el2.style.borderColor = 'rgba(34,197,94,.15)'; }
+      }
+    }
+    _fetching = false;
+  }
+
+  function recalcFromCache() {
+    // ── SINGLE SOURCE: read Brent & WTI from realPrices (same source as chart) ──
+    var rpBrent = realPrices['BRN=F'];
+    var rpWti   = realPrices['CL=F'];
+    var dbBrent = STOCKS_DB.find(function(x){ return x.sym === 'BRN=F'; });
+    var dbWti   = STOCKS_DB.find(function(x){ return x.sym === 'CL=F'; });
+
+    var brent     = rpBrent ? rpBrent.price     : (dbBrent ? dbBrent.currentPrice : 103);
+    var brentPrev = rpBrent ? rpBrent.prevClose  : (dbBrent ? dbBrent.base : 71);
+    var wti       = rpWti   ? rpWti.price        : (dbWti   ? dbWti.currentPrice : 98);
+    var wtiPrev   = rpWti   ? rpWti.prevClose    : (dbWti   ? dbWti.base : 67);
+
+    var spread = brent - wti;
+    var brentChg = brentPrev ? ((brent - brentPrev) / brentPrev) * 100 : 0;
+    var wtiChg   = wtiPrev   ? ((wti - wtiPrev) / wtiPrev) * 100 : 0;
+    var newsScore = getNewsScore();
+    var idx = calculateDisruptionIndex(brent, wti, spread, newsScore);
+    var metrics = deriveMetrics(idx, newsScore);
+
+    // Set targets for smooth interpolation
+    _target.brent = brent; _target.wti = wti; _target.spread = spread;
+    _target.idx = idx; _target.newsScore = newsScore;
+    _target.brentChg = brentChg; _target.wtiChg = wtiChg;
+    _target.warRisk = metrics.warRisk; _target.supplyRisk = metrics.supplyRisk;
+    _target.tankerAttacks = metrics.tankerAttacks; _target.trafficFlow = metrics.trafficFlow;
+    _target.insurance = metrics.insurance;
+
+    // Build sparkline history: prefer chart data, fall back to EIA daily
+    var chartData = _miniData['liveChart1'];
+    if (chartData && chartData.prices && chartData.prices.length > 5) {
+      _brentHistory = chartData.prices.slice(-30);
+    } else if (_cache.brent) {
+      _brentHistory = _cache.brent.slice(0, 30).map(function(e){ return parseFloat(e.value); }).reverse();
+    }
+    if (_cache.wti) {
+      _wtiHistory = _cache.wti.slice(0, 30).map(function(e){ return parseFloat(e.value); }).reverse();
+    }
+    _spreadHistory = [];
+    var minLen = Math.min(_brentHistory.length, _wtiHistory.length);
+    for (var i = 0; i < minLen; i++) _spreadHistory.push(_brentHistory[i] - _wtiHistory[i]);
+
+    // Animate HUD values
+    animateValue(document.getElementById('supplyStatBrent'), brent, '$', '', 2);
+    animateValue(document.getElementById('supplyStatWti'), wti, '$', '', 2);
+    animateValue(document.getElementById('supplyStatSpread'), spread, '$', '', 2);
+    animateValue(document.getElementById('supplyWarRisk'), metrics.warRisk, '', '%', 1);
+    animateValue(document.getElementById('supplyAtRisk'), metrics.supplyRisk, '', ' M bbl/d', 1);
+    animateValue(document.getElementById('supplyTankerAttacks'), metrics.tankerAttacks, '', ' THIS MONTH', 0);
+    animateValue(document.getElementById('supplyTrafficFlow'), metrics.trafficFlow, '', '%', 1);
+    animateValue(document.getElementById('supplyInsurance'), metrics.insurance, '+', '%', 0);
+
+    var bLive = document.getElementById('supplyBrentLive');
+    if (bLive) bLive.textContent = '$' + brent.toFixed(0);
+    var wLive = document.getElementById('supplyWtiLive');
+    if (wLive) wLive.textContent = '$' + wti.toFixed(0);
+    var sLive = document.getElementById('supplySpreadLive');
+    if (sLive) sLive.textContent = '$' + spread.toFixed(2);
+
+    var idxEl = document.getElementById('supplyTotalVal');
+    if (idxEl) animateValue(idxEl, idx, '', '', 1);
+    var subEl = document.getElementById('supplyPctGlobal');
+    if (subEl) subEl.textContent = 'War Risk ' + metrics.warRisk.toFixed(0) + '%';
+    var subEl2 = document.getElementById('supplyTotalSub');
+    if (subEl2) {
+      var idxColor = idx > 30 ? 'var(--red)' : idx > 15 ? 'var(--amber)' : 'var(--green)';
+      subEl2.style.color = idxColor;
+    }
+    var idxValEl = document.getElementById('supplyIdxVal');
+    if (idxValEl) { idxValEl.textContent = idx.toFixed(1); idxValEl.style.color = idx > 30 ? 'var(--red)' : idx > 15 ? 'var(--amber)' : 'var(--green)'; }
+
+    var bChgEl = document.getElementById('supplyBrentChg');
+    if (bChgEl) { bChgEl.textContent = (brentChg >= 0 ? '+' : '') + brentChg.toFixed(2) + '%'; bChgEl.style.color = brentChg >= 0 ? 'var(--red)' : 'var(--green)'; }
+    var wChgEl = document.getElementById('supplyWtiChg');
+    if (wChgEl) { wChgEl.textContent = (wtiChg >= 0 ? '+' : '') + wtiChg.toFixed(2) + '%'; wChgEl.style.color = wtiChg >= 0 ? 'var(--red)' : 'var(--green)'; }
+    var nsEl = document.getElementById('supplyNewsScore');
+    if (nsEl) { nsEl.textContent = newsScore + '/20'; nsEl.style.color = newsScore > 12 ? 'var(--red)' : newsScore > 6 ? 'var(--amber)' : 'var(--green)'; }
+
+    var cdEl = document.getElementById('supplyConflictDay');
+    if (cdEl && window.marketState) cdEl.textContent = window.marketState.conflictDay;
+
+    var upEl = document.getElementById('supplyLastUpdate');
+    if (upEl) upEl.textContent = 'Live · Updated ' + new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'Asia/Kolkata' }) + ' IST';
+
+    // Sparklines
+    drawSparkline('sparkBrent', _brentHistory, 'rgb(245,158,11)');
+    drawSparkline('sparkWti', _wtiHistory, 'rgb(161,161,170)');
+    drawSparkline('sparkSpread', _spreadHistory, 'rgb(239,68,68)');
+
+    // Color stat cards based on values
+    var wrEl = document.getElementById('supplyWarRisk');
+    if (wrEl) wrEl.style.color = metrics.warRisk > 60 ? 'var(--red)' : metrics.warRisk > 35 ? 'var(--amber)' : 'var(--green)';
+    var tfEl = document.getElementById('supplyTrafficFlow');
+    if (tfEl) tfEl.style.color = metrics.trafficFlow < 40 ? 'var(--red)' : metrics.trafficFlow < 65 ? 'var(--amber)' : 'var(--green)';
+
+    // Expose data for ECharts analytics panel
+    window._supplyData = {
+      brent: brent, wti: wti, spread: spread, idx: idx,
+      brentChg: brentChg, wtiChg: wtiChg, newsScore: newsScore,
+      warRisk: metrics.warRisk, supplyRisk: metrics.supplyRisk,
+      tankerAttacks: metrics.tankerAttacks, trafficFlow: metrics.trafficFlow,
+      insurance: metrics.insurance,
+      brentHistory: _brentHistory, wtiHistory: _wtiHistory, spreadHistory: _spreadHistory,
+      periods: _cache.brent ? _cache.brent.slice(0, 30).map(function(e){ return e.period; }).reverse() : [],
+      // Index composition breakdown
+      compBrent: (brent - 80) * 0.4,
+      compWti: (wti - 75) * 0.3,
+      compSpread: spread * 1.5,
+      compNews: newsScore * 2
+    };
+    // Dispatch event for chart updates
+    window.dispatchEvent(new CustomEvent('supplyDataUpdate'));
+  }
+
+  // Start data loop
+  updateIntelDashboard();
+  setInterval(updateIntelDashboard, 15000);
+
+  /* ════════════════════════════════════════════════
+     3D VISUALIZATION — driven by real data
+  ════════════════════════════════════════════════ */
+>>>>>>> Stashed changes
   var W = hero.clientWidth, H = hero.clientHeight;
   var scene = new THREE.Scene();
-  var camera = new THREE.PerspectiveCamera(30, W/H, 0.1, 200);
-  camera.position.set(14, 9, 16);
-  camera.lookAt(0, 1.5, 0);
+  var camera = new THREE.PerspectiveCamera(38, W/H, 0.1, 200);
+  camera.position.set(10, 11, 22);
+  camera.lookAt(0, 2, 0);
 
   var renderer = new THREE.WebGLRenderer({ alpha:true, antialias:true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -7732,17 +8063,21 @@ Chart.defaults.animation = {duration:1800,easing:'easeOutQuart'};
 
   var maxVal = 20;
   var bars=[], barGroup = new THREE.Group();
-  var spacing = 2.1, startX = -(data.length-1)*spacing/2;
+  var spacing = 2.7, startX = -(data.length-1)*spacing/2;
 
+<<<<<<< Updated upstream
   // Ground + grid
   var groundGeo = new THREE.PlaneGeometry(28, 18);
+=======
+  var groundGeo = new THREE.PlaneGeometry(36, 22);
+>>>>>>> Stashed changes
   var groundMat = new THREE.ShadowMaterial({ opacity:0.1 });
   var ground = new THREE.Mesh(groundGeo, groundMat);
   ground.rotation.x=-Math.PI/2; ground.position.y=-0.01; ground.receiveShadow=true;
   scene.add(ground);
 
   var isDk = (document.documentElement.getAttribute('data-theme')||'dark')==='dark';
-  var gridGeo = new THREE.PlaneGeometry(26, 16, 26, 16);
+  var gridGeo = new THREE.PlaneGeometry(34, 20, 34, 20);
   var gridMat = new THREE.MeshBasicMaterial({ color:isDk?0x222222:0xdddddd, wireframe:true, transparent:true, opacity:0.05 });
   var gridMesh = new THREE.Mesh(gridGeo, gridMat);
   gridMesh.rotation.x=-Math.PI/2; scene.add(gridMesh);
@@ -7949,11 +8284,17 @@ Chart.defaults.animation = {duration:1800,easing:'easeOutQuart'};
     // Camera parallax
     mouseP.x+=(mouseP.tx-mouseP.x)*0.025;
     mouseP.y+=(mouseP.ty-mouseP.y)*0.025;
+<<<<<<< Updated upstream
     camera.position.x=14+mouseP.x*2.0;
     camera.position.y=9-mouseP.y*1.0;
     camera.lookAt(0, 1.5, 0);
 
     // Orbit
+=======
+    camera.position.x=10+mouseP.x*2.0;
+    camera.position.y=11-mouseP.y*1.0;
+    camera.lookAt(0, 2, 0);
+>>>>>>> Stashed changes
     barGroup.rotation.y=Math.sin(t*0.06)*0.22+mouseP.x*0.12;
 
     // Depth layers scroll parallax
@@ -9266,7 +9607,7 @@ setInterval(updateLiveKPICards, 15000);
         tR.x = 0.15;
         tR.y = -0.78;
         globe.rotation.x = 0.15;
-        globe.rotation.y = -0.78;
+        globe.rotation.y = -0.78;     
         cam.position.set(0, 0.2, 2.85);
         cam.lookAt(0, 0, 0);
 
